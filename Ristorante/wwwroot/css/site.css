@@ -1,0 +1,353 @@
+﻿* {
+    margin: 0%;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #515152;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/*BACKGROUND IMAGE STYLING---------------------*/
+.wrapper {
+    background-image: url(../images/andrew-seaman-sQopSb2K0CU-unsplash.jpg);
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+
+    .wrapper > * {
+        position: relative;
+        z-index: 10;
+    }
+
+    .wrapper::after {
+        content: "";
+        background-color: #515152;
+        opacity: 0.5;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 1;
+    }
+
+/*MENU BAR WITH LOGO-------------------------------------*/
+
+#topbar {
+    height: 140px;
+    width: 100%;
+    background: rgba(19, 19, 19, 0.4);
+    border-bottom: 3px solid #ffa17a;
+}
+
+#logo {
+    height: 100%;
+    width: 10%;
+    display: inline-block;
+    transition: all ease 0.8s;
+}
+
+    #logo img {
+        height: 94%;
+        padding-left: 40px;
+        padding-top: 15px;
+    }
+
+    #logo:hover {
+        transform: scale(1.1);
+    }
+
+#menu {
+    margin: auto;
+    width: 90%;
+    height: 100%;
+    float: right;
+    text-align: center;
+    display: flex;
+}
+
+    #menu ul {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        align-content: center;
+        padding-left: 110px;
+    }
+
+    #menu a {
+        text-decoration: none;
+        color: white;
+        font-size: 18px;
+        transition: all 0.5s;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+        #menu a:hover {
+            color: #ffa17a;
+        }
+
+/*MAIN WITH BORDER-------------*/
+main {
+    width: 60%;
+    height: 84%;
+    margin: auto;
+    border-right: 3px solid #ffa17a;
+    position: relative;
+}
+
+#smain {
+    margin: auto;
+    width: 70%;
+    padding-top: 18%;
+    padding-bottom: 2%;
+    border-bottom: 3px solid #ffa17a;
+}
+
+    #smain h1 {
+        color: white;
+        text-transform: uppercase;
+        font-size: 50px;
+        text-shadow: #ffa17a 2px 2px 5px;
+        letter-spacing: 2px;
+    }
+
+    #smain p {
+        font-size: 25px;
+        font-weight: bolder;
+        color: white;
+        line-height: 250%;
+        text-shadow: #ffa17a 1px 1px 3px;
+    }
+
+    #smain a {
+        text-decoration: none;
+        color: #ffa17a;
+        text-shadow: #1a1919 1px 1px 3px;
+        transition: all 0.5s;
+    }
+
+        #smain a:hover {
+            color: white;
+            text-shadow: #1a1919 1px 1px 3px;
+        }
+
+/*FOOTER--------------------------------*/
+footer {
+    float: right;
+    position: absolute;
+    bottom: 10px;
+    right: -320px;
+    width: 317px;
+    padding-left: 45px;
+    padding-bottom: 20px;
+    color: white;
+    line-height: 160%;
+    font-size: 20px;
+}
+
+#social {
+    margin-top: 10px;
+}
+
+    #social i {
+        color: white;
+        font-size: 20px;
+        padding-right: 10px;
+    }
+
+        #social i:hover {
+            color: #ffa17a;
+        }
+
+/*SECOND PAGE---------------------------------------------------------------------------------------*/
+.wrapper1 {
+    background-image: url(../images/andrew-seaman-sQopSb2K0CU-unsplash.jpg);
+    width: 100%;
+    height: 190vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 10;
+}
+
+    .wrapper1 > * {
+        position: relative;
+        z-index: 10;
+    }
+
+    .wrapper1::after {
+        content: "";
+        background-color: #515152;
+        opacity: 0.6;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 190vh;
+        z-index: 1;
+    }
+
+.sec-tab {
+    color: white;
+    font-weight: bolder;
+    font-size: 16px;
+    width: 30%;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #ffa17a;
+}
+
+    .sec-tab h3,
+    #contact1 h3 {
+        font-size: 25px;
+        text-shadow: #ffa17a 2px 2px 3px;
+        text-transform: uppercase;
+    }
+
+table {
+    margin: auto;
+    padding: 15px;
+}
+
+    table td {
+        padding: 8px;
+    }
+
+    table tr {
+        transition: all 0.4s;
+    }
+
+        table tr:hover {
+            color: #ffa17a;
+        }
+
+/* DIVS POSITIONING --------------------*/
+.big-box {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#s2 {
+    position: absolute;
+    top: 35%;
+    left: 35%;
+}
+
+/*BUTTON RETURN ON TOP-------------------------*/
+.top-button {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 2px;
+    background-color: #ffa17a;
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    text-align: center;
+    padding-top: 2px;
+}
+
+.fa-chevron-up {
+    margin-right: 0px;
+}
+
+/*  LAST PAGE---------------------------------------------------------------------------------------------*/
+#map {
+    width: 35%;
+    height: 350px;
+    font-size: 20px;
+    position: absolute;
+    top: 320px;
+    left: 82%;
+}
+
+/*CONTACTFORM---------------------------------------------*/
+#contact1 {
+    color: white;
+    margin: left -40px;
+    margin-right: 0px;
+    text-align: center;
+    padding: 30px;
+    top: 10%;
+    position: absolute;
+}
+
+#contactform {
+    width: 100%;
+    text-align: center;
+    margin: auto;
+    margin-top: 50px;
+}
+
+    #contactform p {
+        padding-bottom: 45px;
+        font-size: 22px;
+    }
+
+.half {
+    float: left;
+}
+
+.left {
+    width: 48%;
+    margin-right: 2%;
+}
+
+.right {
+    width: 50%;
+}
+
+input,
+textarea {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid #ffa17a;
+    outline: none;
+    margin-bottom: 20px;
+    padding: 10px;
+    color: white;
+    line-height: 300%;
+    background-color: #13131366;
+    box-shadow: 1px 1px 2px #070707d8;
+}
+
+    input:focus,
+    textarea:focus {
+        border: 3px solid #ffa17a;
+        background-color: #1a1919;
+    }
+
+textarea {
+    min-height: 225px;
+    resize: vertical;
+}
+
+input[type=submit] {
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+    input[type=submit]:hover {
+        color: #ffa17a;
+        background-color: #1a1919;
+    }
+
+::placeholder {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
