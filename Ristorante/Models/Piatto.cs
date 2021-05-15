@@ -6,11 +6,13 @@ using System.Collections.Generic;
 
 namespace Ristorante.Models
 {
-    public partial class Piatti
+    public partial class Piatto
     {
         public string id { get; set; }
         public string Nome { get; set; }
         public decimal Prezzo { get; set; }
         public string Tipo_piatto { get; set; }
+
+        public virtual Tipo_Piatto Tipo_piattoNavigation { get; set; }
     }
 }

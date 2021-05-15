@@ -8,7 +8,14 @@ namespace Ristorante.Models
 {
     public partial class Tipo_Piatto
     {
+        public Tipo_Piatto()
+        {
+            Piatti = new HashSet<Piatto>();
+        }
+
         public string Tipo_piatto1 { get; set; }
         public string Descrizione { get; set; }
+
+        public virtual ICollection<Piatto> Piatti { get; set; }
     }
 }

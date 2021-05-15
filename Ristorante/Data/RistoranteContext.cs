@@ -19,16 +19,16 @@ namespace Ristorante.Data
         {
         }
 
-        public virtual DbSet<Piatti> Piatti { get; set; }
-        public virtual DbSet<Prenotazioni> Prenotazioni { get; set; }
+        public virtual DbSet<Piatto> Piatti { get; set; }
+        public virtual DbSet<Prenotazione> Prenotazioni { get; set; }
         public virtual DbSet<Tipo_Piatto> Tipo_Piatto { get; set; }
-        public virtual DbSet<Utenti> Utenti { get; set; }
+        public virtual DbSet<Utente> Utenti { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Latin1_General_CI_AS");
 
-            modelBuilder.Entity<Piatti>(entity =>
+            modelBuilder.Entity<Piatto>(entity =>
             {
                 entity.Property(e => e.id)
                     .HasMaxLength(10)
@@ -43,9 +43,15 @@ namespace Ristorante.Data
                 entity.Property(e => e.Tipo_piatto)
                     .IsRequired()
                     .HasMaxLength(25);
+
+                entity.HasOne(d => d.Tipo_piattoNavigation)
+                    .WithMany(p => p.Piatti)
+                    .HasForeignKey(d => d.Tipo_piatto)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Piatti_Tipo_piatto");
             });
 
-            modelBuilder.Entity<Prenotazioni>(entity =>
+            modelBuilder.Entity<Prenotazione>(entity =>
             {
                 entity.HasKey(e => e.id_prenotazione);
 
@@ -73,7 +79,7 @@ namespace Ristorante.Data
                     .HasMaxLength(25);
             });
 
-            modelBuilder.Entity<Utenti>(entity =>
+            modelBuilder.Entity<Utente>(entity =>
             {
                 entity.HasKey(e => e.id_utente);
 
