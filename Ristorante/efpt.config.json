@@ -33,7 +33,7 @@
    ],
    "UiHint": "COMPAQ\\SQLEXPRESS.Ristorante",
    "UseBoolPropertiesWithoutDefaultSql": false,
-   "UseDatabaseNames": true,
+   "UseDatabaseNames": false,
    "UseDbContextSplitting": false,
    "UseFluentApiOnly": true,
    "UseHandleBars": false,

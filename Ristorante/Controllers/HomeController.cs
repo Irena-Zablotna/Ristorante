@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Ristorante.Data;
 using Ristorante.Models;
 
 namespace Ristorante.Controllers
@@ -12,10 +13,14 @@ namespace Ristorante.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private RistoranteContext _ristoranteContext;
+        
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, RistoranteContext ristoranteContext )
         {
             _logger = logger;
+            _ristoranteContext = ristoranteContext;
+            
         }
 
         public IActionResult Index()
@@ -29,6 +34,10 @@ namespace Ristorante.Controllers
         }
 
         public IActionResult DoveSiamo()
+        {
+            return View();
+        }
+        public IActionResult Prova()
         {
             return View();
         }

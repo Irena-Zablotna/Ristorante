@@ -6,16 +6,16 @@ using System.Collections.Generic;
 
 namespace Ristorante.Models
 {
-    public partial class Tipo_Piatto
+    public partial class TipoPiatto
     {
-        public Tipo_Piatto()
+        public TipoPiatto()
         {
-            Piatti = new HashSet<Piatto>();
+            Piatti = new HashSet<Piatti>();
         }
 
-        public string Tipo_piatto1 { get; set; }
+        public string TipoPiatto1 { get; set; }
         public string Descrizione { get; set; }
 
-        public virtual ICollection<Piatto> Piatti { get; set; }
+        public virtual ICollection<Piatti> Piatti { get; set; }
     }
 }
