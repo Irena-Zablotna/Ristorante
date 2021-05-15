@@ -8,11 +8,11 @@ namespace Ristorante.Models
 {
     public partial class Piatti
     {
-        public string Id { get; set; }
+        public string id { get; set; }
         public string Nome { get; set; }
         public decimal Prezzo { get; set; }
-        public string TipoPiatto { get; set; }
+        public string Tipo_piatto { get; set; }
 
-        public virtual TipoPiatto TipoPiattoNavigation { get; set; }
+        public virtual Tipo_Piatto Tipo_piattoNavigation { get; set; }
     }
 }

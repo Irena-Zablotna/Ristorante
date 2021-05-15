@@ -21,8 +21,8 @@ namespace Ristorante.Data
 
         public virtual DbSet<Piatti> Piatti { get; set; }
         public virtual DbSet<Prenotazioni> Prenotazioni { get; set; }
-        public virtual DbSet<TipoPiatto> TipoPiatto { get; set; }
-        public virtual DbSet<Utenti> Utenti { get; set; }
+        public virtual DbSet<Tipo_Piatto> Tipo_Piatto { get; set; }
+        public virtual DbSet<Utente> Utenti { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -30,9 +30,8 @@ namespace Ristorante.Data
 
             modelBuilder.Entity<Piatti>(entity =>
             {
-                entity.Property(e => e.Id)
+                entity.Property(e => e.id)
                     .HasMaxLength(10)
-                    .HasColumnName("id")
                     .IsFixedLength(true);
 
                 entity.Property(e => e.Nome)
@@ -41,48 +40,37 @@ namespace Ristorante.Data
 
                 entity.Property(e => e.Prezzo).HasColumnType("decimal(5, 2)");
 
-                entity.Property(e => e.TipoPiatto)
+                entity.Property(e => e.Tipo_piatto)
                     .IsRequired()
-                    .HasMaxLength(25)
-                    .HasColumnName("Tipo_piatto");
+                    .HasMaxLength(25);
 
-                entity.HasOne(d => d.TipoPiattoNavigation)
+                entity.HasOne(d => d.Tipo_piattoNavigation)
                     .WithMany(p => p.Piatti)
-                    .HasForeignKey(d => d.TipoPiatto)
+                    .HasForeignKey(d => d.Tipo_piatto)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Piatti_Tipo_piatto");
             });
 
             modelBuilder.Entity<Prenotazioni>(entity =>
             {
-                entity.HasKey(e => e.IdPrenotazione);
+                entity.HasKey(e => e.id_prenotazione);
 
-                entity.Property(e => e.IdPrenotazione)
-                    .ValueGeneratedNever()
-                    .HasColumnName("id_prenotazione");
+                entity.Property(e => e.id_prenotazione).ValueGeneratedNever();
 
-                entity.Property(e => e.Data)
-                    .HasColumnType("datetime")
-                    .HasColumnName("data");
+                entity.Property(e => e.data).HasColumnType("datetime");
 
-                entity.Property(e => e.IdUtente).HasColumnName("id_utente");
-
-                entity.Property(e => e.NumeroPersone).HasColumnName("numero_persone");
-
-                entity.HasOne(d => d.IdUtenteNavigation)
+                entity.HasOne(d => d.id_utenteNavigation)
                     .WithMany(p => p.Prenotazioni)
-                    .HasForeignKey(d => d.IdUtente)
+                    .HasForeignKey(d => d.id_utente)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Prenotazioni_Utenti");
             });
 
-            modelBuilder.Entity<TipoPiatto>(entity =>
+            modelBuilder.Entity<Tipo_Piatto>(entity =>
             {
-                entity.HasKey(e => e.TipoPiatto1);
+                entity.HasKey(e => e.Tipo_piatto1);
 
-                entity.ToTable("Tipo_Piatto");
-
-                entity.Property(e => e.TipoPiatto1)
+                entity.Property(e => e.Tipo_piatto1)
                     .HasMaxLength(25)
                     .HasColumnName("Tipo_piatto");
 
@@ -91,23 +79,19 @@ namespace Ristorante.Data
                     .HasMaxLength(25);
             });
 
-            modelBuilder.Entity<Utenti>(entity =>
+            modelBuilder.Entity<Utente>(entity =>
             {
-                entity.HasKey(e => e.IdUtente);
+                entity.HasKey(e => e.id_utente);
 
-                entity.Property(e => e.IdUtente)
-                    .ValueGeneratedNever()
-                    .HasColumnName("id_utente");
+                entity.Property(e => e.id_utente).ValueGeneratedNever();
 
-                entity.Property(e => e.Password)
+                entity.Property(e => e.password)
                     .IsRequired()
-                    .HasMaxLength(12)
-                    .HasColumnName("password");
+                    .HasMaxLength(12);
 
-                entity.Property(e => e.Username)
+                entity.Property(e => e.username)
                     .IsRequired()
-                    .HasMaxLength(25)
-                    .HasColumnName("username");
+                    .HasMaxLength(25);
             });
 
             OnModelCreatingPartial(modelBuilder);

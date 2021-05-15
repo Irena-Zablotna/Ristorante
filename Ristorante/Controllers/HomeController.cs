@@ -7,20 +7,21 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Ristorante.Data;
 using Ristorante.Models;
+using Ristorante.Repository;
 
 namespace Ristorante.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private RistoranteContext _ristoranteContext;
+        private RistoranteRepository _ristoranteRepository;
         
 
-        public HomeController(ILogger<HomeController> logger, RistoranteContext ristoranteContext )
+        public HomeController(ILogger<HomeController> logger, RistoranteRepository ristoranteRepository )
         {
             _logger = logger;
-            _ristoranteContext = ristoranteContext;
-            
+            _ristoranteRepository = ristoranteRepository;
+           
         }
 
         public IActionResult Index()
@@ -39,7 +40,9 @@ namespace Ristorante.Controllers
         }
         public IActionResult Prova()
         {
-            return View();
+            List<Utente> listaUtenti = _ristoranteRepository.VediUtenti();
+          
+            return View(listaUtenti);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

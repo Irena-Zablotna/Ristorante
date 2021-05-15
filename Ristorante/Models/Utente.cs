@@ -6,16 +6,16 @@ using System.Collections.Generic;
 
 namespace Ristorante.Models
 {
-    public partial class Utenti
+    public partial class Utente
     {
-        public Utenti()
+        public Utente()
         {
             Prenotazioni = new HashSet<Prenotazioni>();
         }
 
-        public int IdUtente { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public int id_utente { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
 
         public virtual ICollection<Prenotazioni> Prenotazioni { get; set; }
     }

@@ -1,19 +1,19 @@
 ﻿
 
-@*@model List<Piatto>;*@
+@model List<Utente>;
 
 @{
     ViewData["Title"] = "Prova";
 }
-
-@*<table>
+<h3>Utenti</h3>
+<table>
 
 
     @foreach (var item in Model)
     {
     <tr>
-        <td>@item.Nome</td>
-        <td>@item.Prezzo</td>
+        <td>@item.id_utente</td>
+        <td>@item.password</td>
     </tr>
     }
-</table>*@
+</table>
