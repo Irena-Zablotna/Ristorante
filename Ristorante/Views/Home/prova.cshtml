@@ -1,19 +1,37 @@
-﻿
-
-@model List<Utente>;
+﻿@model IEnumerable<Ristorante.Models.Utente>
 
 @{
     ViewData["Title"] = "Prova";
 }
-<h3>Utenti</h3>
-<table>
 
+<h1>Prova</h1>
 
-    @foreach (var item in Model)
-    {
-    <tr>
-        <td>@item.id_utente</td>
-        <td>@item.password</td>
-    </tr>
-    }
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table" style="color:white">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.password)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.password)
+            </td>
+            
+        </tr>
+}
+    </tbody>
 </table>

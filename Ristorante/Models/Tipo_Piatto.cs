@@ -10,12 +10,12 @@ namespace Ristorante.Models
     {
         public Tipo_Piatto()
         {
-            Piatti = new HashSet<Piatti>();
+            Piatti = new HashSet<Piatto>();
         }
 
         public string Tipo_piatto1 { get; set; }
         public string Descrizione { get; set; }
 
-        public virtual ICollection<Piatti> Piatti { get; set; }
+        public virtual ICollection<Piatto> Piatti { get; set; }
     }
 }

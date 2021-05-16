@@ -19,8 +19,8 @@ namespace Ristorante.Data
         {
         }
 
-        public virtual DbSet<Piatti> Piatti { get; set; }
-        public virtual DbSet<Prenotazioni> Prenotazioni { get; set; }
+        public virtual DbSet<Piatto> Piatti { get; set; }
+        public virtual DbSet<Prenotazione> Prenotazioni { get; set; }
         public virtual DbSet<Tipo_Piatto> Tipo_Piatto { get; set; }
         public virtual DbSet<Utente> Utenti { get; set; }
 
@@ -28,7 +28,7 @@ namespace Ristorante.Data
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Latin1_General_CI_AS");
 
-            modelBuilder.Entity<Piatti>(entity =>
+            modelBuilder.Entity<Piatto>(entity =>
             {
                 entity.Property(e => e.id)
                     .HasMaxLength(10)
@@ -51,7 +51,7 @@ namespace Ristorante.Data
                     .HasConstraintName("FK_Piatti_Tipo_piatto");
             });
 
-            modelBuilder.Entity<Prenotazioni>(entity =>
+            modelBuilder.Entity<Prenotazione>(entity =>
             {
                 entity.HasKey(e => e.id_prenotazione);
 

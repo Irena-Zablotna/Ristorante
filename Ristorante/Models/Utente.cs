@@ -10,13 +10,13 @@ namespace Ristorante.Models
     {
         public Utente()
         {
-            Prenotazioni = new HashSet<Prenotazioni>();
+            Prenotazioni = new HashSet<Prenotazione>();
         }
 
         public int id_utente { get; set; }
         public string username { get; set; }
         public string password { get; set; }
 
-        public virtual ICollection<Prenotazioni> Prenotazioni { get; set; }
+        public virtual ICollection<Prenotazione> Prenotazioni { get; set; }
     }
 }

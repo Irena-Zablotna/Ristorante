@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Ristorante.Models
 {
-    public partial class Piatti
+    public partial class Piatto
     {
         public string id { get; set; }
         public string Nome { get; set; }
