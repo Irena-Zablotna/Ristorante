@@ -18,20 +18,19 @@
             </div>
             <div id="menu">
                 <ul>
-                    <a href="#" style="color:#ffa17a">"L'oasi del gusto"</a>
+                    <a asp-area="" asp-controller="Home"  asp-action="Index"style="color:#ffa17a">"L'oasi del gusto"</a>
                     <a href="Piatti.html"> I nostri piatti</a>
-                    <a href="#">La nostra storia</a>
-                    <a href="#">Lo staff</a>
-                    <a href="Dove.html" target="_blank">Dove siamo</a>
-                    <a target="_blank" asp-area="" asp-controller="Home" asp-action="Prova">Prova</a>
+                    <a href="#">Prenota online</a> 
+                    <a asp-area="" asp-controller="Home"  asp-action="DoveSiamo"> Dove siamo</a>
+                    <a asp-area="" asp-controller="Home" asp-action="Prova">Prova</a>
                 </ul>
             </div>
         </div>
         <main>
             <section id="smain">
-                <h1>L'oasi del gusto</h1>
+                @*<h1>L'oasi del gusto</h1>
                 <p>ristorante vegetariano</p>
-                <p><a href="Piatti.html" target="_blank">scopri i nuovi sapori</a></p>
+                <p><a href="Piatti.html" target="_blank">scopri i nuovi sapori</a></p>*@
                 @RenderBody()
             </section>
             <footer>

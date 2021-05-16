@@ -36,6 +36,7 @@ namespace Ristorante.Controllers
 
         public IActionResult DoveSiamo()
         {
+           
             return View();
         }
         public IActionResult Prova()
