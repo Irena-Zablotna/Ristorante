@@ -39,11 +39,11 @@ namespace Ristorante.Controllers
            
             return View();
         }
-        public IActionResult Prova()
+        public IActionResult Prenota()
         {
-            List<Utente> listaUtenti = _ristoranteRepository.VediUtenti();
+            
           
-            return View(listaUtenti);
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

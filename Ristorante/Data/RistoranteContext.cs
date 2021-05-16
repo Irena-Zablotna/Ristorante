@@ -59,6 +59,16 @@ namespace Ristorante.Data
 
                 entity.Property(e => e.data).HasColumnType("datetime");
 
+                entity.Property(e => e.numero_tel)
+                    .IsRequired()
+                    .HasMaxLength(10)
+                    .IsFixedLength(true);
+
+                entity.Property(e => e.orario)
+                    .IsRequired()
+                    .HasMaxLength(10)
+                    .IsFixedLength(true);
+
                 entity.HasOne(d => d.id_utenteNavigation)
                     .WithMany(p => p.Prenotazioni)
                     .HasForeignKey(d => d.id_utente)

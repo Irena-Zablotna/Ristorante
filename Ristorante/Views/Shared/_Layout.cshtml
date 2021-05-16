@@ -18,12 +18,21 @@
             </div>
             <div id="menu">
                 <ul>
-                    <a asp-area="" asp-controller="Home"  asp-action="Index"style="color:#ffa17a">"L'oasi del gusto"</a>
-                    <a href="Piatti.html"> I nostri piatti</a>
-                    <a href="#">Prenota online</a> 
-                    <a asp-area="" asp-controller="Home"  asp-action="DoveSiamo"> Dove siamo</a>
-                    <a asp-area="" asp-controller="Home" asp-action="Prova">Prova</a>
+                    <a asp-area="" asp-controller="Home" asp-action="Index" style="color:#ffa17a">"L'oasi del gusto"</a>
+                    <a href="Piatti.html">I nostri piatti</a>
+                    <a asp-area="" asp-controller="Home" asp-action="DoveSiamo"> Dove siamo</a>
+                    <a asp-area="" asp-controller="Home" asp-action="Prenota">Dove siamo<br> Prenota online</a>
                 </ul>
+                <div id="loginbox">
+                    <div class="loginsmall">
+                        <i class="fa fa-user"></i>
+                        <input type="text" placeholder="username" name="username">
+                    </div>
+                    <div class="loginsmall">
+                        <i class="fa fa-lock"></i>
+                        <input type="password" placeholder="password" name="password">
+                    </div>
+                </div>
             </div>
         </div>
         <main>
@@ -44,7 +53,9 @@
                     <a href="https://api.whatsapp.com/send?phone=393293333333" target="_blank"><i class="fa fa-whatsapp"></i></a>
             </footer>
         </main>
-
+        <section id="map">
+            @RenderSection("map",required:false)
+            </section>
     </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

@@ -279,7 +279,7 @@ table {
 /*CONTACTFORM---------------------------------------------*/
 #contact1 {
     color: white;
-    margin: left -40px;
+    margin-left: -40px;
     margin-right: 0px;
     text-align: center;
     padding: 30px;
@@ -312,8 +312,7 @@ table {
     width: 50%;
 }
 
-input,
-textarea {
+input, select {
     display: block;
     box-sizing: border-box;
     width: 100%;
@@ -322,22 +321,29 @@ textarea {
     margin-bottom: 20px;
     padding: 10px;
     color: white;
+    font-size: 18px;
     line-height: 300%;
     background-color: #13131366;
     box-shadow: 1px 1px 2px #070707d8;
 }
-
-    input:focus,
-    textarea:focus {
+select {
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+    input:focus, select:focus
+     {
         border: 3px solid #ffa17a;
         background-color: #1a1919;
     }
 
-textarea {
-    min-height: 225px;
-    resize: vertical;
-}
+    input[type='number'] {
+        -moz-appearance: textfield;
+    }
 
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
 input[type=submit] {
     font-size: 14px;
     font-weight: bold;

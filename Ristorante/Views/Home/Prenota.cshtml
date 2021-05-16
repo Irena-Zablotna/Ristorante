@@ -1,0 +1,48 @@
+﻿
+
+@{
+    ViewData["Title"] = "Prenota";
+}
+<style>
+    #smain {
+        border-bottom: none;
+    }
+</style>
+
+<div id="contact1">
+    <h3>ti aspettiamo in via Braccini 17, Torino</h3>
+    <div id="contactform">
+        <p>La tua prenotazione online</p>
+        <form>
+            <div class="half left">
+                <input type="text" id="name" name="username" placeholder="La tua username" required
+                       autofocus>
+                <input type="text" id="tel" name="tel" placeholder="numero di telefono" maxlength="15"
+                       required>
+                <input type="number" id="subject" name="numPersone" placeholder="numero di persone max 40" min="1"
+                       max="40" required>
+            </div>
+
+            <div class="half right">
+                <input type="date" id="data" name="date" placeholder="scegli la data" required>
+                @*<input type="text" id="orario" name="orario" list="scelta" placeholder="pranzo o cena"
+                       required>*@
+                <select id="orario" name="orario"placeholder="pranzo o cena"
+                       required >
+                    <option value="pranzo">pranzo</option>
+                    <option value="cena">cena</option>
+                </select>
+            </div>
+            <input type="submit" value="Invia">
+        </form>
+    </div>
+    
+</div> 
+
+
+    @section map{
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2818.2892200742976!2d7.65260595061477!3d45.05964376826541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47886d21a14d5775%3A0x46623a97c4336847!2sVia%20Braccini%2C%2017%2C%2010141%20Torino%20TO!5e0!3m2!1sit!2sit!4v1612720539508!5m2!1sit!2sit"
+                width="250" height="250" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+                tabindex="0"></iframe>
+    }
