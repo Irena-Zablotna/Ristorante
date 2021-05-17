@@ -29,16 +29,16 @@ namespace Ristorante.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        //public IActionResult Privacy()
+        //{
+        //    return View();
+        //}
 
-        public IActionResult DoveSiamo()
-        {
+        //public IActionResult DoveSiamo()
+        //{
            
-            return View();
-        }
+        //    return View();
+        //}
         public IActionResult Prenota()
         {
             
