@@ -34,11 +34,11 @@ namespace Ristorante.Controllers
         //    return View();
         //}
 
-        //public IActionResult DoveSiamo()
-        //{
-           
-        //    return View();
-        //}
+        public  IActionResult Piatti()
+        {
+
+            return View();
+        }
         public IActionResult Prenota()
         {
             

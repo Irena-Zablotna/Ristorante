@@ -1,0 +1,309 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Ristorante</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+
+<body>
+    <div class="wrapper1">
+        <div id="topbar">
+            <div id="logo">
+                <img src="~/images/close-up-fresh-mint-leaves-removebg-preview.png" alt="logo">
+            </div>
+            <div id="menu">
+                <ul>
+                    <a asp-area="" asp-controller="Home" asp-action="Index" style="color:#ffa17a">"L'oasi del gusto"</a>
+                    <a asp-area="" asp-controller="Home" asp-action="Piatti"> I nostri piatti</a>
+                    <a asp-area="" asp-controller="Home" asp-action="Prenota">Dove siamo<br> Prenota online</a>
+                </ul>
+                <form id="logform">
+                    <i class="fa fa-user"></i>
+                    <input type="text" id="username" placeholder="username" name="username">
+                    <i class="fa fa-lock"></i>
+                    <input type="password" id="password" placeholder="password" name="password">
+                    <button type="submit" id="submit">Accedi</button>
+                    <button id="registrati">Registrati</button>
+                </form>
+            </div>
+        </div>
+        <div class="big-box">
+            <section class="sec-tab">
+                <h3>antipasti</h3>
+                <table>
+                    <tr>
+                        <td>1.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>4.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>5.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>6.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>7.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                </table>
+            </section>
+            <section id="s2" class="sec-tab">
+                <h3>primi piatti</h3>
+                <table>
+                    <tr>
+                        <td>1.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>4.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>5.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>6.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>7.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>8.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>9.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>10.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>11.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                </table>
+
+            </section>
+            <section class="sec-tab">
+                <h3>secondi piatti</h3>
+                <table>
+                    <tr>
+                        <td>1.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>4.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>5.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>6.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>7.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>8.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>9.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                </table>
+            </section>
+        </div>
+        <div class="big-box">
+            <section class="sec-tab">
+                <h3>dessert</h3>
+                <table>
+                    <tr>
+                        <td>1.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>4.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>5.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>6.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>7.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>8.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+
+                </table>
+            </section>
+            <section class="sec-tab">
+                <h3>bibite</h3>
+                <table>
+                    <tr>
+                        <td>1.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>4.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>5.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>6.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>7.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>8.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>9.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>10.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>11.</td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>0.00 €</td>
+                    </tr>
+                </table>
+            </section>
+        </div>
+        color: #070707d8;
+        <a href='#top' class="top-button">
+            <i class="fa fa-chevron-up" style="color:#070707d8"></i>
+        </a>
+        @RenderBody()
+    </div>
+
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @RenderSection("Scripts", required: false)
+</body>
+
+</html>
