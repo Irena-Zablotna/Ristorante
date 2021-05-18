@@ -36,8 +36,8 @@ namespace Ristorante.Controllers
 
         public  IActionResult Piatti()
         {
-
-            return View();
+            List<Piatto> listaPiatti = _ristoranteRepository.VediPiatti();
+            return View(listaPiatti);
         }
         public IActionResult Prenota()
         {

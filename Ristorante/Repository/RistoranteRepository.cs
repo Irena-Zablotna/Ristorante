@@ -16,9 +16,9 @@ namespace Ristorante.Repository
             _ristoranteContext = ristoranteContext;
         }
 
-        public List<Utente> VediUtenti()
+        public List<Piatto> VediPiatti()
         {
-            var result = _ristoranteContext.Utenti.ToList();
+            var result = _ristoranteContext.Piatti.ToList();
             return result;
         }
         }

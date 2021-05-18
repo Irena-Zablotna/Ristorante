@@ -3,4 +3,82 @@
     ViewData["Title"] = "Dove Siamo";
     Layout = "~/Views/Shared/_LayoutPiatti.cshtml";
 }
-<h2>ciao da dove siamo</h2>
+@model List<Piatto>
+
+@section s1{
+    <table>
+        @foreach (var item in Model)
+        {
+            if (item.Tipo_piatto == "P1")
+            {
+                <tr>
+                    <td>@item.id.</td>
+                    <td>@item.Nome</td>
+                    <td>@item.Prezzo €</td>
+                </tr>
+            }
+        }
+    </table>
+}
+
+@section s2{
+    <table>
+        @foreach (var item in Model)
+        {
+            if (item.Tipo_piatto == "P2")
+            {
+                <tr>
+                    <td>@item.id.</td>
+                    <td>@item.Nome</td>
+                    <td>@item.Prezzo €</td>
+                </tr>
+            }
+        }
+    </table>
+
+}
+@section s3{
+    <table>
+        @foreach (var item in Model)
+        {
+            if (item.Tipo_piatto == "P3")
+            {
+                <tr>
+                    <td>@item.id.</td>
+                    <td>@item.Nome</td>
+                    <td>@item.Prezzo €</td>
+                </tr>
+            }
+        }
+    </table>
+}
+@section s4{
+    <table>
+        @foreach (var item in Model)
+        {
+            if (item.Tipo_piatto == "P4")
+            {
+                <tr>
+                    <td>@item.id.</td>
+                    <td>@item.Nome</td>
+                    <td>@item.Prezzo €</td>
+                </tr>
+            }
+        }
+    </table>
+}
+@section s5{
+    <table>
+        @foreach (var item in Model)
+        {
+            if (item.Tipo_piatto == "P5")
+            {
+                <tr>
+                    <td>@item.id.</td>
+                    <td>@item.Nome</td>
+                    <td>@item.Prezzo €</td>
+                </tr>
+            }
+        }
+    </table>
+}

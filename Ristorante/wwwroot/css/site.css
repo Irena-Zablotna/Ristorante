@@ -240,7 +240,7 @@ footer {
 .sec-tab {
     color: white;
     font-weight: bolder;
-    font-size: 16px;
+    font-size: 14px;
     width: 30%;
     text-align: center;
     padding-bottom: 10px;
@@ -257,10 +257,12 @@ footer {
 table {
     margin: auto;
     padding: 15px;
+    
 }
 
     table td {
         padding: 8px;
+        text-align: left;
     }
 
     table tr {
@@ -280,8 +282,9 @@ table {
 
 #s2 {
     position: absolute;
-    top: 35%;
+    top: 45%;
     left: 35%;
+    width:32%;
 }
 
 /*BUTTON RETURN ON TOP-------------------------*/
@@ -296,11 +299,12 @@ table {
     right: 10px;
     text-align: center;
     padding-top: 2px;
-    color:white;
+  
 }
 
 .fa-chevron-up {
     margin-right: 0px;
+   
 }
 
 /*  LAST PAGE---------------------------------------------------------------------------------------------*/
