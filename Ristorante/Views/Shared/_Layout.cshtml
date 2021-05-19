@@ -19,17 +19,20 @@
             <div id="menu">
                 <ul>
                     <a asp-area="" asp-controller="Home" asp-action="Index" style="color:#ffa17a">"L'oasi del gusto"</a>
-                   <a asp-area="" asp-controller="Home" asp-action="Piatti"> I nostri piatti</a>
+                    <a asp-area="" asp-controller="Home" asp-action="Piatti"> I nostri piatti</a>
                     <a asp-area="" asp-controller="Home" asp-action="Prenota">Dove siamo<br> Prenota online</a>
                 </ul>
-                <form id="logform">
-                    <i class="fa fa-user"></i>
-                    <input type="text" id="username" placeholder="username" name="username">
-                    <i class="fa fa-lock"></i>
-                    <input type="password" id="password" placeholder="password" name="password">
-                    <button type="submit" id="submit">Accedi</button>
-                    <button id="registrati">Registrati</button>
-                </form>
+                <div id="logindiv">
+                    @*<form id="logform" method="post">
+                        <i class="fa fa-user"></i>
+                        <input type="text" id="username" placeholder="username" name="username">
+                        <i class="fa fa-lock"></i>
+                        <input type="password" id="password" placeholder="password" name="password">
+                        <button type="submit" id="submit">Accedi</button>
+                        <button id="registrati">Registrati</button>
+                    </form>*@
+                    @RenderSection("logindiv", false)
+                </div>
             </div>
         </div>
         <main>

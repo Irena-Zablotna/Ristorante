@@ -5,6 +5,18 @@
 }
 @model List<Piatto>
 
+@section logindiv{
+    <form id="logform" method="post">
+        <i class="fa fa-user"></i>
+        <input type="text" id="username" placeholder="username" name="username">
+        <i class="fa fa-lock"></i>
+        <input type="password" id="password" placeholder="password" name="password">
+        <button type="submit" id="submit">Accedi</button>
+        <button id="registrati">Registrati</button>
+    </form>
+}
+
+
 @section s1{
     <table>
         @foreach (var item in Model)
