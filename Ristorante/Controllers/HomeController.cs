@@ -35,6 +35,7 @@ namespace Ristorante.Controllers
         {
             bool userLogged = _ristoranteRepository.IsLogged(username, password);
             Startup.LoggedIn = userLogged;
+            Startup.Username = username;
             return View("Index");
         }
 
@@ -52,7 +53,6 @@ namespace Ristorante.Controllers
         }
         public IActionResult Prenota()
         {
-
 
             return View();
         }

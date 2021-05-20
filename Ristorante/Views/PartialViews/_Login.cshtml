@@ -1,10 +1,19 @@
 ﻿
-<h1 class="text-white">@Startup.LoggedIn</h1>
+@*<h1 class="text-white">@Startup.LoggedIn</h1>*@
+<style>
+    #logindiv h3{
+        color:#ffa17a;
+        margin:auto;
+        margin-top:10%;
+        text-align:center;
 
+       
+    }
+</style>
 @{
     if (Startup.LoggedIn)
     {
-        <h1>CIAO BELLO!</h1>
+        <h3>Ciao @Startup.Username!</h3>
     }
     else
     {
