@@ -48,14 +48,16 @@ body {
     display: flex;
     margin-right: 3%;
     justify-content: flex-end;
+
 }
-#logform {
-    width: 100%;
-    display: flex;
-    /*margin-right: 3%;*/
-    justify-content: flex-end;
-    align-items: center;
-}
+    
+    #logform {
+        width: 100%;
+        display: flex;
+        /*margin-right: 3%;*/
+        justify-content: flex-end;
+        align-items: center;
+    }
     #logform input {
         height: 20%;
         width: 20%;

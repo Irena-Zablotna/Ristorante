@@ -30,9 +30,21 @@ namespace Ristorante.Controllers
         }
 
         [HttpPost]
+       
         public IActionResult Login(string username, string password)
         {
-            return View();
+            bool userLogged = _ristoranteRepository.IsLogged(username, password);
+            if (userLogged == false)
+            {
+
+                return PartialView("_LoggedKo");
+            }
+            else
+            {
+               
+                return View("Prenota");
+            }
+           
         }
         //public IActionResult Privacy()
         //{

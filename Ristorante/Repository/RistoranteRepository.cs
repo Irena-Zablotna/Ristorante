@@ -21,6 +21,23 @@ namespace Ristorante.Repository
             var result = _ristoranteContext.Piatti.ToList();
             return result;
         }
+
+        public bool IsLogged (string username, string password)
+        {
+            var usersList = _ristoranteContext.Utenti.ToList();
+           
+            if(usersList.Any(u => u.username == username &&
+            u.password == password))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         }
+
     }
+}
 
