@@ -16,6 +16,8 @@ namespace Ristorante
 {
     public class Startup
     {
+        public static bool LoggedIn = false;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;

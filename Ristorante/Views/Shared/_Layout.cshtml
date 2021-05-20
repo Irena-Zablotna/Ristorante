@@ -23,25 +23,15 @@
                     <a asp-area="" asp-controller="Home" asp-action="Prenota">Dove siamo<br> Prenota online</a>
                 </ul>
                 <div id="logindiv">
-                    @*<form id="logform" method="post">
-            <i class="fa fa-user"></i>
-            <input type="text" id="username" placeholder="username" name="username">
-            <i class="fa fa-lock"></i>
-            <input type="password" id="password" placeholder="password" name="password">
-            <button type="submit" id="submit">accedi</button>
-            <button id="registrati">registrati</button>
-        </form>*@
-                    @RenderSection("logindiv", false)
-
-                   
+                    <partial name="~/Views/PartialViews/_Login.cshtml" />
                 </div>
             </div>
         </div>
         <main>
             <section id="smain">
                 @*<h1>L'oasi del gusto</h1>
-                <p>ristorante vegetariano</p>
-                <p><a href="Piatti.html" target="_blank">scopri i nuovi sapori</a></p>*@
+                    <p>ristorante vegetariano</p>
+                    <p><a href="Piatti.html" target="_blank">scopri i nuovi sapori</a></p>*@
                 @RenderBody()
             </section>
             <footer>
@@ -56,8 +46,8 @@
             </footer>
         </main>
         <section id="map">
-            @RenderSection("map",required:false)
-            </section>
+            @RenderSection("map", required: false)
+        </section>
     </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

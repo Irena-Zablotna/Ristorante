@@ -15,13 +15,13 @@ namespace Ristorante.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private RistoranteRepository _ristoranteRepository;
-        
 
-        public HomeController(ILogger<HomeController> logger, RistoranteRepository ristoranteRepository )
+
+        public HomeController(ILogger<HomeController> logger, RistoranteRepository ristoranteRepository)
         {
             _logger = logger;
             _ristoranteRepository = ristoranteRepository;
-           
+
         }
 
         public IActionResult Index()
@@ -30,36 +30,30 @@ namespace Ristorante.Controllers
         }
 
         [HttpPost]
-       
+
         public IActionResult Login(string username, string password)
         {
             bool userLogged = _ristoranteRepository.IsLogged(username, password);
-            if (userLogged == false)
-            {
-
-                return PartialView("_LoggedKo");
-            }
-            else
-            {
-               
-                return View("Prenota");
-            }
-           
+            Startup.LoggedIn = userLogged;
+            return View("Index");
         }
+
         //public IActionResult Privacy()
         //{
         //    return View();
         //}
 
-        public  IActionResult Piatti()
+        public IActionResult Piatti()
         {
+            ViewBag.LoggedIn = false;
+
             List<Piatto> listaPiatti = _ristoranteRepository.VediPiatti();
             return View(listaPiatti);
         }
         public IActionResult Prenota()
         {
-            
-          
+
+
             return View();
         }
 
