@@ -1,0 +1,20 @@
+﻿
+<h1 class="text-white">@Startup.LoggedIn</h1>
+
+@{
+    if (Startup.LoggedIn)
+    {
+        <h1>CIAO BELLO!</h1>
+    }
+    else
+    {
+        <form id="logform" method="post">
+            <i class="fa fa-user"></i>
+            <input type="text" id="username" placeholder="username" name="username">
+            <i class="fa fa-lock"></i>
+            <input type="password" id="password" placeholder="password" name="password">
+            <button type="submit" id="submit" asp-controller="Home" asp-action="Login">Accedi</button>
+            <button id="registrati">Registrati</button>
+        </form>
+    }
+}
