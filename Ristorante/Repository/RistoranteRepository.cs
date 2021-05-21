@@ -22,6 +22,7 @@ namespace Ristorante.Repository
             return result;
         }
 
+
         public bool IsLogged (string username, string password)
         {
             var usersList = _ristoranteContext.Utenti.ToList();
@@ -37,6 +38,30 @@ namespace Ristorante.Repository
             }
             
         }
+
+        public bool Registered(string username, string password, string password1)
+        {
+            var usersList = _ristoranteContext.Utenti.ToList();
+
+            if (usersList.Any(u => u.username == username))
+            {
+                return false;
+            }
+            else if (password!=password1)
+            {
+                return false;
+            }
+            else
+            {
+                var newUser = new Utente();
+                newUser.username = username;
+                newUser.password = password;
+                _ristoranteContext.Add(newUser);
+                _ristoranteContext.SaveChanges();
+                return true;
+            }
+        }
+        
 
     }
 }

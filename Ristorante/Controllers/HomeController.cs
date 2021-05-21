@@ -29,8 +29,27 @@ namespace Ristorante.Controllers
             return View();
         }
 
-        [HttpPost]
+        public IActionResult Registrati()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public IActionResult Registrazione(string username, string password, string password1)
+        {
+            bool userRegistered = _ristoranteRepository.Registered(username, password, password1);
+
+            if(userRegistered==true)
+            {
+                Startup.LoggedIn = userRegistered;
+                Startup.Username = username;
+            }
+            return View("Registrati");
+        }
+
+
+
+        [HttpPost]
         public IActionResult Login(string username, string password)
         {
             bool userLogged = _ristoranteRepository.IsLogged(username, password);

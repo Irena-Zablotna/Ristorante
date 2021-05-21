@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<style>
+    #smain {
+        border-bottom: none;
+    }
+        
+        #information p {
+            color: white;
+            font-size:20px;
+        }
+</style>
+@{ 
+    if (Startup.LoggedIn)
+    {
+@section information{ 
+<p> Grazie per la tua registrazione, benvenuto @Startup.Username !</p>
+}
+
+    }
+<div id="signupDiv">
+    <form method="post">
+        <input type="text" id="username1" name="username" placeholder="Scegli la tua username" required autofocus />
+        <input type="password" id="password1" placeholder="Password" name="password">
+        <input type="password" id="password2" placeholder="Ripeti la password" name="password1">
+        <button id="registrati" asp-controller="Home" asp-action="Registrazione">Registrati</button>
+    </form>
+</div>
+
+    }
+

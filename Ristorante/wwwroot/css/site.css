@@ -67,16 +67,16 @@ body {
         margin-bottom: 0.5%;
     }
 
-    #logform button {
-        background-color: #1a1919;
-        border: 3px solid #ffa17a;
-        color: white;
-        border-radius: 50%;
-        font-size: 10px;
-        width: 12%;
-        height: 20%;
-        text-align: center;
-    }
+        #logform button {
+            background-color: #1a1919;
+            border: 3px solid #ffa17a;
+            color: white;
+            border-radius: 50%;
+            font-size: 10px;
+            width: 12%;
+            height: 20%;
+            text-align: center;
+        }
 
         #logform button:hover {
             background-color: #ffa17a;
@@ -253,13 +253,17 @@ footer {
 .sec-tab {
     color: white;
     font-weight: bolder;
-    font-size: 12px;
+    font-size: 14px;
     width: 30%;
     text-align: center;
     padding-bottom: 10px;
     border-bottom: 3px solid #ffa17a;
 }
-
+@media (max-width:1280px){
+    .sec-tab{
+        font-size:11px;
+    }
+}
     .sec-tab h3,
     #contact1 h3 {
         font-size: 25px;
@@ -412,3 +416,24 @@ input[type=submit] {
 ::placeholder {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+/*---------SIGN UP FORM  VIEW REGISTRATI---------------*/
+#signupDiv {
+    width:60%;
+}
+    #signupDiv button {
+        background-color: #1a1919;
+        border: 3px solid #ffa17a;
+        color: white;
+        border-radius: 50%;
+        font-size: 10px;
+        width: 30%;
+        text-align: center;
+        padding: 8px;
+        margin:auto;
+    }
+    #signupDiv input {
+        line-height: 120%;
+    }
+    #signupDiv button:hover {
+        background-color: #ffa17a;
+    }
