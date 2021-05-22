@@ -41,8 +41,12 @@ namespace Ristorante.Controllers
 
             if(userRegistered==true)
             {
-                Startup.LoggedIn = userRegistered;
+                Startup.LoggedIn = 1;
                 Startup.Username = username;
+            }
+            else
+            {
+                Startup.LoggedIn = 2;
             }
             return View("Registrati");
         }
@@ -53,15 +57,21 @@ namespace Ristorante.Controllers
         public IActionResult Login(string username, string password)
         {
             bool userLogged = _ristoranteRepository.IsLogged(username, password);
-            Startup.LoggedIn = userLogged;
-            Startup.Username = username;
+            if (userLogged == true) 
+            {
+                Startup.LoggedIn = 1;
+                Startup.Username = username;
+            }
+            
             return View("Index");
         }
 
-        //public IActionResult Privacy()
-        //{
-        //    return View();
-        //}
+        public IActionResult Logout()
+        {
+            Startup.LoggedIn = 0;
+
+            return View("Index");
+        }
 
         public IActionResult Piatti()
         {

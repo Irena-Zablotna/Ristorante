@@ -1,20 +1,15 @@
-﻿
-@*<h1 class="text-white">@Startup.LoggedIn</h1>*@
-<style>
-    #logindiv h3{
-        color:#ffa17a;
-        margin:auto;
-        margin-top:10%;
-        text-align:center;
-        font-size:18px;   
-    }
-</style>
+﻿@*<h1 class="text-white">@Startup.LoggedIn</h1>*@
+
+
 @{
-    if (Startup.LoggedIn)
+    if (Startup.LoggedIn == 1)
     {
         <h3>Ciao @Startup.Username!</h3>
+        <a id="logout"  asp-controller="Home" asp-action="Logout"> Logout</a>
+       
     }
-    else
+
+    else if (Startup.LoggedIn == 0)
     {
         <form id="logform" method="post">
             <i class="fa fa-user"></i>
@@ -22,7 +17,7 @@
             <i class="fa fa-lock"></i>
             <input type="password" id="password" placeholder="password" name="password">
             <button type="submit" id="submit" asp-controller="Home" asp-action="Login">Accedi</button>
-            <button id="registrati" asp-controller="Home" asp-action="Registrati" >Registrati</button>
+            <button id="registrati" asp-controller="Home" asp-action="Registrati">Registrati</button>
         </form>
     }
 }

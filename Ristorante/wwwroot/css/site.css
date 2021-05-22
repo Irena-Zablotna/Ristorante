@@ -48,8 +48,8 @@ body {
     display: flex;
     margin-right: 3%;
     justify-content: flex-end;
-
 }
+
     
     #logform {
         width: 100%;
@@ -92,14 +92,38 @@ body {
     margin-right: 2%;
 }
 
-/*MENU BAR WITH LOGO-------------------------------------*/
-
-#topbar {
-    height: 140px;
-    width: 100%;
-    background: rgba(19, 19, 19, 0.4);
-    border-bottom: 3px solid #ffa17a;
+#logindiv h3 {
+    color: #ffa17a;
+    margin: auto;
+    margin-top: 9%;
+    text-align: center;
+    font-size: 18px;
+    margin-right: 15%;
 }
+
+#logindiv > #logout {
+    background-color: #1a1919;
+    border: 3px solid #ffa17a;
+    color: white;
+    border-radius: 50%;
+    font-size: 10px;
+    width: 14%;
+    height: 20%;
+    text-align: center;
+    align-self: center;
+    line-height: 200%;
+}
+
+    #logindiv > #logout:hover {
+        background-color: #ffa17a;
+    }
+/*---------------------------MENU BAR WITH LOGO-------------------------------------*/
+        #topbar {
+        height: 140px;
+        width: 100%;
+        background: rgba(19, 19, 19, 0.4);
+        border-bottom: 3px solid #ffa17a;
+    }
 
 #logo {
     height: 100%;
@@ -143,6 +167,7 @@ body {
         transition: all 0.5s;
         padding-left: 25px;
         padding-right: 25px;
+        margin-bottom: -1%;
     }
 
         #menu a:hover {

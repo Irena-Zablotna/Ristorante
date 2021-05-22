@@ -43,11 +43,7 @@ namespace Ristorante.Repository
         {
             var usersList = _ristoranteContext.Utenti.ToList();
 
-            if (usersList.Any(u => u.username == username))
-            {
-                return false;
-            }
-            else if (password!=password1)
+            if (usersList.Any(u => u.username == username)|| password != password1)
             {
                 return false;
             }
