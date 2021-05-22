@@ -39,7 +39,7 @@ namespace Ristorante.Controllers
         {
             bool userRegistered = _ristoranteRepository.Registered(username, password, password1);
 
-            if(userRegistered==true)
+            if (userRegistered == true)
             {
                 Startup.LoggedIn = 1;
                 Startup.Username = username;
