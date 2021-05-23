@@ -23,12 +23,12 @@ namespace Ristorante.Repository
         }
 
 
-        public bool IsLogged (string username, string password)
+        public bool IsLogged(string username, string password)
         {
             var usersList = _ristoranteContext.Utenti.ToList();
-           
-            if(usersList.Any(u => u.username == username &&
-            u.password == password))
+
+            if (usersList.Any(u => u.username == username &&
+             u.password == password))
             {
                 return true;
             }
@@ -36,14 +36,14 @@ namespace Ristorante.Repository
             {
                 return false;
             }
-            
+
         }
 
         public bool Registered(string username, string password, string password1)
         {
             var usersList = _ristoranteContext.Utenti.ToList();
 
-            if (usersList.Any(u => u.username == username)|| password != password1)
+            if (usersList.Any(u => u.username == username) || password != password1)
             {
                 return false;
             }
@@ -62,16 +62,39 @@ namespace Ristorante.Repository
 
         public int Prenotazione(DateTime data, int posti, string orario, string telefono, string username)
         {
-           var usersList = _ristoranteContext.Utenti.ToList();
-           var prenotazioni = _ristoranteContext.Prenotazioni.ToList();
-            int postiPranzo = (from p in prenotazioni where p.orario == "pranzo" select p.numero_persone).Sum();
-            int postiCena = (from p in prenotazioni where p.orario == "cena" select p.numero_persone).Sum();
-           DateTime momentoPrenotazione = DateTime.Now;
+            var usersList = _ristoranteContext.Utenti.ToList();
 
+            var prenotazioni = _ristoranteContext.Prenotazioni.ToList();
 
+            //int postiPranzo = (from p in prenotazioni where p.orario == "pranzo" && p.data == DateTime.Today select p.numero_persone).Sum();
 
-           return postiCena;
-        } 
+            //int postiCena = (from p in prenotazioni where p.orario == "cena" && p.data == DateTime.Today select p.numero_persone).Sum();
+
+           
+
+            //if (orario == "pranzo" && postiPranzo > posti && usersList.Any(u => u.username == username))
+            //{
+                var utenteScelto = from u in usersList
+                                   where u.username == username
+                                   select u.id_utente;
+                var p = new Prenotazione();
+                p.numero_persone = posti;
+                p.orario = orario;
+                p.numero_tel = telefono;
+                p.id_utente = utenteScelto.First();
+                _ristoranteContext.Prenotazioni.Add(p);
+                _ristoranteContext.SaveChanges();
+            //}
+            var aggiornato = _ristoranteContext.Prenotazioni.ToList();
+            var idPrenotazione = from a in aggiornato
+                                 where a == p
+                                 select p.id_prenotazione;
+            int result = idPrenotazione.First();
+
+            return result;
+        }
+
+        
     }
 }
 

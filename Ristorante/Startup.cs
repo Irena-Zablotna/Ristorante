@@ -18,6 +18,7 @@ namespace Ristorante
     {
         public static int LoggedIn = 0;
         public static string Username = "";
+        public static int Conferma = 0;
 
         public Startup(IConfiguration configuration)
         {
