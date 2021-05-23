@@ -75,7 +75,7 @@ namespace Ristorante.Controllers
 
         public IActionResult Piatti()
         {
-            ViewBag.LoggedIn = false;
+            //ViewBag.LoggedIn = false;
 
             List<Piatto> listaPiatti = _ristoranteRepository.VediPiatti();
             return View(listaPiatti);

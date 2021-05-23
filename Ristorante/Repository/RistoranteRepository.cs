@@ -47,10 +47,7 @@ namespace Ristorante.Repository
             {
                 return false;
             }
-            else if (password!=password1)
-            {
-                return false;
-            }
+
             else
             {
                 var newUser = new Utente();
@@ -62,7 +59,7 @@ namespace Ristorante.Repository
             }
         }
         
-
+        
     }
 }
 
