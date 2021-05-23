@@ -86,7 +86,7 @@ namespace Ristorante.Controllers
 
             return View();
         }
-        [HttpPost]
+        [HttpGet]
         public IActionResult Prenotazione(DateTime data, int posti, string orario, string telefono, string username)
         {
             int IdPrenotazione = _ristoranteRepository.Prenotazione(data, posti, orario, telefono, username);

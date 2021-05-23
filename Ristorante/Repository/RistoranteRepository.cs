@@ -81,6 +81,7 @@ namespace Ristorante.Repository
                 p.numero_persone = posti;
                 p.orario = orario;
                 p.numero_tel = telefono;
+                p.data = data;
                 p.id_utente = utenteScelto.First();
                 _ristoranteContext.Prenotazioni.Add(p);
                 _ristoranteContext.SaveChanges();

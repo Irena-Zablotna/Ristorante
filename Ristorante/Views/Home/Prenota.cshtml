@@ -14,12 +14,12 @@
         <p>La tua prenotazione online</p>
         <form>
             <div class="half left">
-                <input type="date" id="data" name="date" placeholder="scegli la data" required autofocus>
+                <input type="date" id="data" name="data" placeholder="scegli la data" required autofocus>
                 @*<input type="text" id="name" name="username" placeholder="La tua username" required
                     autofocus>*@
-                <input type="text" id="tel" name="tel" placeholder="numero di telefono" maxlength="15"
+                <input type="text" id="tel" name="telefono" placeholder="numero di telefono" maxlength="15"
                        required>
-                <input type="number" id="subject" name="numPersone" placeholder="numero di persone max 40" min="1"
+                <input type="number" id="subject" name="posti" placeholder="numero di persone max 40" min="1"
                        max="40" required>
                 <input type="submit" id="aggiorna" asp-controller="Home" asp-action="" value="Aggiorna">
 
@@ -42,10 +42,6 @@
     </div>
 
 </div>
-@{ if (Startup.Conferma == 1)
-                {
-    @section conferma{ <p> Il tuo numero di prenotazione è  @ViewBag.id  </p>} } 
-    }
 
 
 @section map{
