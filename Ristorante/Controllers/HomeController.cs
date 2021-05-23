@@ -43,17 +43,18 @@ namespace Ristorante.Controllers
             {
                 Startup.LoggedIn = 1;
                 Startup.Username = username;
+                ViewData["info1"] = "Grazie per la tua registrazione, benvenuto ";
             }
             else
             {
+                ViewData["info"]= "Registrazione non riuscita, dati non corretti, riprova";
                 Startup.LoggedIn = 2;
             }
             return View("Registrati");
         }
 
 
-
-        [HttpPost]
+            [HttpPost]
         public IActionResult Login(string username, string password)
         {
             bool userLogged = _ristoranteRepository.IsLogged(username, password);
@@ -85,6 +86,8 @@ namespace Ristorante.Controllers
 
             return View();
         }
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

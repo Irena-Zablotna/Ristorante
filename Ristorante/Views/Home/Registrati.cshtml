@@ -13,16 +13,17 @@
 </style>
 
 @{
-    if (Startup.LoggedIn==1)
+    if (Startup.LoggedIn == 1)
     {
-        @section information{
-            <p> Grazie per la tua registrazione, benvenuto @Startup.Username !</p>}
-        
+        @section information {<p> @ViewData["info1"] @Startup.Username !</p>}
+
     }
-     else if (Startup.LoggedIn == 2)
+    if (Startup.LoggedIn == 2)
     {
-        @section information{ <p> Registrazione non riuscita, dati non corretti, riprova </p>}
-        } 
+
+            @section information{ <p> @ViewData["info"] </p>}
+    }
+   
 
     <div id="signupDiv">
         <form method="post">
@@ -32,6 +33,6 @@
             <button type="submit" id="registrati" asp-controller="Home" asp-action="Registrazione">Registrati</button>
         </form>
     </div>
-
-}
+       
+    }
 

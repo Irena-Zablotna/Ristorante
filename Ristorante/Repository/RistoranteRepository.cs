@@ -58,8 +58,20 @@ namespace Ristorante.Repository
                 return true;
             }
         }
-        
-        
+
+
+        public int Prenotazione(DateTime data, int posti, string orario, string telefono, string username)
+        {
+           var usersList = _ristoranteContext.Utenti.ToList();
+           var prenotazioni = _ristoranteContext.Prenotazioni.ToList();
+            int postiPranzo = (from p in prenotazioni where p.orario == "pranzo" select p.numero_persone).Sum();
+            int postiCena = (from p in prenotazioni where p.orario == "cena" select p.numero_persone).Sum();
+           DateTime momentoPrenotazione = DateTime.Now;
+
+
+
+           return postiCena;
+        } 
     }
 }
 
