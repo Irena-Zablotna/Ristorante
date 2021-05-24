@@ -27,9 +27,9 @@
 
             <div class="half right">
                 <input type="text" id="name" name="username" placeholder="La tua username" required>
-                <select id="orario" name="orario" placeholder="pranzo o cena"
-                        required>
-                    <option value="pranzo" id="pranzo">pranzo</option>
+                <select id="orario" name="orario" placeholder="pranzo o cena" required>
+                    <option value=""></option>
+                    <option value="pranzo">pranzo</option>
                     <option value="cena">cena</option>
                 </select>
                 <input type="submit" id="prenota" asp-controller="Home" asp-action="Prenotazione" value="Prenota">
@@ -40,8 +40,18 @@
         </form>
 
     </div>
-
 </div>
+
+@{
+    if (Startup.Conferma == 1)
+        @section conferma{<p style="color:white">Il tuo numero di prenotazione e @ViewBag.id</p>}
+
+    if (Startup.Conferma == -1)
+
+     @section conferma{<p style="color:white"> Non abbiamo più posti disponibili @ViewBag.id</p>}
+
+}
+
 
 
 @section map{

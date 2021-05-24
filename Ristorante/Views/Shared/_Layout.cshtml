@@ -30,14 +30,15 @@
         <main>
             <section id="smain">
                 @*<h1>L'oasi del gusto</h1>
-            <p>ristorante vegetariano</p>
-            <p><a href="Piatti.html" target="_blank">scopri i nuovi sapori</a></p>*@
+        <p>ristorante vegetariano</p>
+        <p><a href="Piatti.html" target="_blank">scopri i nuovi sapori</a></p>*@
                 <section id="information">
                     @RenderSection("information", false)
                 </section>
                 @RenderBody()
+                <div id="conferma">@RenderSection("conferma", false)</div>
             </section>
-            <div id="conferma">@RenderSection("conferma", false)</div>
+           
             <footer>
                 <p id="contact">Contattaci</p>
                 <p id="phone"><i class="fa fa-phone"></i> 0123 123456</p>

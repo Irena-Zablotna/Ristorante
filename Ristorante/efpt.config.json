@@ -31,7 +31,7 @@
          "ObjectType": 0
       }
    ],
-   "UiHint": "COMPAQ\\SQLEXPRESS.Ristorante",
+   "UiHint": "ALI8-11\\SQLEXPRESS01.Ristorante",
    "UseBoolPropertiesWithoutDefaultSql": false,
    "UseDatabaseNames": true,
    "UseDbContextSplitting": false,

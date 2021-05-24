@@ -63,17 +63,13 @@ namespace Ristorante.Repository
         public int Prenotazione(DateTime data, int posti, string orario, string telefono, string username)
         {
             var usersList = _ristoranteContext.Utenti.ToList();
-
             var prenotazioni = _ristoranteContext.Prenotazioni.ToList();
+            int postiTotali = 40;
+            int postiOccupati = _ristoranteContext.Prenotazioni.Where(x => x.orario == orario && x.data == data).ToList().Sum(x => x.numero_persone);
+            bool postiLiberi = postiTotali - postiOccupati >= posti;
 
-            //int postiPranzo = (from p in prenotazioni where p.orario == "pranzo" && p.data == DateTime.Today select p.numero_persone).Sum();
-
-            //int postiCena = (from p in prenotazioni where p.orario == "cena" && p.data == DateTime.Today select p.numero_persone).Sum();
-
-           
-
-            //if (orario == "pranzo" && postiPranzo > posti && usersList.Any(u => u.username == username))
-            //{
+            if (postiLiberi && usersList.Any(u => u.username == username))
+            {
                 var utenteScelto = from u in usersList
                                    where u.username == username
                                    select u.id_utente;
@@ -85,17 +81,22 @@ namespace Ristorante.Repository
                 p.id_utente = utenteScelto.First();
                 _ristoranteContext.Prenotazioni.Add(p);
                 _ristoranteContext.SaveChanges();
-            //}
-            var aggiornato = _ristoranteContext.Prenotazioni.ToList();
-            var idPrenotazione = from a in aggiornato
-                                 where a == p
-                                 select p.id_prenotazione;
-            int result = idPrenotazione.First();
 
-            return result;
+                var aggiornato = _ristoranteContext.Prenotazioni.ToList();
+                var idPrenotazione = from a in aggiornato
+                                     where a == p
+                                     select p.id_prenotazione;
+                int result = idPrenotazione.First();
+                return result;
+            }
+            else 
+            {
+                return -1;
+            }
+            
         }
 
-        
+
     }
 }
 
