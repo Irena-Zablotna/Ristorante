@@ -86,15 +86,26 @@ namespace Ristorante.Controllers
 
             return View();
         }
+
+
         [HttpGet]
         public IActionResult Prenotazione(DateTime data, int posti, string orario, string telefono, string username)
         {
+            
             int IdPrenotazione = _ristoranteRepository.Prenotazione(data, posti, orario, telefono, username);
-            if(IdPrenotazione>=0)
+            if (Startup.LoggedIn == 1)
             {
-                Startup.Conferma = 1;
+                if (IdPrenotazione >= 0)
+                {
+                    Startup.Conferma = 1;
+                    ViewBag.id = IdPrenotazione;
+                }
+                if (IdPrenotazione == -1)
+                {
+                    Startup.Conferma = 0;
+                }
             }
-            ViewBag.id = IdPrenotazione;
+           
             return View("Prenota");
         }
 

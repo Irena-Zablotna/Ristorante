@@ -3,11 +3,8 @@
 
 // Write your JavaScript code.
 
-
-
 var now = new Date();
 var hour = now.getHours();
-var scelta = document.getElementById("data").value;
 var dd = now.getDate();
 var mm = now.getMonth() + 1; //January is 0
 var yyyy = now.getFullYear();
@@ -22,10 +19,18 @@ if (mm < 10) {
 var today = yyyy + '-' + mm + '-' + dd;
 document.getElementById("data").setAttribute("min", today);
 
-function SetInput(){
+function SetInput() {
+    var scelta = document.getElementById("data").value;
+    console.log(scelta)
     if (hour > 10 && scelta == today) {
-        document.getElementById("pranzo").textContent = " ";
+        $("#orario option[value='pranzo']").hide();
+        if ($("#orario").val() === 'pranzo') {
+            $("#orario").val('');
+        }
+    }
+    else {
+        $("#orario option[value='pranzo']").show();
     }
 }
 
-document.getElementById("name").addEventListener("focus", SetInput);
+document.getElementById("data").addEventListener("change", SetInput);

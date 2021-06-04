@@ -55,6 +55,8 @@ namespace Ristorante.Data
             {
                 entity.HasKey(e => e.id_prenotazione);
 
+                entity.Property(e => e.id_prenotazione).ValueGeneratedNever();
+
                 entity.Property(e => e.data).HasColumnType("datetime");
 
                 entity.Property(e => e.numero_tel)
@@ -90,6 +92,8 @@ namespace Ristorante.Data
             modelBuilder.Entity<Utente>(entity =>
             {
                 entity.HasKey(e => e.id_utente);
+
+                entity.Property(e => e.id_utente).ValueGeneratedNever();
 
                 entity.Property(e => e.password)
                     .IsRequired()
