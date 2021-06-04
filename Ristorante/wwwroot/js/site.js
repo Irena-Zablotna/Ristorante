@@ -28,4 +28,4 @@ function SetInput(){
     }
 }
 
-document.getElementById("name").addEventListener("click", SetInput);
+document.getElementById("name").addEventListener("focus", SetInput);
