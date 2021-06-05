@@ -21,7 +21,7 @@ document.getElementById("data").setAttribute("min", today);
 
 function SetInput() {
     var scelta = document.getElementById("data").value;
-    console.log(scelta)
+ 
     if (hour > 10 && scelta == today) {
         $("#orario option[value='pranzo']").hide();
         if ($("#orario").val() === 'pranzo') {
