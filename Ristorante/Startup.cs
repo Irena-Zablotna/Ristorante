@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,6 +32,14 @@ namespace Ristorante
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<RistoranteContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<RistoranteContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddScoped<SignInManager<IdentityUser>>();
+            services.AddScoped<UserManager<IdentityUser>>();
+            services.AddScoped<RoleManager<IdentityRole>>();
+
             services.AddControllersWithViews();
             services.AddScoped<RistoranteRepository>();
         }
@@ -54,6 +63,7 @@ namespace Ristorante
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

@@ -8,7 +8,6 @@
    "ModelNamespace": null,
    "OutputContextPath": "Data",
    "OutputPath": "Models",
-   "ProceduresReturnList": false,
    "ProjectRootNamespace": "Ristorante",
    "Schemas": null,
    "SelectedHandlebarsLanguage": 0,
@@ -25,13 +24,9 @@
       {
          "Name": "[dbo].[Tipo_Piatto]",
          "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[Utenti]",
-         "ObjectType": 0
       }
    ],
-   "UiHint": "ALI8-11\\SQLEXPRESS01.Ristorante",
+   "UiHint": "COMPAQ\\SQLEXPRESS.Ristorante",
    "UseBoolPropertiesWithoutDefaultSql": false,
    "UseDatabaseNames": true,
    "UseDbContextSplitting": false,
@@ -44,5 +39,6 @@
    "UseNoObjectFilter": false,
    "UseNodaTime": false,
    "UseNullableReferences": false,
+   "UseSchemaFolders": false,
    "UseSpatial": false
 }

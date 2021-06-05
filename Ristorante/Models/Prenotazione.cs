@@ -9,12 +9,10 @@ namespace Ristorante.Models
     public partial class Prenotazione
     {
         public DateTime data { get; set; }
-        public int id_utente { get; set; }
+        public string id_utente { get; set; }
         public int numero_persone { get; set; }
         public int id_prenotazione { get; set; }
         public string numero_tel { get; set; }
         public string orario { get; set; }
-
-        public virtual Utente id_utenteNavigation { get; set; }
     }
 }
