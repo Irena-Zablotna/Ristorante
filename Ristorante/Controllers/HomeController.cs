@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Entity_Esercizio.VievModels;
+using Ristorante.VievModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -95,11 +95,12 @@ namespace Ristorante.Controllers
 
         public IActionResult Piatti()
         {
-            //ViewBag.LoggedIn = false;
 
-            List<Piatto> listaPiatti = _ristoranteRepository.VediPiatti();
+           List<Piatto> listaPiatti = _ristoranteRepository.VediPiatti();
             return View(listaPiatti);
         }
+
+
         public IActionResult Prenota()
         {
 

@@ -20,12 +20,16 @@
             </div>
             <div id="menu">
                 <ul>
-                    <a asp-area="" asp-controller="Home" asp-action="Index" >"L'oasi del gusto"</a>
+                    <a asp-area="" asp-controller="Home" asp-action="Index">"L'oasi del gusto"</a>
                     <a asp-area="" asp-controller="Home" asp-action="Piatti" style="color:#ffa17a"> I nostri piatti</a>
                     <a asp-area="" asp-controller="Home" asp-action="Prenota">Dove siamo<br> Prenota online</a>
                 </ul>
                 <div id="logindiv">
-                    <partial name="~/Views/PartialViews/_Login.cshtml" />
+                    @*<partial name="~/Views/PartialViews/_Login.cshtml" />*@
+                    @{
+                        await Html.RenderPartialAsync("~/Views/PartialViews/_Login.cshtml",
+                          new Ristorante.VievModels.LoginViewModel());
+                    }
                 </div>
             </div>
         </div>
@@ -65,10 +69,10 @@
         @RenderBody()
     </div>
 
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-        @RenderSection("Scripts", required: false)
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 
 </html>
