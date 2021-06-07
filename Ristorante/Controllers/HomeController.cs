@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Entity_Esercizio.VievModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Ristorante.Data;
@@ -15,12 +17,15 @@ namespace Ristorante.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private RistoranteRepository _ristoranteRepository;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
 
-
-        public HomeController(ILogger<HomeController> logger, RistoranteRepository ristoranteRepository)
+        public HomeController(ILogger<HomeController> logger, RistoranteRepository ristoranteRepository, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             _logger = logger;
             _ristoranteRepository = ristoranteRepository;
+            _userManager = userManager;
+            _signInManager = signInManager;
 
         }
 
@@ -29,49 +34,63 @@ namespace Ristorante.Controllers
             return View();
         }
 
+       
         public IActionResult Registrati()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Registrazione(string username, string password, string password1)
+        public async Task<IActionResult> Registrazione(RegisterViewModel rvmodel)
         {
-            bool userRegistered = _ristoranteRepository.Registered(username, password, password1);
+            if (ModelState.IsValid)
+            {
+                var user = new IdentityUser { UserName = rvmodel.Username, PasswordHash = rvmodel.Password };
 
-            if (userRegistered == true)
-            {
-                Startup.LoggedIn = 1;
-                Startup.Username = username;
-                ViewData["info1"] = "Grazie per la tua registrazione, benvenuto ";
+                var result = await _userManager.CreateAsync(user, rvmodel.Password);
+
+                if (result.Succeeded)
+                {
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    //Startup.LoggedIn = 1;
+                    return RedirectToAction("Registrati");
+                }
+        
+                 foreach (var error in result.Errors)
+                 {
+                        ModelState.AddModelError(string.Empty,"registrazione non riuscita");
+                 }
             }
-            else
-            {
-                ViewData["info"]= "Registrazione non riuscita, dati non corretti, riprova";
-                Startup.LoggedIn = 2;
-            }
-            return View("Registrati");
+            return View ("Registrati");
         }
 
 
-            [HttpPost]
-        public IActionResult Login(string username, string password)
+       
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel lvmodel)
         {
-            bool userLogged = _ristoranteRepository.IsLogged(username, password);
-            if (userLogged == true) 
+            var user = await _userManager.FindByNameAsync(lvmodel.Username);
+            if (user != null)
             {
-                Startup.LoggedIn = 1;
-                Startup.Username = username;
+                var result = await _signInManager.PasswordSignInAsync(lvmodel.Username, lvmodel.Password, isPersistent: false, lockoutOnFailure: true);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                ModelState.AddModelError(string.Empty, "Username o password non corretti");
+
             }
-            
             return View("Index");
         }
 
-        public IActionResult Logout()
-        {
-            Startup.LoggedIn = 0;
 
-            return View("Index");
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index");
         }
 
         public IActionResult Piatti()
@@ -88,26 +107,26 @@ namespace Ristorante.Controllers
         }
 
 
-        [HttpGet]
-        public IActionResult Prenotazione(DateTime data, int posti, string orario, string telefono, string username)
-        {
+        //[HttpGet]
+        //public IActionResult Prenotazione(DateTime data, int posti, string orario, string telefono, string username)
+        //{
             
-            int IdPrenotazione = _ristoranteRepository.Prenotazione(data, posti, orario, telefono, username);
-            if (Startup.LoggedIn == 1)
-            {
-                if (IdPrenotazione >= 0)
-                {
-                    Startup.Conferma = 1;
-                    ViewBag.id = IdPrenotazione;
-                }
-                if (IdPrenotazione == -1)
-                {
-                    Startup.Conferma = 0;
-                }
-            }
+        //    int IdPrenotazione = _ristoranteRepository.Prenotazione(data, posti, orario, telefono, username);
+        //    if (Startup.LoggedIn == 1)
+        //    {
+        //        if (IdPrenotazione >= 0)
+        //        {
+        //            Startup.Conferma = 1;
+        //            ViewBag.id = IdPrenotazione;
+        //        }
+        //        if (IdPrenotazione == -1)
+        //        {
+        //            Startup.Conferma = 0;
+        //        }
+        //    }
            
-            return View("Prenota");
-        }
+        //    return View("Prenota");
+        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

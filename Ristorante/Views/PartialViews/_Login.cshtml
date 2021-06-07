@@ -1,23 +1,32 @@
-﻿@*<h1 class="text-white">@Startup.LoggedIn</h1>*@
+﻿
+@using Entity_Esercizio.VievModels;
+@using Microsoft.AspNetCore.Identity
 
+@inject SignInManager<IdentityUser> signInManager
+@inject UserManager<IdentityUser> userManager
+@model LoginViewModel
 
 @{
-    if (Startup.LoggedIn == 1)
+    if ((signInManager.IsSignedIn(User)))
     {
-        <h3>Ciao @Startup.Username!</h3>
-        <a id="logout"  asp-controller="Home" asp-action="Logout"> Logout</a>
-       
-    }
+        <h3>Benvenuto @User.Identity.Name!</h3>
+        <form  id ="logoutform" method="post" asp-controller="Home" asp-action="Logout">
+           <button id="logout">Logout</button>
+    </form>
+            }
 
-    else if (Startup.LoggedIn == 0 || Startup.LoggedIn==2)
-    {
-        <form id="logform" method="post">
-            <i class="fa fa-user"></i>
-            <input type="text" id="username" placeholder="username" name="username">
-            <i class="fa fa-lock"></i>
-            <input type="password" id="password" placeholder="password" name="password">
-            <button type="submit" id="submit" asp-controller="Home" asp-action="Login">Accedi</button>
-            <button id="registrati" asp-controller="Home" asp-action="Registrati">Registrati</button>
-        </form>
-    }
-}
+            else
+            {
+<form id="logform" method="post">
+    <div asp-validation-summary="All" class="text-danger" style="font-size:10px"></div>
+    <i class="fa fa-user"></i>
+    <input asp-for="Username" id="username" placeholder="username" autofocus>
+    <span asp-validation-for="Username" class="text-danger"></span>
+    <i class="fa fa-lock"></i>
+    <input asp-for="Password" id="password" placeholder="password">
+    <span asp-validation-for="Password" class="text-danger"></span>
+    <button type="submit" id="submit" asp-controller="Home" asp-action="Login">Accedi</button>
+    <button id="registrati" asp-controller="Home" asp-action="Registrati">Registrati</button>
+</form>
+            }
+        }

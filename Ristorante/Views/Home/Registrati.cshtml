@@ -1,6 +1,17 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using Entity_Esercizio.VievModels;
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> signInManager
+@inject UserManager<IdentityUser> userManager
+@model RegisterViewModel
+
+
+@{
+    ViewData["Title"] = "Registrati";
 }
+
+
+
 <style>
     #smain {
         border-bottom: none;
@@ -13,26 +24,29 @@
 </style>
 
 @{
-    if (Startup.LoggedIn == 1)
+    if ((signInManager.IsSignedIn(User)))
     {
-        @section information {<p> @ViewData["info1"] @Startup.Username !</p>}
+        @section information {<p> Grazie per la tua registrazione  @User.Identity.Name!</p>}
 
     }
-    if (Startup.LoggedIn == 2)
-    {
 
-            @section information{ <p> @ViewData["info"] </p>}
+    else 
+    {
+        @section information{ <p> Registrati! </p>}
     }
-   
 
     <div id="signupDiv">
-        <form method="post">
-            <input type="text" id="username1" name="username" placeholder="Scegli la tua username" required autofocus />
-            <input type="password" id="password1" placeholder="Password" name="password">
-            <input type="password" id="password2" placeholder="Ripeti la password" name="password1">
-            <button type="submit" id="registrati" asp-controller="Home" asp-action="Registrazione">Registrati</button>
+        <form method="post" asp-controller="Home" asp-action="Registrazione">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <input asp-for="Username" id="username1" placeholder="Scegli la tua username" autofocus />
+            <span asp-validation-for="Username" class="text-danger"></span>
+            <input asp-for="Password" id="password1" placeholder="Password">
+            <span asp-validation-for="Password" class="text-danger"></span>
+            <input asp-for="ConfirmPassword" id="password2" placeholder="Ripeti la password">
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            <button type="submit" id="registrati">Registrati</button>
         </form>
     </div>
-       
-    }
+
+}
 
