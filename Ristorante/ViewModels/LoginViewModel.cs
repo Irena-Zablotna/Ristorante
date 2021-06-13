@@ -18,8 +18,6 @@ namespace Ristorante.VievModels
         [Display(Name ="Password")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-
-
-       
+      
     }
 }

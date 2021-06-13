@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Ristorante.Data;
 using Ristorante.Models;
 using Ristorante.Repository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Ristorante.Controllers
 {
@@ -40,6 +41,7 @@ namespace Ristorante.Controllers
             return View();
         }
 
+
         [HttpPost]
         public async Task<IActionResult> Registrazione(RegisterViewModel rvmodel)
         {
@@ -52,7 +54,6 @@ namespace Ristorante.Controllers
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    //Startup.LoggedIn = 1;
                     return RedirectToAction("Registrati");
                 }
         
@@ -108,26 +109,28 @@ namespace Ristorante.Controllers
         }
 
 
-        //[HttpGet]
-        //public IActionResult Prenotazione(DateTime data, int posti, string orario, string telefono, string username)
-        //{
-            
-        //    int IdPrenotazione = _ristoranteRepository.Prenotazione(data, posti, orario, telefono, username);
-        //    if (Startup.LoggedIn == 1)
-        //    {
-        //        if (IdPrenotazione >= 0)
-        //        {
-        //            Startup.Conferma = 1;
-        //            ViewBag.id = IdPrenotazione;
-        //        }
-        //        if (IdPrenotazione == -1)
-        //        {
-        //            Startup.Conferma = 0;
-        //        }
-        //    }
-           
-        //    return View("Prenota");
-        //}
+        [HttpPost]
+       // [Authorize (Roles="User")]
+        public IActionResult Prenotazione (Prenotazione prenotazione, string username) 
+        {
+
+            int IdPrenotazione = _ristoranteRepository.Prenotazione(prenotazione, username);
+            if (_signInManager.IsSignedIn(User))
+            {
+                if (IdPrenotazione >= 0)
+                {
+                    Startup.Conferma = 1;
+                    TempData["id"] = IdPrenotazione;
+                }
+                if (IdPrenotazione == -1)
+                {
+                    Startup.Conferma = -1;
+                }
+                return RedirectToAction("Prenota");
+            }
+
+            return RedirectToAction("Prenota");
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -1,25 +1,42 @@
-﻿
+﻿@model Prenotazione
 
 @{ ViewData["Title"] = "Prenota"; }
+
+
+
 <style>
     #smain {
         border-bottom: none;
     }
+
+    #contactform p {
+        font-weight: normal;
+        line-height: 150%;
+    }
 </style>
-@*@section
-    }*@
+
+
 <div id="contact1">
     <h3>ti aspettiamo in via Braccini 17, Torino</h3>
     <div id="contactform">
-        <p>La tua prenotazione online</p>
-        <form>
+
+        @if (Startup.Conferma == 0)
+        {<p>La tua prenotazione online <br /> Accedi per prenotare </p>}
+
+        @if (Startup.Conferma == 1)
+        { <p>Il tuo numero di prenotazione è @TempData["id"]</p>}
+
+        @if (Startup.Conferma == -1)
+
+        { <p> Non abbiamo più posti disponibili</p>}
+
+        <form method="post">
             <div class="half left">
-                <input type="date" id="data" name="data" placeholder="scegli la data" required autofocus>
-                @*<input type="text" id="name" name="username" placeholder="La tua username" required
-                    autofocus>*@
-                <input type="text" id="tel" name="telefono" placeholder="numero di telefono" maxlength="15"
+                <input type="date" id="data" asp-for="data" placeholder="scegli la data" required autofocus>
+
+                <input asp-for="numero_tel" id="tel" placeholder="numero di telefono" maxlength="15"
                        required>
-                <input type="number" id="subject" name="posti" placeholder="numero di persone max 40" min="1"
+                <input type="number" asp-for="numero_persone" placeholder="numero di persone max 40" min="1"
                        max="40" required>
                 <input type="submit" id="aggiorna" asp-controller="Home" asp-action="" value="Aggiorna">
 
@@ -27,7 +44,7 @@
 
             <div class="half right">
                 <input type="text" id="name" name="username" placeholder="La tua username" required>
-                <select id="orario" name="orario" placeholder="pranzo o cena" required>
+                <select asp-for="orario" placeholder="pranzo o cena" required>
                     <option value=""></option>
                     <option value="pranzo">pranzo</option>
                     <option value="cena">cena</option>
@@ -42,15 +59,6 @@
     </div>
 </div>
 
-@{
-    if (Startup.Conferma == 1)
-        @section conferma{<p style="color:white">Il tuo numero di prenotazione e @ViewBag.id</p>}
-
-    if (Startup.Conferma == -1)
-
-     @section conferma{<p style="color:white"> Non abbiamo più posti disponibili @ViewBag.id</p>}
-
-}
 
 
 
