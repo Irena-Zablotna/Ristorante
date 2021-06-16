@@ -35,15 +35,12 @@ namespace Ristorante.Repository
             var userId = (from u in users
                           where u.UserName == username
                           select u.Id).FirstOrDefault();
-
-
-
-            //var prenotazioni = _ristoranteContext.Prenotazioni.ToList();
+   
             int postiTotali = 40;
             int postiOccupati = _ristoranteContext.Prenotazioni.Where(x => x.orario == prenotazione.orario && x.data == prenotazione.data).ToList().Sum(x => x.numero_persone);
             bool postiLiberi = postiTotali - postiOccupati >= prenotazione.numero_persone;
             
-            if (postiLiberi)
+            if (postiLiberi && userId!=null)
             {
                 var p = new Prenotazione();
                 p.id_utente = userId;
@@ -54,11 +51,6 @@ namespace Ristorante.Repository
                 _ristoranteContext.Prenotazioni.Add(p);
                 _ristoranteContext.SaveChanges();
 
-                //var aggiornato = _ristoranteContext.Prenotazioni.ToList();
-                //var idPrenotazione = from a in aggiornato
-                //                     where a == p
-                //                     select p.id_prenotazione;
-                //int result = idPrenotazione.First();
                 return p.id_prenotazione;
             }
             else

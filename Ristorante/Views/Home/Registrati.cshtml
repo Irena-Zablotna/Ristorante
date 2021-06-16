@@ -37,13 +37,21 @@
 
     <div id="signupDiv">
         <form method="post" asp-controller="Home" asp-action="Registrazione">
-            <div asp-validation-summary="All" class="text-danger"></div>
+
             <input asp-for="Username" id="username1" placeholder="Scegli la tua username" autofocus />
             <span asp-validation-for="Username" class="text-danger"></span>
+
+            <input asp-for="Email" id="email" placeholder="Email">
+            <span asp-validation-for="Email" class="text-danger"></span>
+
             <input asp-for="Password" id="password1" placeholder="Password">
             <span asp-validation-for="Password" class="text-danger"></span>
+
             <input asp-for="ConfirmPassword" id="password2" placeholder="Ripeti la password">
             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+
             <button type="submit" id="registrati">Registrati</button>
         </form>
     </div>

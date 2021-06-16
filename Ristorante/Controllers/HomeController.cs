@@ -56,13 +56,15 @@ namespace Ristorante.Controllers
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Registrati");
                 }
-        
-                 foreach (var error in result.Errors)
-                 {
-                        ModelState.AddModelError(string.Empty,"registrazione non riuscita");
-                 }
+                
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                 
             }
-            return View ("Registrati");
+            
+            return View("Registrati");
         }
 
 
@@ -79,11 +81,12 @@ namespace Ristorante.Controllers
                 {
                     return RedirectToAction("Index");
                 }
-
-                ModelState.AddModelError(string.Empty, "Username o password non corretti");
+                
+               ModelState.AddModelError(string.Empty,"Dati non corretti" );
 
             }
-            return View("Index");
+            Startup.Conferma = 3;
+            return Redirect("Index");
         }
 
 
@@ -110,12 +113,12 @@ namespace Ristorante.Controllers
 
 
         [HttpPost]
-       // [Authorize (Roles="User")]
+      //[Authorize]
         public IActionResult Prenotazione (Prenotazione prenotazione, string username) 
         {
 
             int IdPrenotazione = _ristoranteRepository.Prenotazione(prenotazione, username);
-            if (_signInManager.IsSignedIn(User))
+            if (_signInManager.IsSignedIn(User)&& User.Identity.Name==username)
             {
                 if (IdPrenotazione >= 0)
                 {
@@ -129,7 +132,11 @@ namespace Ristorante.Controllers
                 return RedirectToAction("Prenota");
             }
 
-            return RedirectToAction("Prenota");
+            else
+            {
+                return View("Registrati");
+            }
+          
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

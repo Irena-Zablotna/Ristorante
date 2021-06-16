@@ -17,15 +17,19 @@
 
             else
             {
-<form id="logform" method="post">
-    <div asp-validation-summary="All" class="text-danger" style="font-size:10px"></div>
+<form id="logform" method="post" asp-controller="Home" asp-action="Login">
+    @if (Startup.Conferma == 3)
+    {
+    <div class="text-danger" style="font-size:12px">Dati non corretti </div>
+    }
+
     <i class="fa fa-user"></i>
     <input asp-for="Username" id="username" placeholder="username" autofocus>
     <span asp-validation-for="Username" class="text-danger"></span>
     <i class="fa fa-lock"></i>
     <input asp-for="Password" id="password" placeholder="password">
-    <span asp-validation-for="Password" class="text-danger"></span>
-    <button type="submit" id="submit" asp-controller="Home" asp-action="Login">Accedi</button>
+    <span asp-validation-for="Password" class="text-danger"></span>>
+    <button type="submit" id="submit">Accedi</button>
     <button id="registrati" asp-controller="Home" asp-action="Registrati">Registrati</button>
 </form>
             }

@@ -24,6 +24,10 @@
                 </ul>
                 <div id="logindiv">
                     <partial name="~/Views/PartialViews/_Login.cshtml" />
+                    @*@{
+                        await Html.RenderPartialAsync("~/Views/PartialViews/_Login.cshtml",
+                          new Ristorante.VievModels.LoginViewModel());
+                    }*@
                 </div>
             </div>
         </div>

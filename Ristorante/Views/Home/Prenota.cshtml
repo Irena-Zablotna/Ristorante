@@ -1,4 +1,10 @@
-﻿@model Prenotazione
+﻿@using Ristorante.VievModels
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> signInManager
+@inject UserManager<IdentityUser> userManager
+
+@model Prenotazione
 
 @{ ViewData["Title"] = "Prenota"; }
 
@@ -20,15 +26,21 @@
     <h3>ti aspettiamo in via Braccini 17, Torino</h3>
     <div id="contactform">
 
-        @if (Startup.Conferma == 0)
-        {<p>La tua prenotazione online <br /> Accedi per prenotare </p>}
+        @if ((!signInManager.IsSignedIn(User)))
+        {<p>
+            La tua prenotazione online <br />
+            Accedi per prenotare
+        </p>}
+
 
         @if (Startup.Conferma == 1)
-        { <p>Il tuo numero di prenotazione è @TempData["id"]</p>}
+        {<p>Il tuo numero di prenotazione è: @TempData["id"]</p>}
 
         @if (Startup.Conferma == -1)
 
-        { <p> Non abbiamo più posti disponibili</p>}
+        {<p> Purtroppo non abbiamo più posti disponibili per la data che hai scelto</p>}
+
+       
 
         <form method="post">
             <div class="half left">
@@ -43,7 +55,15 @@
             </div>
 
             <div class="half right">
-                <input type="text" id="name" name="username" placeholder="La tua username" required>
+                @if ((signInManager.IsSignedIn(User)))
+                {
+                    <input type="text" id="name" name="username" value="@User.Identity.Name">
+                }
+                else
+                {
+                    <input type="text" id="name" name="username" placeholder="La tua username" required>
+                }
+
                 <select asp-for="orario" placeholder="pranzo o cena" required>
                     <option value=""></option>
                     <option value="pranzo">pranzo</option>
