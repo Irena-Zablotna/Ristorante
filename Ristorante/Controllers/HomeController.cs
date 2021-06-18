@@ -12,6 +12,7 @@ using Ristorante.Models;
 using Ristorante.Repository;
 using Microsoft.AspNetCore.Authorization;
 
+
 namespace Ristorante.Controllers
 {
     public class HomeController : Controller
@@ -29,18 +30,18 @@ namespace Ristorante.Controllers
             _signInManager = signInManager;
 
         }
-
+//------------------------------------------HOME PAGE------------------
         public IActionResult Index()
         {
             return View();
         }
-
+//----------------------------------------REGISTRATI VISTA--------------
        
         public IActionResult Registrati()
         {
             return View();
         }
-
+//----------------------------------------REGISTRAZIONE UTENTE----------
 
         [HttpPost]
         public async Task<IActionResult> Registrazione(RegisterViewModel rvmodel)
@@ -61,13 +62,12 @@ namespace Ristorante.Controllers
                     {
                         ModelState.AddModelError("", error.Description);
                     }
-                 
             }
             
             return View("Registrati");
         }
 
-
+//------------------------------------LOGIN UTENTE-----------------------
        
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel lvmodel)
@@ -82,13 +82,14 @@ namespace Ristorante.Controllers
                     return RedirectToAction("Index");
                 }
                 
-               ModelState.AddModelError(string.Empty,"Dati non corretti" );
+               ModelState.AddModelError("","Dati non corretti" );
 
             }
             Startup.Conferma = 3;
-            return Redirect("Index");
+           
+            return View("Index");
         }
-
+//-----------------------------------LOGOUT UTENTE-----------------------------------
 
         [HttpPost]
         public async Task<IActionResult> Logout()
@@ -96,14 +97,14 @@ namespace Ristorante.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index");
         }
-
+//-------------------------------------PIATTI VISTA------------------------------
         public IActionResult Piatti()
         {
 
            List<Piatto> listaPiatti = _ristoranteRepository.VediPiatti();
             return View(listaPiatti);
         }
-
+//-----------------------------------PRENOTA VISTA-----------------------------------
 
         public IActionResult Prenota()
         {
@@ -111,14 +112,14 @@ namespace Ristorante.Controllers
             return View();
         }
 
-
+//-----------------------------------PRENOTAZIONE UTENTE----------------------------
         [HttpPost]
       //[Authorize]
         public IActionResult Prenotazione (Prenotazione prenotazione, string username) 
         {
 
             int IdPrenotazione = _ristoranteRepository.Prenotazione(prenotazione, username);
-            if (_signInManager.IsSignedIn(User)&& User.Identity.Name==username)
+            if (_signInManager.IsSignedIn(User))
             {
                 if (IdPrenotazione >= 0)
                 {
@@ -138,6 +139,32 @@ namespace Ristorante.Controllers
             }
           
         }
+
+//------------------------------CANCELLAZIONE PRENOTAZIONE-------------------------
+        [HttpPost]
+        public IActionResult Cancella(int id )
+        {
+            
+            
+            return View();
+        }
+
+
+        //---------------------------------VISUALIZZA PRENOTAZIONE---------------
+       
+        //[Authorize]
+        public IActionResult VediPrenotazione (int id)
+        {
+            var tuaPrenotazione = _ristoranteRepository.VisualizzaPrenotazione(id);
+            if (tuaPrenotazione != null)
+            {
+               
+                return View(tuaPrenotazione);
+            }
+
+            return RedirectToAction("Prenota");
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

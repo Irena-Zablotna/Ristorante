@@ -15,9 +15,10 @@
         border-bottom: none;
     }
 
-    #contactform p {
+    #contactform p, #gestisci p {
         font-weight: normal;
         line-height: 150%;
+        font-size: 16px;
     }
 </style>
 
@@ -28,10 +29,9 @@
 
         @if ((!signInManager.IsSignedIn(User)))
         {<p>
-            La tua prenotazione online <br />
-            Accedi per prenotare
-        </p>}
-
+                La tua prenotazione online <br />
+                Accedi per prenotare
+            </p>}
 
         @if (Startup.Conferma == 1)
         {<p>Il tuo numero di prenotazione è: @TempData["id"]</p>}
@@ -40,51 +40,72 @@
 
         {<p> Purtroppo non abbiamo più posti disponibili per la data che hai scelto</p>}
 
-       
 
-        <form method="post">
+        <div>
+            <form method="post" asp-controller="Home" asp-action="Prenotazione">
+                <div class="half left">
+                    <input type="date" id="data" asp-for="data" placeholder="scegli la data" required autofocus>
+
+                    <input asp-for="numero_tel" type="tel" id="tel" placeholder="numero di telefono"
+                           pattern="[0-9]{3-6}[0-9]{7-10}" minlength="10" maxlength="15"
+                           required>
+                    <input type="number" asp-for="numero_persone" placeholder="numero di persone max 40" min="1"
+                           max="40" required>
+                </div>
+
+                <div class="half right">
+                    @if ((signInManager.IsSignedIn(User)))
+                    {
+                        <input type="text" id="name" name="username" value="@User.Identity.Name">
+                    }
+                    else
+                    {
+                        <input type="text" id="name" name="username" placeholder="La tua username" required>
+                    }
+
+                    <select asp-for="orario" placeholder="pranzo o cena" required>
+                        <option value=""></option>
+                        <option value="pranzo">pranzo</option>
+                        <option value="cena">cena</option>
+                    </select>
+                    <input type="submit" id="prenota" value="Prenota">
+
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+
+
+    <div id="contactform1">
+
+        <form id="vediprenotazione" method="post" asp-controller="Home" asp-action="VediPrenotazione">
+
             <div class="half left">
-                <input type="date" id="data" asp-for="data" placeholder="scegli la data" required autofocus>
-
-                <input asp-for="numero_tel" id="tel" placeholder="numero di telefono" maxlength="15"
-                       required>
-                <input type="number" asp-for="numero_persone" placeholder="numero di persone max 40" min="1"
-                       max="40" required>
-                <input type="submit" id="aggiorna" asp-controller="Home" asp-action="" value="Aggiorna">
-
+                <input type="submit" id="visualizza" value=" Visualizza">
             </div>
-
             <div class="half right">
-                @if ((signInManager.IsSignedIn(User)))
-                {
-                    <input type="text" id="name" name="username" value="@User.Identity.Name">
-                }
-                else
-                {
-                    <input type="text" id="name" name="username" placeholder="La tua username" required>
-                }
-
-                <select asp-for="orario" placeholder="pranzo o cena" required>
-                    <option value=""></option>
-                    <option value="pranzo">pranzo</option>
-                    <option value="cena">cena</option>
-                </select>
-                <input type="submit" id="prenota" asp-controller="Home" asp-action="Prenotazione" value="Prenota">
-                <input type="submit" id="cancella" asp-controller="Home" asp-action="" value="Cancella">
+                <input type="number" asp-for="id_prenotazione" Idplaceholder="Inserisci il numero prenotazione">
 
             </div>
-            <input type="text" id="idPrenotazione" name="IdPrenotazione" placeholder="Per cancellare o aggiornare inserisci il numero prenotazione">
+
         </form>
 
     </div>
+
+
 </div>
 
+    <div id="gestisci">
+        <p>Gestisci la tua prenotazione</p>
+    </div>
 
 
 
-@section map{
+    @section map{
 
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2818.2892200742976!2d7.65260595061477!3d45.05964376826541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47886d21a14d5775%3A0x46623a97c4336847!2sVia%20Braccini%2C%2017%2C%2010141%20Torino%20TO!5e0!3m2!1sit!2sit!4v1612720539508!5m2!1sit!2sit"
-            width="250" height="250" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
-            tabindex="0"></iframe>
-}
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2818.2892200742976!2d7.65260595061477!3d45.05964376826541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47886d21a14d5775%3A0x46623a97c4336847!2sVia%20Braccini%2C%2017%2C%2010141%20Torino%20TO!5e0!3m2!1sit!2sit!4v1612720539508!5m2!1sit!2sit"
+                width="250" height="250" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+                tabindex="0"></iframe>
+    }
