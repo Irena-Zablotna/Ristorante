@@ -64,22 +64,17 @@ namespace Ristorante.Repository
 
         //--------------------------------------------------
 
-        public async Task <Prenotazione>  VisualizzaPrenotazione (int id)
+        public Prenotazione  VisualizzaPrenotazione (int id)
         {
-           var prenotazione = await _ristoranteContext.Prenotazioni.FindAsync(id);
+           var prenotazioni = _ristoranteContext.Prenotazioni;
+          var result = (from p in prenotazioni
+                                where p.id_prenotazione==id
+                                select p).FirstOrDefault();
 
-            if (prenotazione != null)
+            if (result != null)
             {
-                var tuaPrenotazione = new Prenotazione()
-                {
-                    data = prenotazione.data,
-                    id_utente=prenotazione.id_utente,
-                    id_prenotazione=prenotazione.id_prenotazione,
-                    numero_persone=prenotazione.numero_persone,
-                    numero_tel=prenotazione.numero_tel,
-                    orario=prenotazione.orario
-                };
-                 return tuaPrenotazione;
+                
+                 return result;
             }
 
             return null;
@@ -87,12 +82,16 @@ namespace Ristorante.Repository
 
 //-----------------------------------------------------
 
-        public async Task<bool> CancellaPrenotazione(int id)
+        public bool CancellaPrenotazione(int id)
         {
-            var prenotazione = await _ristoranteContext.Prenotazioni.FindAsync(id);
-            if (prenotazione != null)
+            var prenotazioni = _ristoranteContext.Prenotazioni;
+            var result = (from p in prenotazioni
+                          where p.id_prenotazione == id
+                          select p).FirstOrDefault();
+
+            if (result != null)
             {
-                _ristoranteContext.Remove(prenotazione);
+                _ristoranteContext.Remove(result);
                 _ristoranteContext.SaveChanges();
                 return true;
 

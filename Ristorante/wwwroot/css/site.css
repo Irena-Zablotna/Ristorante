@@ -361,7 +361,7 @@ table {
 /*RESERVATION FORM---------------------------------------------*/
 #contact1 {
     color: white;
-    margin-left: -40px;
+    margin-left: -150px;
     margin-right: 0px;
     text-align: center;
     padding: 30px;
@@ -370,11 +370,12 @@ table {
 }
 
 #contactform, #contactform1,  #vedi{
-    width: 100%;
+    width: 60%;
     text-align: center;
     margin: auto;
     margin-top: 25px;
 }
+
 
     #contactform p {
         padding-bottom: 25px;
@@ -383,7 +384,9 @@ table {
     }
 
     #gestisci{
-        margin-top:30%;
+        margin-top:50%;
+        text-align:center;
+        
        
     }
 
@@ -401,7 +404,7 @@ table {
 }
 
 input, select {
-    display: block;
+   /* display: block;*/
     box-sizing: border-box;
     width: 100%;
     border: 1px solid #ffa17a;
@@ -449,17 +452,21 @@ input[type=submit] {
 }
     #cancella{
         color:red;
+       
     }
 #prenota {
-    margin-top: 18px;
+    margin-top: 0px;
     color: #58950f;
 }
 
-#visualizza{
-    margin-top:0;
+#visualizza {
+    margin-right: 52%;
 }
 
 
+#num-prenotazione {
+    transform: translateY(80px);
+}
 
 ::placeholder {
     font-family: Verdana, Geneva, Tahoma, sans-serif;

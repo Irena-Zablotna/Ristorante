@@ -20,6 +20,14 @@
         line-height: 150%;
         font-size: 16px;
     }
+    #visualizza {
+        width:48%;
+    }
+
+    #num-prenotazione {
+        width: 50%;
+        transform: translateY(80px);
+    }
 </style>
 
 
@@ -78,22 +86,21 @@
     </div>
 
 
-    <div id="contactform1">
+    <div id="contactform1" style="margin-top:100px;">
 
         <form id="vediprenotazione" method="post" asp-controller="Home" asp-action="VediPrenotazione">
-
-            <div class="half left">
-                <input type="submit" id="visualizza" value=" Visualizza">
+            <div class="half-left">
+                <input type="number"  name="id" id="num-prenotazione" 
+                       placeholder="Il tuo numero prenotazione" required >
             </div>
-            <div class="half right">
-                <input type="number" asp-for="id_prenotazione" Idplaceholder="Inserisci il numero prenotazione">
 
+            <div class="half-right">
+                <input type="submit" id="visualizza" value=" Visualizza">
             </div>
 
         </form>
 
     </div>
-
 
 </div>
 

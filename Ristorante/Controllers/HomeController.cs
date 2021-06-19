@@ -144,20 +144,28 @@ namespace Ristorante.Controllers
         [HttpPost]
         public IActionResult Cancella(int id )
         {
-            
+          bool fatto = _ristoranteRepository.CancellaPrenotazione(id);
+            if (fatto )
+            {
+                Startup.Conferma = 5;
+                TempData["num"] = id;
+                return RedirectToAction("VediPrenotazione");
+            }
             
             return View();
         }
 
 
         //---------------------------------VISUALIZZA PRENOTAZIONE---------------
-       
+
         //[Authorize]
+        [HttpPost]
         public IActionResult VediPrenotazione (int id)
         {
             var tuaPrenotazione = _ristoranteRepository.VisualizzaPrenotazione(id);
             if (tuaPrenotazione != null)
             {
+                
                
                 return View(tuaPrenotazione);
             }
