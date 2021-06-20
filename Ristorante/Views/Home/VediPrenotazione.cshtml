@@ -20,6 +20,11 @@
         font-weight: normal;
         line-height: 150%;
         font-size: 16px;
+        text-shadow:none;
+    }
+   
+    label{
+        font-size:12px;
     }
 </style>
 
@@ -28,27 +33,26 @@
     <h3>ti aspettiamo in via Braccini 17, Torino</h3>
     <div id="contactform">
 
-        @if (Startup.Conferma == 5)
-        {
-            <p>La tua prenotazione n. @TempData["num"] è stata cancellata</p>
-        }
-        else
-        { 
-            <p> Gestisci la tua prenotazione</p>
-        }
-
-
+        
+            <p> Gestisci la tua prenotazione n. @ViewBag.id:<br />
+            dopo avere inserito i nuovi dati clicca "Modifica"<br />
+            per cancellare clicca "Cancella"</p>
+ 
         <div>
             <form method="post">
                 <div class="half left">
-                    <input type="date" id="data" asp-for="data" value="@Model.data">
+                    <input type="text"  id="data" asp-for="data" onfocus="(type='date')" 
+                           value="@Model.data.ToShortDateString()">
 
                     <input asp-for="numero_tel" type="tel" id="tel"
                            pattern="[0-9]{3-6}[0-9]{7-10}" minlength="10" maxlength="15" value="@Model.numero_tel" readonly />
+                   
+                    <input type="number" asp-for="numero_persone" value="@Model.numero_persone"
+                           style="margin-bottom:5px;">
+                    <label asp-for="numero_persone">numero persone</label>
 
-                    <input type="number" asp-for="numero_persone" value="@Model.numero_persone">
-                    <input type="number" name="id" id="num-prenotazione"
-                           placeholder="Il tuo numero prenotazione" value="@Model.id_prenotazione">
+                    <input type="hidden" name="id" id="num-prenotazione"
+                           placeholder="Inserisci numero prenotazione" value="@Model.id_prenotazione">
 
                 </div>
 
@@ -56,13 +60,15 @@
 
                     <input type="text" id="name" name="username" value="@User.Identity.Name" readonly>
 
-                    <select asp-for="orario" placeholder="pranzo o cena">
-                        <option value="@Model.orario" selected></option>
+                    <select asp-for="orario">
+                        <option value=""></option>
                         <option value="pranzo">pranzo</option>
                         <option value="cena">cena</option>
+                        <option value="" selected disabled hidden>@Model.orario</option>
                     </select>
-                    <input type="submit" id="cancella" asp-controller="Home" asp-action="Cancella" value="Cancella">
-                    <input type="submit" id="aggiorna" asp-controller="Home" asp-action="Aggiorna" value="Modifica">
+
+                    <input type="submit" id="cancella" asp-controller="Home" asp-action="Cancella" value="Cancella prenotazione" onclick="ChangeInput()">
+                    <input type="submit" id="aggiorna" asp-controller="Home" asp-action="Aggiorna" value="Modifica prenotazione">
 
                 </div>
 
@@ -71,3 +77,9 @@
 
     </div>
  </div>
+
+<script>
+    function ChangeInput() {
+        $("#data").attr("value", "@Model.data");
+    }
+</script>

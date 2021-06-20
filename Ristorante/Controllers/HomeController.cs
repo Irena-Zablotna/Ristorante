@@ -149,10 +149,10 @@ namespace Ristorante.Controllers
             {
                 Startup.Conferma = 5;
                 TempData["num"] = id;
-                return RedirectToAction("VediPrenotazione");
+                return RedirectToAction("Prenota");
             }
             
-            return View();
+            return View("Prenota");
         }
 
 
@@ -165,8 +165,8 @@ namespace Ristorante.Controllers
             var tuaPrenotazione = _ristoranteRepository.VisualizzaPrenotazione(id);
             if (tuaPrenotazione != null)
             {
-                
-               
+
+                ViewBag.id = id;
                 return View(tuaPrenotazione);
             }
 

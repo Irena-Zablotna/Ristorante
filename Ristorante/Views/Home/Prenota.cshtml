@@ -48,6 +48,14 @@
 
         {<p> Purtroppo non abbiamo più posti disponibili per la data che hai scelto</p>}
 
+        @if (Startup.Conferma == 5)
+        {
+            <p>La tua prenotazione n. @TempData["num"] è stata cancellata</p>
+        }
+
+
+
+
 
         <div>
             <form method="post" asp-controller="Home" asp-action="Prenotazione">
@@ -71,8 +79,8 @@
                         <input type="text" id="name" name="username" placeholder="La tua username" required>
                     }
 
-                    <select asp-for="orario" placeholder="pranzo o cena" required>
-                        <option value=""></option>
+                    <select asp-for="orario" required>
+                        <option value="" selected disabled hidden>pranzo o cena</option>
                         <option value="pranzo">pranzo</option>
                         <option value="cena">cena</option>
                     </select>
@@ -95,7 +103,7 @@
             </div>
 
             <div class="half-right">
-                <input type="submit" id="visualizza" value=" Visualizza">
+                <input type="submit" id="visualizza" value=" Visualizza prenotazione">
             </div>
 
         </form>
@@ -104,9 +112,9 @@
 
 </div>
 
-    <div id="gestisci">
+    @*<div id="gestisci">
         <p>Gestisci la tua prenotazione</p>
-    </div>
+    </div>*@
 
 
 

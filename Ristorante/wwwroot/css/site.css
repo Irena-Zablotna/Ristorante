@@ -449,10 +449,11 @@ input[type=submit] {
 /*-----------submit buttons -----------*/
 #aggiorna {
     color: #58950f;
+    margin-top: 0px;
 }
     #cancella{
         color:red;
-       
+       margin-top:4px;
     }
 #prenota {
     margin-top: 0px;

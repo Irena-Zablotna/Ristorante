@@ -24,9 +24,9 @@ function SetInput() {
  
     if (hour > 10 && scelta == today) {
         $("#orario option[value='pranzo']").hide();
-        if ($("#orario").val() === 'pranzo') {
-            $("#orario").val('');
-        }
+        //if ($("#orario").val() === 'pranzo') {
+        //    $("#orario").val('');
+        //}
     }
     else {
         $("#orario option[value='pranzo']").show();
