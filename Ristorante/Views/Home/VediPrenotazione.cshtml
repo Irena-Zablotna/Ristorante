@@ -23,9 +23,9 @@
         text-shadow:none;
     }
    
-    label{
+  /*  label{
         font-size:12px;
-    }
+    }*/
 </style>
 
 
@@ -34,25 +34,24 @@
     <div id="contactform">
 
         
-            <p> Gestisci la tua prenotazione n. @ViewBag.id:<br />
+            <p> Gestisci la prenotazione n. @ViewBag.id:<br />
             dopo avere inserito i nuovi dati clicca "Modifica"<br />
             per cancellare clicca "Cancella"</p>
  
         <div>
-            <form method="post">
+            <form method="post" onsubmit="ChangeInput()">
                 <div class="half left">
                     <input type="text"  id="data" asp-for="data" onfocus="(type='date')" 
                            value="@Model.data.ToShortDateString()">
 
                     <input asp-for="numero_tel" type="tel" id="tel"
-                           pattern="[0-9]{3-6}[0-9]{7-10}" minlength="10" maxlength="15" value="@Model.numero_tel" readonly />
+                           pattern="[0-9]{3,5}[0-9]{7,10}" minlength="10" maxlength="15" value="@Model.numero_tel" />
                    
-                    <input type="number" asp-for="numero_persone" value="@Model.numero_persone"
-                           style="margin-bottom:5px;">
-                    <label asp-for="numero_persone">numero persone</label>
+                    <input type="text" asp-for="numero_persone"  id="num-persone"value="@Model.numero_persone persone"
+                           style="margin-bottom:5px;" onfocus="(type='number')">
+                    @*<label asp-for="numero_persone">numero persone</label>*@
 
-                    <input type="hidden" name="id" id="num-prenotazione"
-                           placeholder="Inserisci numero prenotazione" value="@Model.id_prenotazione">
+                    <input type="hidden" name="id" id="num-prenotazione" value="@Model.id_prenotazione">
 
                 </div>
 
@@ -67,8 +66,8 @@
                         <option value="" selected disabled hidden>@Model.orario</option>
                     </select>
 
-                    <input type="submit" id="cancella" asp-controller="Home" asp-action="Cancella" value="Cancella prenotazione" onclick="ChangeInput()">
-                    <input type="submit" id="aggiorna" asp-controller="Home" asp-action="Aggiorna" value="Modifica prenotazione">
+                    <input type="submit" id="cancella" asp-controller="Home" asp-action="Cancella" value="Cancella prenotazione" >
+                    <input type="submit" id="aggiorna" asp-controller="Home" asp-action="Modifica" value="Modifica prenotazione">
 
                 </div>
 
@@ -80,6 +79,16 @@
 
 <script>
     function ChangeInput() {
-        $("#data").attr("value", "@Model.data");
+        if ($("#data[type='text']"))
+        {
+            $("#data").attr({type:"date",}
+                { value: "@Model.data"});
+        }
+        if ($("#num-persone[type='text']"))
+        {
+            $("#num-persone").attr({ type: "number",
+                                 value: "@Model.numero_persone" });
+        }
+
     }
 </script>

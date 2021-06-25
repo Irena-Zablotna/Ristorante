@@ -19,6 +19,7 @@
         font-weight: normal;
         line-height: 150%;
         font-size: 16px;
+        text-shadow:none;
     }
     #visualizza {
         width:48%;
@@ -38,11 +39,18 @@
         @if ((!signInManager.IsSignedIn(User)))
         {<p>
                 La tua prenotazione online <br />
-                Accedi per prenotare
+                Accedi o registrati per prenotare
+            </p>}
+
+        @if ((signInManager.IsSignedIn(User)))
+        {<p>
+                La tua prenotazione online
             </p>}
 
         @if (Startup.Conferma == 1)
-        {<p>Il tuo numero di prenotazione è: @TempData["id"]</p>}
+        {<p>Il tuo numero di prenotazione è: @TempData["id"]</p>
+
+    }
 
         @if (Startup.Conferma == -1)
 
@@ -50,20 +58,27 @@
 
         @if (Startup.Conferma == 5)
         {
-            <p>La tua prenotazione n. @TempData["num"] è stata cancellata</p>
+            <p>La prenotazione n. @TempData["num"] è stata cancellata</p>
+        }
+
+        @if (Startup.Conferma == 4)
+        {
+            <p>Non è stato possibile cancellare la prenotazione n. @TempData["num"], riprova</p>
         }
 
 
-
-
+        @if (Startup.Conferma == 6)
+        {
+    <p>La prenotazione n. @TempData["num"] è stata modificata</p>
+        }
 
         <div>
             <form method="post" asp-controller="Home" asp-action="Prenotazione">
                 <div class="half left">
-                    <input type="date" id="data" asp-for="data" placeholder="scegli la data" required autofocus>
+                    <input type="date" id="data" asp-for="data" required autofocus>
 
-                    <input asp-for="numero_tel" type="tel" id="tel" placeholder="numero di telefono"
-                           pattern="[0-9]{3-6}[0-9]{7-10}" minlength="10" maxlength="15"
+                    <input asp-for="numero_tel" type="tel" id="tel" placeholder="numero di telefono "
+                           pattern="[0-9]{3,5}[0-9]{7,10}" minlength="10" maxlength="15"
                            required>
                     <input type="number" asp-for="numero_persone" placeholder="numero di persone max 40" min="1"
                            max="40" required>

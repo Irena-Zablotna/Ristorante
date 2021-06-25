@@ -99,6 +99,32 @@ namespace Ristorante.Repository
             return false;  
 
         }
+
+        public bool Modifica (Prenotazione prenotazione, int id)
+        {
+            var prenotazioni = _ristoranteContext.Prenotazioni;
+            var result = (from p in prenotazioni
+                          where p.id_prenotazione == id
+                          select p).FirstOrDefault();
+
+            if (result != null)
+            {
+                result.data = prenotazione.data;
+
+                if (prenotazione.numero_persone == 0)
+                { prenotazione.numero_persone=result.numero_persone; }
+
+                result.numero_tel = prenotazione.numero_tel;
+                if (prenotazione.orario == null)
+                { prenotazione.orario = result.orario; }
+
+                _ristoranteContext.SaveChanges();
+                return true;
+
+            }
+
+            return false;
+        }
     }
 }
 

@@ -81,10 +81,12 @@ namespace Ristorante.Controllers
                 {
                     return RedirectToAction("Index");
                 }
-                
-               ModelState.AddModelError("","Dati non corretti" );
+
+                ModelState.AddModelError("","Dati non corretti" );
 
             }
+           
+
             Startup.Conferma = 3;
            
             return View("Index");
@@ -119,7 +121,7 @@ namespace Ristorante.Controllers
         {
 
             int IdPrenotazione = _ristoranteRepository.Prenotazione(prenotazione, username);
-            if (_signInManager.IsSignedIn(User))
+            if (_signInManager.IsSignedIn(User)&& ModelState.IsValid)
             {
                 if (IdPrenotazione >= 0)
                 {
@@ -135,7 +137,7 @@ namespace Ristorante.Controllers
 
             else
             {
-                return View("Registrati");
+               return View("Registrati");
             }
           
         }
@@ -151,7 +153,8 @@ namespace Ristorante.Controllers
                 TempData["num"] = id;
                 return RedirectToAction("Prenota");
             }
-            
+
+            Startup.Conferma = 4;
             return View("Prenota");
         }
 
@@ -171,6 +174,20 @@ namespace Ristorante.Controllers
             }
 
             return RedirectToAction("Prenota");
+        }
+        //--------------------------------MODIFICA PRENOTAZIONE---------------
+        [HttpPost]
+        public IActionResult Modifica( Prenotazione prenotazione, int id)
+        {
+            bool modificata = _ristoranteRepository.Modifica(prenotazione, id);
+            
+            if(modificata)
+            {
+                TempData["num"] = id;
+                Startup.Conferma = 6;
+                return RedirectToAction("Prenota");
+            }
+            return View("VediPrenotazione");
         }
 
 
