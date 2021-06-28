@@ -38,17 +38,15 @@ document.getElementById("data").addEventListener("change", SetInput);
 var confirm = document.getElementById("alert"),
     btn = document.getElementById("canc"),
     span = document.getElementById("x"),
-    contact1 = document.getElementById("#contact1"),
-    vedi = document.getElementById("vedi-prenotazione");
+    vedi = document.getElementById("vedi-prenotazione"),
+    contact = document.getElementById("contact1");
 
 btn.addEventListener("click", appear);
 
 function appear() {
     confirm.style.display = "block";
     vedi.style.display = "none";
-    contact1.style.marginLeft = 0;
-   
-   
+    contact.style.marginLeft = "0px";
 }
 
 span.addEventListener("click", hide);
