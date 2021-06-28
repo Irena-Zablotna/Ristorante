@@ -146,6 +146,7 @@ namespace Ristorante.Controllers
         [HttpPost]
         public IActionResult Cancella(int id )
         {
+
           bool fatto = _ristoranteRepository.CancellaPrenotazione(id);
             if (fatto )
             {

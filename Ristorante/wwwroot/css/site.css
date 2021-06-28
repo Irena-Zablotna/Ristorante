@@ -403,7 +403,7 @@ table {
     width: 50%;
 }
 
-input, select {
+input, select, #canc {
    /* display: block;*/
     box-sizing: border-box;
     width: 100%;
@@ -446,15 +446,35 @@ input[type=submit] {
         background-color: #1a1919;
     }
 
-/*-----------submit buttons -----------*/
-#aggiorna {
+   
+
+
+        /*-----------submit buttons -----------*/
+    #aggiorna {
     color: #58950f;
     margin-top: 0px;
+        }
+
+#canc {
+    color: red;
+    *margin-top: 4px;
+    font-weight: bold;
+    display: block;
+    cursor:pointer;
 }
-    #cancella{
-        color:red;
-       margin-top:4px;
-    }
+
+        #canc:hover, #canc-definitivo:hover{
+            color: red;
+            background-color: #1a1919;
+        }
+
+
+#canc-definitivo {
+    width: 25%;
+    color: red;
+    margin-top: 0px;
+    font-weight: bold;
+}
 #prenota {
     margin-top: 0px;
     color: #58950f;
@@ -476,11 +496,32 @@ input[type=submit] {
     
 }
 
-
 #data {
-   padding:12px;
+   padding:11px;
 }
+/*------------------POP-UP ALERT ------------------*/
 
+#alert p{
+margin-bottom:0;
+padding-bottom:20px;
+padding-top:20px;
+}
+#alert {
+    background-color: #515152;
+    position:relative;
+    padding:10px;
+    display:none;
+}
+    #x {
+        position: absolute;
+        top: 0;
+        right: 3px;
+        font-size: 20px;
+        color: #58950f;
+        font-weight:bold;
+        padding:3px;
+        cursor:pointer;
+    }
 
 /*---------------SIGN UP FORM--------------------*/
     #signupDiv button {

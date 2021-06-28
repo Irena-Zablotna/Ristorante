@@ -6,7 +6,7 @@
 var now = new Date();
 var hour = now.getHours();
 var dd = now.getDate();
-var mm = now.getMonth() + 1; //January is 0
+var mm = now.getMonth() + 1; 
 var yyyy = now.getFullYear();
 
 if (dd < 10) {
@@ -24,9 +24,9 @@ function SetInput() {
  
     if (hour > 10 && scelta == today) {
         $("#orario option[value='pranzo']").hide();
-        //if ($("#orario").val() === 'pranzo') {
-        //    $("#orario").val('');
-        //}
+        if ($("#orario").val() === 'pranzo') {
+           $("#orario").val('');
+        }
     }
     else {
         $("#orario option[value='pranzo']").show();
@@ -35,3 +35,25 @@ function SetInput() {
 
 document.getElementById("data").addEventListener("change", SetInput);
 
+var confirm = document.getElementById("alert"),
+    btn = document.getElementById("canc"),
+    span = document.getElementById("x"),
+    contact1 = document.getElementById("#contact1"),
+    vedi = document.getElementById("vedi-prenotazione");
+
+btn.addEventListener("click", appear);
+
+function appear() {
+    confirm.style.display = "block";
+    vedi.style.display = "none";
+    contact1.style.marginLeft = 0;
+   
+   
+}
+
+span.addEventListener("click", hide);
+
+function hide() {
+ confirm.style.display = "none";
+     vedi.style.display = "block";
+}
