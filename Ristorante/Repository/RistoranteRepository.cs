@@ -20,7 +20,7 @@ namespace Ristorante.Repository
             _userManager = userManager;
             
         }
-//-----------------------------------------------------------
+//-------------------------------VEDI PIATTI ----------------------------
 
         public List<Piatto> VediPiatti()
         {
@@ -29,7 +29,7 @@ namespace Ristorante.Repository
         }
 
 
-//-----------------------------------------------------------------------------
+//--------------------------------PRENOTA---------------------------------------------
 
         public int Prenotazione(Prenotazione prenotazione, string username)
         {
@@ -62,7 +62,7 @@ namespace Ristorante.Repository
 
         }
 
-        //--------------------------------------------------
+        //-----------------------------VISUALIZZA PRENOTAZIONE---------------------
 
         public Prenotazione  VisualizzaPrenotazione (int id)
         {
@@ -80,7 +80,7 @@ namespace Ristorante.Repository
             return null;
         }
 
-//-----------------------------------------------------
+//-------------------------------CANCELLA PRENOTAZIONE----------------------
 
         public bool CancellaPrenotazione(int id)
         {
@@ -99,6 +99,7 @@ namespace Ristorante.Repository
             return false;  
 
         }
+//-----------------MODIFICA PRENOTAZIONE-----------------
 
         public bool Modifica (Prenotazione prenotazione, int id)
         {
@@ -115,6 +116,7 @@ namespace Ristorante.Repository
                 { prenotazione.numero_persone=result.numero_persone; }
 
                 result.numero_tel = prenotazione.numero_tel;
+
                 if (prenotazione.orario == null)
                 { prenotazione.orario = result.orario; }
 

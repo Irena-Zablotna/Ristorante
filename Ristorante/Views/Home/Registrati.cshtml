@@ -11,24 +11,26 @@
 }
 
 
+@section Styles{
+    <style>
+        #smain {
+            border-bottom: none;
+        }
 
-<style>
-    #smain {
-        border-bottom: none;
-    }
+        #information p {
+            color: white;
+            font-size: 20px;
+            width: 50%;
+            margin: auto;
+        }
 
-    #information p {
-        color: white;
-        font-size: 20px;
-        width: 50%;
-        margin: auto;
-    }
+        #signupDiv {
+            width: 50%;
+            margin: auto;
+        }
+    </style>
 
-    #signupDiv{
-        width:50%;
-        margin:auto;
-    }
-</style>
+}
 
 @{
     if ((signInManager.IsSignedIn(User)))
@@ -37,7 +39,7 @@
 
     }
 
-    else 
+    else
     {
         @section information{ <p> Registrati! </p>}
     }
@@ -46,18 +48,18 @@
         <form method="post" asp-controller="Home" asp-action="Registrazione">
 
             <input asp-for="Username" id="username1" placeholder="Scegli la tua username" autofocus />
-            <span asp-validation-for="Username" class="text-danger"></span>
+            <span asp-validation-for="Username" style="color:white;"></span>
 
             <input asp-for="Email" id="email" placeholder="Email">
-            <span asp-validation-for="Email" class="text-danger"></span>
+            <span asp-validation-for="Email" style="color:white;"></span>
 
             <input asp-for="Password" id="password1" placeholder="Password">
-            <span asp-validation-for="Password" class="text-danger"></span>
+            <span asp-validation-for="Password" style="color:white;"></span>
 
             <input asp-for="ConfirmPassword" id="password2" placeholder="Ripeti la password">
-            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            <span asp-validation-for="ConfirmPassword"style="color:white;"></span>
 
-            <div asp-validation-summary="All" class="text-danger"></div>
+            <div asp-validation-summary="All" style="color:white;font-size:10px;"></div>
 
             <button type="submit" id="registrati">Registrati</button>
         </form>

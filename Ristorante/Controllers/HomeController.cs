@@ -146,13 +146,16 @@ namespace Ristorante.Controllers
         [HttpPost]
         public IActionResult Cancella(int id )
         {
-
-          bool fatto = _ristoranteRepository.CancellaPrenotazione(id);
-            if (fatto )
+           if (_signInManager.IsSignedIn(User))
             {
-                Startup.Conferma = 5;
-                TempData["num"] = id;
-                return RedirectToAction("Prenota");
+                bool fatto = _ristoranteRepository.CancellaPrenotazione(id);
+                if (fatto)
+                {
+                    Startup.Conferma = 5;
+                    TempData["num"] = id;
+                    return RedirectToAction("Prenota");
+                }
+
             }
 
             Startup.Conferma = 4;
@@ -166,13 +169,17 @@ namespace Ristorante.Controllers
         [HttpPost]
         public IActionResult VediPrenotazione (int id)
         {
-            var tuaPrenotazione = _ristoranteRepository.VisualizzaPrenotazione(id);
-            if (tuaPrenotazione != null)
+            if (_signInManager.IsSignedIn(User))
             {
+                var tuaPrenotazione = _ristoranteRepository.VisualizzaPrenotazione(id);
+                if (tuaPrenotazione != null)
+                {
 
-                ViewBag.id = id;
-                return View(tuaPrenotazione);
+                    ViewBag.id = id;
+                    return View(tuaPrenotazione);
+                }
             }
+               
 
             return RedirectToAction("Prenota");
         }
@@ -180,14 +187,18 @@ namespace Ristorante.Controllers
         [HttpPost]
         public IActionResult Modifica( Prenotazione prenotazione, int id)
         {
-            bool modificata = _ristoranteRepository.Modifica(prenotazione, id);
-            
-            if(modificata)
+             if (_signInManager.IsSignedIn(User))
             {
-                TempData["num"] = id;
-                Startup.Conferma = 6;
-                return RedirectToAction("Prenota");
+                bool modificata = _ristoranteRepository.Modifica(prenotazione, id);
+
+                if (modificata)
+                {
+                    TempData["num"] = id;
+                    Startup.Conferma = 6;
+                    return RedirectToAction("Prenota");
+                }
             }
+                   
             return View("VediPrenotazione");
         }
 

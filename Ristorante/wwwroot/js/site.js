@@ -47,6 +47,7 @@ function appear() {
     confirm.style.display = "block";
     vedi.style.display = "none";
     contact.style.marginLeft = "0px";
+    console.log(dataFromView);
 }
 
 span.addEventListener("click", hide);
@@ -55,3 +56,19 @@ function hide() {
  confirm.style.display = "none";
      vedi.style.display = "block";
 }
+
+
+var btn = document.getElementsByClassName("top-button");
+
+function scrollTop() {
+    
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        btn.style.display = "block";
+    } else {
+        btn.style.display = "none";
+    }
+}
+
+window.onscroll = function () {
+    scrollTop();
+};
