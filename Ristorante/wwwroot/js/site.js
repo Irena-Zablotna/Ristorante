@@ -58,17 +58,14 @@ function hide() {
 }
 
 
-var btn = document.getElementsByClassName("top-button");
+var btn = document.querySelector(".top-button");
 
-function scrollTop() {
-    
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+window.addEventListener("scroll", ()=> {
+
+    if (window.pageYOffset>150) {
         btn.style.display = "block";
     } else {
         btn.style.display = "none";
     }
 }
 
-window.onscroll = function () {
-    scrollTop();
-};

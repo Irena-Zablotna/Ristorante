@@ -327,6 +327,23 @@ table {
     left: 35%;
     width:34%;
 }
+/*-----------SLIDER---------------*/
+#slider {
+    margin-top: 5%;
+    max-height: 400px;
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 5%;
+}
+
+#inner {
+    max-height: 400px;
+    overflow: hidden;
+}
+
+.carousel-indicators li {
+    opacity: 1;
+}
 
 /*BUTTON RETURN ON TOP-------------------------*/
 .top-button {
