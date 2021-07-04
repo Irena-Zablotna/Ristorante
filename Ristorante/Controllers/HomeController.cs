@@ -167,11 +167,11 @@ namespace Ristorante.Controllers
 
         //[Authorize]
         [HttpPost]
-        public IActionResult VediPrenotazione (int id)
+        public IActionResult VediPrenotazione (int id, string username)
         {
             if (_signInManager.IsSignedIn(User))
             {
-                var tuaPrenotazione = _ristoranteRepository.VisualizzaPrenotazione(id);
+                var tuaPrenotazione = _ristoranteRepository.VisualizzaPrenotazione(id, username);
                 if (tuaPrenotazione != null)
                 {
 
@@ -179,9 +179,9 @@ namespace Ristorante.Controllers
                     return View(tuaPrenotazione);
                 }
             }
-               
 
-            return RedirectToAction("Prenota");
+            ViewData["nonTrovata"] = $"prenotazione {id} non trovata";
+            return View("Prenota");
         }
         //--------------------------------MODIFICA PRENOTAZIONE---------------
         [HttpPost]

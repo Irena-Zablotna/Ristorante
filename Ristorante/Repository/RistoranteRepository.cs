@@ -34,10 +34,9 @@ namespace Ristorante.Repository
         public int Prenotazione(Prenotazione prenotazione, string username)
         {
             var users = _userManager.Users;
-            var userId = (from u in users
-                          where u.UserName == username
-                          select u.Id).FirstOrDefault();
-   
+            var userId = _userManager.Users.Where(u => u.UserName == username)
+               .Select(u => u.Id).FirstOrDefault();
+
             int postiTotali = 40;
             int postiOccupati = _ristoranteContext.Prenotazioni.Where(x => x.orario == prenotazione.orario && x.data == prenotazione.data).ToList().Sum(x => x.numero_persone);
             bool postiLiberi = postiTotali - postiOccupati >= prenotazione.numero_persone;
@@ -64,14 +63,18 @@ namespace Ristorante.Repository
 
         //-----------------------------VISUALIZZA PRENOTAZIONE---------------------
 
-        public Prenotazione  VisualizzaPrenotazione (int id)
+        public Prenotazione  VisualizzaPrenotazione (int id, string username)
         {
-           var prenotazioni = _ristoranteContext.Prenotazioni;
-          var result = (from p in prenotazioni
-                                where p.id_prenotazione==id
-                                select p).FirstOrDefault();
 
-            if (result != null)
+            var userId = _userManager.Users.Where(u => u.UserName == username)
+                .Select(u => u.Id).FirstOrDefault();
+          
+            var result = _ristoranteContext.Prenotazioni.Where(p => p.id_prenotazione ==id)
+                .FirstOrDefault();
+               
+           
+
+            if (result != null && result.id_utente == userId)
             {
                 
                  return result;
@@ -84,10 +87,8 @@ namespace Ristorante.Repository
 
         public bool CancellaPrenotazione(int id)
         {
-            var prenotazioni = _ristoranteContext.Prenotazioni;
-            var result = (from p in prenotazioni
-                          where p.id_prenotazione == id
-                          select p).FirstOrDefault();
+            var result = _ristoranteContext.Prenotazioni.Where(p => p.id_prenotazione == id)
+                .FirstOrDefault();
 
             if (result != null)
             {
@@ -103,12 +104,8 @@ namespace Ristorante.Repository
 
         public bool Modifica (Prenotazione prenotazione, int id)
         {
-            var prenotazioni = _ristoranteContext.Prenotazioni;
-            var result = (from p in prenotazioni
-                          where p.id_prenotazione == id
-                          select p).FirstOrDefault();
-
-
+            var result = _ristoranteContext.Prenotazioni.Where(p => p.id_prenotazione == id)
+               .FirstOrDefault();
 
             if (result != null)
             {

@@ -22,6 +22,7 @@
             font-size: 20px;
             width: 50%;
             margin: auto;
+          
         }
 
         #signupDiv {
@@ -35,7 +36,7 @@
 @{
     if ((signInManager.IsSignedIn(User)))
     {
-        @section information {<p> Grazie per la tua registrazione  @User.Identity.Name!</p>}
+        @section information {<p style=" font-weight: normal;"> Grazie per la tua registrazione  @User.Identity.Name!</p>}
 
     }
 
