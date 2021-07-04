@@ -108,18 +108,25 @@ namespace Ristorante.Repository
                           where p.id_prenotazione == id
                           select p).FirstOrDefault();
 
+
+
             if (result != null)
             {
                 result.data = prenotazione.data;
-
+               
                 if (prenotazione.numero_persone == 0)
                 { prenotazione.numero_persone=result.numero_persone; }
+
+                else { result.numero_persone = prenotazione.numero_persone; }
 
                 result.numero_tel = prenotazione.numero_tel;
 
                 if (prenotazione.orario == null)
                 { prenotazione.orario = result.orario; }
 
+                else { result.orario = prenotazione.orario; }
+
+                _ristoranteContext.Update(result);
                 _ristoranteContext.SaveChanges();
                 return true;
 

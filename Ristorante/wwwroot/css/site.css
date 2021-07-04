@@ -347,7 +347,7 @@ table {
 
 /*BUTTON RETURN ON TOP-------------------------*/
 .top-button {
-    display: block;
+    display: none;
     width: 30px;
     height: 30px;
     border-radius: 2px;
@@ -469,7 +469,7 @@ input[type=submit] {
         /*-----------submit buttons -----------*/
     #aggiorna {
     color: #58950f;
-    margin-top: 0px;
+    margin-top: 2px;
         }
 
 #canc {
@@ -533,9 +533,8 @@ padding-top:20px;
         position: absolute;
         top: 0;
         right: 3px;
-        font-size: 20px;
-        color: #58950f;
-        font-weight:bold;
+        font-size: 18px;
+        color: white;
         padding:3px;
         cursor:pointer;
        

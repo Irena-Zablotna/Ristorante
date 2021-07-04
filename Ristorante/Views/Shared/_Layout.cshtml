@@ -35,8 +35,8 @@
         <main>
             <section id="smain">
                 @*<h1>L'oasi del gusto</h1>
-        <p>ristorante vegetariano</p>
-        <p><a href="Piatti.html" target="_blank">scopri i nuovi sapori</a></p>*@
+                    <p>ristorante vegetariano</p>
+                    <p><a href="Piatti.html" target="_blank">scopri i nuovi sapori</a></p>*@
                 <section id="information">
                     @RenderSection("information", false)
                 </section>
@@ -55,7 +55,7 @@
                     <a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram"></i></a>
                     <a href="https://twitter.com/login?lang=it" target="_blank"><i class="fa fa-twitter-square"></i></a>
                     <a href="https://api.whatsapp.com/send?phone=393293333333" target="_blank"><i class="fa fa-whatsapp"></i></a>
-                    </div>
+                </div>
             </footer>
         </main>
         <section id="map">
@@ -65,8 +65,8 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
+    <script src="../js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 
 </html>

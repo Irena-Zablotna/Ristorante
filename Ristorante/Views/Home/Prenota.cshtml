@@ -47,33 +47,16 @@
 
         @if ((signInManager.IsSignedIn(User)))
         {<p>
-                La tua prenotazione online
+                La tua prenotazione online <br />
+                @ViewData["num"]
+                @ViewData["modifica"]
+                @ViewData["numCanc"]
+                @ViewData["noPosti"]
+                @ViewData["impossibile"]
             </p>}
 
-        @if (Startup.Conferma == 1)
-        {<p>Il tuo numero di prenotazione è: @TempData["id"]</p>
+     
 
-    }
-
-        @if (Startup.Conferma == -1)
-
-        {<p> Purtroppo non abbiamo più posti disponibili per la data che hai scelto</p>}
-
-        @if (Startup.Conferma == 5)
-        {
-            <p>La prenotazione n. @TempData["num"] è stata cancellata</p>
-        }
-
-        @if (Startup.Conferma == 4)
-        {
-            <p>Non è stato possibile cancellare la prenotazione n. @TempData["num"], riprova</p>
-        }
-
-
-        @if (Startup.Conferma == 6)
-        {
-            <p>La prenotazione n. @TempData["num"] è stata modificata</p>
-        }
 
         <div>
             <form method="post" asp-controller="Home" asp-action="Prenotazione">

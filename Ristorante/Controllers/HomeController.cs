@@ -116,7 +116,7 @@ namespace Ristorante.Controllers
 
 //-----------------------------------PRENOTAZIONE UTENTE----------------------------
         [HttpPost]
-      //[Authorize]
+     
         public IActionResult Prenotazione (Prenotazione prenotazione, string username) 
         {
 
@@ -125,14 +125,13 @@ namespace Ristorante.Controllers
             {
                 if (IdPrenotazione >= 0)
                 {
-                    Startup.Conferma = 1;
-                    TempData["id"] = IdPrenotazione;
+                    ViewData["num"] = $"il tuo numero di prenotazione è: {IdPrenotazione}";
                 }
                 if (IdPrenotazione == -1)
                 {
-                    Startup.Conferma = -1;
+                    ViewData["noPosti"] = "Purtroppo non abbiamo più posti disponibili per la data che hai scelto";
                 }
-                return RedirectToAction("Prenota");
+                return View("Prenota");
             }
 
             else
@@ -151,14 +150,15 @@ namespace Ristorante.Controllers
                 bool fatto = _ristoranteRepository.CancellaPrenotazione(id);
                 if (fatto)
                 {
-                    Startup.Conferma = 5;
-                    TempData["num"] = id;
-                    return RedirectToAction("Prenota");
+                    
+                    ViewData["numCanc"] = $"la prenotazione {id} è stata cancellata";
+                    return View ("Prenota");
                 }
 
             }
 
-            Startup.Conferma = 4;
+            ViewData["impossibile"] = $"Non è stato possibile cancellare la prenotazione n. {id}, riprova";
+
             return View("Prenota");
         }
 
@@ -193,9 +193,8 @@ namespace Ristorante.Controllers
 
                 if (modificata)
                 {
-                    TempData["num"] = id;
-                    Startup.Conferma = 6;
-                    return RedirectToAction("Prenota");
+                    ViewData["modifica"] = $"la tua prenotazione {id} è stata modificata";
+                    return View("Prenota");
                 }
             }
                    
