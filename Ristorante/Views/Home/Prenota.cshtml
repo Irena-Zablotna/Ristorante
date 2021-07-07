@@ -65,7 +65,7 @@
                     <input type="date" id="data" asp-for="data" required autofocus>
 
                     <input asp-for="numero_tel" type="tel" id="tel" placeholder="numero di telefono "
-                           pattern="[0-9]{3,5}[0-9]{7,10}" minlength="10" maxlength="15"
+                           pattern="[0-9]{10,15}" minlength="10" maxlength="15"
                            required>
                     <input type="number" asp-for="numero_persone" placeholder="numero di persone max 40" min="1"
                            max="40" required>

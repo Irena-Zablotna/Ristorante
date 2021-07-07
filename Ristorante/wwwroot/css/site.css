@@ -128,7 +128,7 @@ body {
     height: 100%;
     width: 10%;
     display: inline-block;
-    transition: all ease 0.8s;
+    transition: all ease 1.5s;
 }
 
     #logo img {
@@ -138,7 +138,7 @@ body {
     }
 
     #logo:hover {
-        transform: scale(1.1);
+        transform: scale(1.3);
     }
 
 #menu {
@@ -343,6 +343,14 @@ table {
 
 .carousel-indicators li {
     opacity: 1;
+}
+
+.img-fluid {
+    transition: all ease 1.5s;
+}
+
+.img-fluid:hover {
+    transform: scale(1.5);
 }
 
 /*BUTTON RETURN ON TOP-------------------------*/
