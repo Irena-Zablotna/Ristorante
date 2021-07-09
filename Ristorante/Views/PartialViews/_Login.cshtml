@@ -18,21 +18,27 @@
 
             else
             {
-<form id="logform" method="post" asp-controller="Home" asp-action="Login">
+<form id="logform" class="form-inline ml-auto"  method="post" asp-controller="Home" 
+      asp-action="Login">
     @if (Startup.Conferma == 3)
 
     {
-        <div class="text-danger" style="font-size:12px">Dati non corretti </div>
+        <div style="font-size:12px">Dati non corretti </div>
     }
-    @*<div asp-validation-summary="All" class="text-danger"></div>*@
+  
+   
+
     <i class="fa fa-user"></i>
     <input asp-for="Username" id="username" placeholder="username" autofocus>
-    <span asp-validation-for="Username" class="text-white"></span>
+
     <i class="fa fa-lock"></i>
     <input asp-for="Password" id="password" placeholder="password">
-    <span asp-validation-for="Password" class="text-white"></span>>
+
+
+
     <button type="submit" id="submit">Accedi</button>
     <button id="registrati" asp-controller="Home" asp-action="Registrati">Registrati</button>
+
 </form>
             }
         }
