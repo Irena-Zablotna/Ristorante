@@ -35,71 +35,9 @@ namespace Ristorante.Controllers
         {
             return View();
         }
-//----------------------------------------REGISTRATI VISTA--------------
        
-        public IActionResult Registrati()
-        {
-            return View();
-        }
-//----------------------------------------REGISTRAZIONE UTENTE----------
 
-        [HttpPost]
-        public async Task<IActionResult> Registrazione(RegisterViewModel rvmodel)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = new IdentityUser { UserName = rvmodel.Username, PasswordHash = rvmodel.Password };
-
-                var result = await _userManager.CreateAsync(user, rvmodel.Password);
-
-                if (result.Succeeded)
-                {
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Registrati");
-                }
-                
-                    foreach (var error in result.Errors)
-                    {
-                        ModelState.AddModelError("", error.Description);
-                    }
-            }
-            
-            return View("Registrati");
-        }
-
-//------------------------------------LOGIN UTENTE-----------------------
-       
-        [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel lvmodel)
-        {
-            var user = await _userManager.FindByNameAsync(lvmodel.Username);
-            if (user != null)
-            {
-                var result = await _signInManager.PasswordSignInAsync(lvmodel.Username, lvmodel.Password, isPersistent: false, lockoutOnFailure: true);
-
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Index");
-                }
-
-                ModelState.AddModelError("","Dati non corretti" );
-
-            }
-           
-
-            Startup.Conferma = 3;
-           
-            return View("Index");
-        }
-//-----------------------------------LOGOUT UTENTE-----------------------------------
-
-        [HttpPost]
-        public async Task<IActionResult> Logout()
-        {
-            await _signInManager.SignOutAsync();
-            return RedirectToAction("Index");
-        }
-//-------------------------------------PIATTI VISTA------------------------------
+        //-------------------------------------PIATTI VISTA------------------------------
         public IActionResult Piatti()
         {
 

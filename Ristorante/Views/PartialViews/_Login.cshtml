@@ -11,34 +11,36 @@
     if ((signInManager.IsSignedIn(User)))
     {
         <h3>Benvenuto @User.Identity.Name!</h3>
-        <form  id ="logoutform" method="post" asp-controller="Home" asp-action="Logout">
-           <button id="logout">Logout</button>
-    </form>
-            }
-
-            else
-            {
-<form id="logform" class="form-inline ml-auto"  method="post" asp-controller="Home" 
-      asp-action="Login">
-    @if (Startup.Conferma == 3)
-
-    {
-        <div style="font-size:12px">Dati non corretti </div>
+        <form id="logoutform" method="post" asp-controller="Account" asp-action="Logout">
+            <button id="logout">Logout</button>
+        </form>
     }
-  
-   
 
-    <i class="fa fa-user"></i>
-    <input asp-for="Username" id="username" placeholder="username" autofocus>
+    else
+    {
+        @if (Startup.Conferma == 3)
 
-    <i class="fa fa-lock"></i>
-    <input asp-for="Password" id="password" placeholder="password">
-
-
-
-    <button type="submit" id="submit">Accedi</button>
-    <button id="registrati" asp-controller="Home" asp-action="Registrati">Registrati</button>
-
-</form>
-            }
+        {
+            <div id="error-div">Dati non corretti </div>
         }
+
+        <form id="logform" class="form-inline ml-auto" method="post" asp-controller="Account"
+              asp-action="Login">
+
+            <i class="fa fa-user"></i>
+            <input asp-for="Username" id="username" placeholder="username" autofocus>
+            <span asp-validation-for="Username" class="text-danger"></span>*
+
+            <i class="fa fa-lock"></i>
+            <input asp-for="Password" id="password" placeholder="password">
+            <span asp-validation-for="Password" class="text-danger"></span>
+
+
+            <button type="submit" id="submit">Accedi</button>
+            <button id="registrati" asp-controller="Account" asp-action="Registrati">Registrati</button>
+
+        </form>
+
+
+    }
+}

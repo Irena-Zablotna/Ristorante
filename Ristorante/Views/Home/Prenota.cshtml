@@ -15,21 +15,21 @@
             border-bottom: none;
         }
 
-        #contactform p, #gestisci p {
+        #contact1 p, #gestisci p {
             font-weight: normal;
             line-height: 150%;
             font-size: 16px;
             text-shadow: none;
         }
 
-        #visualizza {
+      /*  #visualizza {
             width: 48%;
         }
 
         #num-prenotazione {
             width: 50%;
             transform: translateY(80px);
-        }
+        }*/
     </style>
 }
 
@@ -37,7 +37,7 @@
 
 <div id="contact1">
     <h3>ti aspettiamo in via Braccini 17, Torino</h3>
-    <div id="contactform">
+    
 
         @if ((!signInManager.IsSignedIn(User)))
         {<p>
@@ -56,62 +56,77 @@
                 @ViewData["nonTrovata"]
             </p>}
 
-     
+    
+    <form  method="post" asp-controller="Home" asp-action="Prenotazione">
+        <div class="form-row" id="first-form">
 
+            <div class="col">
+                <input type="date" id="data" asp-for="data" required autofocus>
+            </div>
 
-        <div>
-            <form method="post" asp-controller="Home" asp-action="Prenotazione">
-                <div class="half left">
-                    <input type="date" id="data" asp-for="data" required autofocus>
+            <div class="col">
+                @if ((signInManager.IsSignedIn(User)))
+                {
+                    <input type="text" id="name" name="username" value="@User.Identity.Name">
+                }
+                else
+                {
+                    <input type="text" id="name" name="username" placeholder="La tua username" required>
+                }
+            </div>
 
-                    <input asp-for="numero_tel" type="tel" id="tel" placeholder="numero di telefono "
-                           pattern="[0-9]{10,15}" minlength="10" maxlength="15"
-                           required>
-                    <input type="number" asp-for="numero_persone" placeholder="numero di persone max 40" min="1"
-                           max="40" required>
-                </div>
+            <div class="w-100"></div>
+          
+            <div class="col">
+                <input asp-for="numero_tel" type="tel" id="tel" placeholder="numero di telefono "
+                       pattern="[0-9]{10,15}" minlength="10" maxlength="15"
+                       required>
+            </div>
 
-                <div class="half right">
-                    @if ((signInManager.IsSignedIn(User)))
-                    {
-                        <input type="text" id="name" name="username" value="@User.Identity.Name">
-                    }
-                    else
-                    {
-                        <input type="text" id="name" name="username" placeholder="La tua username" required>
-                    }
+            <div class="col">
+                <select asp-for="orario" required>
+                    <option value="" selected disabled hidden>pranzo o cena</option>
+                    <option value="pranzo">pranzo</option>
+                    <option value="cena">cena</option>
+                </select>
+            </div>
 
-                    <select asp-for="orario" required>
-                        <option value="" selected disabled hidden>pranzo o cena</option>
-                        <option value="pranzo">pranzo</option>
-                        <option value="cena">cena</option>
-                    </select>
-                    <input type="submit" id="prenota" value="Prenota">
+            <div class="w-100"></div>
 
-                </div>
+            <div class="col">
+                <input type="number" asp-for="numero_persone" placeholder="numero di persone max 40" min="1" max="40" required>
+            </div>
 
-            </form>
+            <div class="col">
+                <input type="submit" id="prenota" value="Prenota">
+            </div>
         </div>
+  
+    </form>
 
-    </div>
 
+    <form  method="post" asp-controller="Home" asp-action="VediPrenotazione">
+        <div class="form-row" id="vediprenotazione">
 
-    <div id="contactform1" style="margin-top:100px;">
+            <div class="col">
+                <input type="hidden" name="username" id="username" value="@User.Identity.Name">
+            </div>
 
-        <form id="vediprenotazione" method="post" asp-controller="Home" asp-action="VediPrenotazione">
-            <div class="half-left">
+            <div class="w-100"></div>
+
+            <div class="col">
                 <input type="number" name="id" id="num-prenotazione"
                        placeholder="Inserisci numero prenotazione" required>
             </div>
 
-            <div class="half-right">
+            <div class="col">
                 <input type="submit" id="visualizza" value=" Visualizza prenotazione">
             </div>
-            
-                <input type="hidden" name="username" id="username" value="@User.Identity.Name">
-        </form>
 
-    </div>
+
+
+        </div>
+    </form>
 
 </div>
 
