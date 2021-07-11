@@ -16,7 +16,7 @@
             border-bottom: none;
         }
 
-        #contactform p {
+        #contact1 p {
             font-weight: normal;
             line-height: 200%;
             font-size: 16px;
@@ -30,7 +30,7 @@
 
 <div id="contact1">
     <h3>ti aspettiamo in via Braccini 17, Torino</h3>
-    <div id="contactform">
+   
 
         <p>
             Gestisci la prenotazione n. @ViewBag.id:<br />
@@ -49,44 +49,65 @@
 
         </div>
 
-        <div id="vedi-prenotazione">
-            <form method="post">
-                <div class="half left">
-                    <input type="text" id="data" asp-for="data" onfocus="(type='date')"
-                           value="@Model.data.ToShortDateString()">
+       
+            <form method="post" id="vedi-prenotazione">
+                <div class="form-row" id="">
 
-                    <input asp-for="numero_tel" type="tel" id="tel"
-                           pattern="[0-9]{10,15}" minlength="10" maxlength="15" value="@Model.numero_tel" />
+                    <div class="col">
+                        <input type="text" id="data" asp-for="data" onfocus="(type='date')"
+                               value="@Model.data.ToShortDateString()">
+                    </div>
 
-                    <input type="text" asp-for="numero_persone" id="num-persone" value="@Model.numero_persone persone"
-                           style="margin-bottom:5px;" onfocus="(type='number')">
+                    <div class="col">
+                        <input type="text" id="name" name="username" value="@User.Identity.Name" readonly>
+                    </div>
 
-                    <input type="hidden" name="id" id="num-prenotazione" value="@Model.id_prenotazione">
+                    <div class="w-100"></div>
 
+                    <div class="col">
+                        <input asp-for="numero_tel" type="tel" id="tel"
+                               pattern="[0-9]{10,15}" minlength="10" maxlength="15" value="@Model.numero_tel" />
+                    </div>
 
-                </div>
+                    <div class="col">
+                        <select asp-for="orario">
+                            <option value=""></option>
+                            <option value="pranzo">pranzo</option>
+                            <option value="cena">cena</option>
+                            <option value="" selected disabled hidden>@Model.orario</option>
+                        </select>
+                    </div>
 
-                <div class="half right">
+                    <div class="w-100"></div>
 
-                    <input type="text" id="name" name="username" value="@User.Identity.Name" readonly>
+                    <div class="col">
+                        <input type="text" asp-for="numero_persone" id="num-persone" value="@Model.numero_persone persone"
+                               style="margin-bottom:5px;" onfocus="(type='number')">
+                    </div>
 
-                    <select asp-for="orario">
-                        <option value=""></option>
-                        <option value="pranzo">pranzo</option>
-                        <option value="cena">cena</option>
-                        <option value="" selected disabled hidden>@Model.orario</option>
-                    </select>
+                    <div class="col">
+                        <input type="submit" id="aggiorna" asp-controller="Home" asp-action="Modifica"
+                               value="Modifica prenotazione">
+                    </div>
 
+                    <div class="w-100"></div>
 
-                    <input type="submit" id="aggiorna" asp-controller="Home" asp-action="Modifica"
-                           value="Modifica prenotazione">
-                    <span id="canc">Cancella prenotazione</span>
+                    <div class="col">
+                        <input type="hidden" name="id" id="num-prenotazione" value="@Model.id_prenotazione">
+                    </div>
+
+                    <div class="col">
+                        <span id="canc">Cancella prenotazione</span>
+                    </div>
+
+                    <div class="w-100"></div>
+
                 </div>
 
             </form>
-        </div>
+      
 
-    </div>
+   
 </div>
 
 @section map{
@@ -98,22 +119,7 @@
 
 @section Scripts{
     <script>
-
-        @*function ChangeInput() {
-
-        if ($("#data").attr(type ="text"))
-        {
-            $("#data").attr({type:"date",}
-                { value: "@Model.data"});
-        }
-        if ($("#num-persone").attr(type = "text"))
-        {
-            $("#num-persone").attr({ type: "number",
-                                 value: "@Model.numero_persone" });
-        }
-
-    }*@
-        var dataFromView = '@Model.data';
+        @*var dataFromView = '@Model.data';*@
     </script>
 
 }

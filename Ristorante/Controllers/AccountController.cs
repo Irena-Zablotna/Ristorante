@@ -84,7 +84,7 @@ namespace Ristorante.Controllers
 
             Startup.Conferma = 3;
 
-            return View("Index", "Home");
+            return RedirectToAction("Index", "Home");
         }
         //-----------------------------------LOGOUT UTENTE-----------------------------------
 

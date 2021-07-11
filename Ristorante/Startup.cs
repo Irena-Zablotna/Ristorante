@@ -17,7 +17,6 @@ namespace Ristorante
 {
     public class Startup
     {
-        //public static int LoggedIn = 0;
        
         public static int Conferma = 0;
 

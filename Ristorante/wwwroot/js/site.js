@@ -46,8 +46,7 @@ btn.addEventListener("click", appear);
 function appear() {
     confirm.style.display = "block";
     vedi.style.display = "none";
-    contact.style.marginLeft = "0px";
-    /*console.log(dataFromView);*/
+ 
 }
 
 span.addEventListener("click", hide);
@@ -58,7 +57,3 @@ function hide() {
 }
 
 
-//$(".navbar a").on("click", function () {
-//    $(".navbar").find(".active").removeClass("active");
-//    $(this).parent().addClass("active");
-//});

@@ -45,7 +45,7 @@ namespace Ristorante.Controllers
             return View(listaPiatti);
         }
 //-----------------------------------PRENOTA VISTA-----------------------------------
-
+    
         public IActionResult Prenota()
         {
 
@@ -81,6 +81,7 @@ namespace Ristorante.Controllers
 
 //------------------------------CANCELLAZIONE PRENOTAZIONE-------------------------
         [HttpPost]
+
         public IActionResult Cancella(int id )
         {
            if (_signInManager.IsSignedIn(User))

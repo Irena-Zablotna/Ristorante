@@ -44,13 +44,14 @@
                 </ul>
 
                 <div id="logindiv">
-                @{
-                    await Html.RenderPartialAsync("~/Views/PartialViews/_Login.cshtml",
-                      new Ristorante.VievModels.LoginViewModel());
-                }
+                    @{
+                        await Html.RenderPartialAsync("~/Views/PartialViews/_Login.cshtml",
+                          new Ristorante.VievModels.LoginViewModel());
+                    }
+                </div>
+
             </div>
-                
-            </div>
+           
         </nav>
 
        
