@@ -45,8 +45,10 @@
 
                 <div id="logindiv">
                     @{
-                        await Html.RenderPartialAsync("~/Views/PartialViews/_Login.cshtml",
-                          new Ristorante.VievModels.LoginViewModel());
+
+                        <partial name="~/Views/PartialViews/_Login.cshtml" />
+                        //await Html.RenderPartialAsync("~/Views/PartialViews/_Login.cshtml",
+                        //  new Ristorante.VievModels.LoginViewModel());
                     }
                 </div>
 

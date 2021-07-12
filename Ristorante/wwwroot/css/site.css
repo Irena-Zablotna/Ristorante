@@ -74,7 +74,7 @@ body {
 }
 
 
-#logform {
+/*#logform {
     width: 100%;
     display: flex;
     justify-content: flex-end;
@@ -89,28 +89,33 @@ body {
         margin-bottom: 0.5%;
         padding: 6px;
     }
-
-    #logform button {
-        background-color: #1a1919;
-        border: 2px solid #ffa17a;
-        color: white;
-        border-radius: 50%;
-        font-size: 10px;
-        width: 12%;
-        text-align: center;
-        padding: 6px;
+*/
+#logindiv button, .link-btn {
+    background-color: #1a1919;
+    border: 2px solid #ffa17a;
+    color: white;
+    border-radius: 50%;
+    font-size: 10px;
+    width: 12%;
+    text-align: center;
+    padding: 6px;
+}
+    .link-btn{
+        text-decoration:none;
+        font-size:10px;
+        margin-left:15px;
     }
 
-
-        #logform button:hover, #logoutform button:hover {
-            background-color: #ffa17a;
-        }
+    #logindiv button:hover, #logoutform button:hover, .link-btn:hover {
+        background-color: #ffa17a;
+        text-decoration:none;
+    }
 
 #registrati {
     margin-left: 4%;
 }
 
-#logform i {
+#logindiv i {
     color: white;
     float: left;
     font-size: 20px;
@@ -148,21 +153,14 @@ body {
     left: 20%;
 }
 
-#pwd a{
-    font-size: 12px;
+#pwd {
+    font-size: 16px;
     text-decoration:none;
+    padding-top:20px;
+    color:white;
 }
 
-#pwd{
-    position:absolute;
-    top:150%;
-}
-@media (max-width: 960px){
 
-    #pwd{
-        position:static;
-    }
-}
 /*---------------------------MENU BAR WITH LOGO Previous version-------------------------------------*/
 #topbar {
     /* min-height: 140px;
@@ -226,6 +224,7 @@ body {
 
 .navbar-brand {
     max-width: 200px;
+    margin-right:2rem;
 }
 
     .navbar-brand img {
@@ -292,12 +291,14 @@ main {
         color: #ffa17a;
         text-shadow: #1a1919 1px 1px 3px;
         transition: all 0.5s;
+       
     }
 
         #smain a:hover {
             color: white;
             text-shadow: #1a1919 1px 1px 3px;
         }
+
 
 /*FOOTER--------------------------------*/
 
@@ -647,6 +648,13 @@ input, select, #canc {
 #signupDiv button:hover {
     background-color: #ffa17a;
 }
+
+#signupDiv i{
+    color:white;
+    padding:10px;
+    font-size:20px;
+}
+
 
 @media (max-width:1200px) {
     #signupDiv button{

@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="it">
 
 <head>
@@ -42,19 +43,19 @@
 
                 <div id="logindiv">
                     @{
-                        await Html.RenderPartialAsync("~/Views/PartialViews/_Login.cshtml",
-                          new Ristorante.VievModels.LoginViewModel());
+//await Html.RenderPartialAsync("~/Views/PartialViews/_Login.cshtml",
+//  new Ristorante.VievModels.LoginViewModel());
+                        <partial name="~/Views/PartialViews/_Login.cshtml" />
                     }
-                   
                 </div>
 
             </div>
-           
-           
+
+
         </nav>
         <main>
             <section id="smain">
-               
+
                 <section id="information">
                     @RenderSection("information", false)
                 </section>

@@ -62,7 +62,13 @@ namespace Ristorante.Controllers
 
             return View("Registrati");
         }
+        //----------------VISTA LOGIN UTENTE-------------------
+         
 
+        public IActionResult Login()
+        {
+            return View();
+        }
         //------------------------------------LOGIN UTENTE-----------------------
 
         [HttpPost]
@@ -81,10 +87,8 @@ namespace Ristorante.Controllers
                 ModelState.AddModelError("", "Dati non corretti");
 
             }
-
-            Startup.Conferma = 3;
-
-            return RedirectToAction("Index", "Home");
+       
+            return View();
         }
         //-----------------------------------LOGOUT UTENTE-----------------------------------
 

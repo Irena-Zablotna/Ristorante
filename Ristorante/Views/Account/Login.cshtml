@@ -3,7 +3,7 @@
 
 @inject SignInManager<IdentityUser> signInManager
 @inject UserManager<IdentityUser> userManager
-@model RegisterViewModel
+@model LoginViewModel
 
 
 @{
@@ -15,7 +15,7 @@
     <style>
         #smain {
             border-bottom: none;
-            pading-top:10%;
+            padding-top:10%;
         }
 
         #information p {
@@ -32,38 +32,31 @@
     </style>
 
 }
-
-@{
-    if ((signInManager.IsSignedIn(User)))
-    {
-        @section information {<p style=" font-weight: normal;"> Grazie per la tua registrazione  @User.Identity.Name!</p>}
-
-    }
-
-    else
-    {
-        @section information{ <p> Registrati! </p>}
-    }
+    
+    
+        @section information{ <p> Accedi </p>}
+    
 
     <div id="signupDiv">
-        <form method="post" asp-controller="Account" asp-action="Registrazione">
+        <form method="post" asp-controller="Account" asp-action="Login">
 
-            <input asp-for="Username" id="username1" placeholder="Scegli la tua username" autofocus />
-            <span asp-validation-for="Username" style="color:white;"></span>
+            <i class="fa fa-user"></i>
+            <input asp-for="Username" id="username" placeholder="username" autofocus>
+            <span asp-validation-for="Username" ></span>
 
-            <input asp-for="Email" id="email" placeholder="Email">
-            <span asp-validation-for="Email" style="color:white;"></span>
-
-            <input asp-for="Password" id="password1" placeholder="Password">
-            <span asp-validation-for="Password" style="color:white;"></span>
-
-            <input asp-for="ConfirmPassword" id="password2" placeholder="Ripeti la password">
-            <span asp-validation-for="ConfirmPassword" style="color:white;"></span>
+            <i class="fa fa-lock"></i>
+            <input asp-for="Password" id="password" placeholder="password">
+            <span asp-validation-for="Password" ></span>
 
             <div asp-validation-summary="All" style="color:white;font-size:10px;"></div>
 
-            <button type="submit" id="registrati">Registrati</button>
+            <button type="submit" id="login">Login</button>
         </form>
+
+        <div style=" margin-top:40px; color:white">
+            <a href="#" id="pwd">Hai dimenticato la password?</a>
+        </div>
+       
     </div>
 
 }

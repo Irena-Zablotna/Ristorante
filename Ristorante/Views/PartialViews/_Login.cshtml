@@ -5,7 +5,7 @@
 
 @inject SignInManager<IdentityUser> signInManager
 @inject UserManager<IdentityUser> userManager
-@model LoginViewModel
+@*@model LoginViewModel*@
 
 @{
     if ((signInManager.IsSignedIn(User)))
@@ -18,39 +18,13 @@
 
     else
     {
-
-
-        <form id="logform" class="form-inline ml-auto" method="post" asp-controller="Account"
-              asp-action="Login">
-
-            <i class="fa fa-user"></i>
-            <input asp-for="Username" id="username" placeholder="username" autofocus>
-            <span asp-validation-for="Username" class="text-danger"></span>
-
-            <i class="fa fa-lock"></i>
-            <input asp-for="Password" id="password" placeholder="password">
-            <span asp-validation-for="Password" class="text-danger"></span>
-
-
-            <button type="submit" id="submit">Accedi</button>
-            <button id="registrati" asp-controller="Account" asp-action="Registrati">Registrati</button>
-
-        </form>
-
-        @if (Startup.Conferma == 3)
-
-        {
-            <div id="error-div">Dati non corretti </div>
-        }
-
-        @*@if ((!signInManager.IsSignedIn(User)))
-            {
-                <div id="pwd">
-                    <a href="#" style="font-size:12px;">Hai dimenticato la password?</a>
-                </div>
-            }*@
-
-
-
+        
+        
+            <a class="link-btn" asp-controller="Account" asp-action="Login" style="text-decoration:none;
+            font-size:10px;">Accedi</a>
+      
+            <a class="link-btn" asp-controller="Account" asp-action="Registrati" style="text-decoration:none;
+            font-size:10px;">Registrati</a>
+       
     }
 }
