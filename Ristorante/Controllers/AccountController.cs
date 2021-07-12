@@ -74,21 +74,23 @@ namespace Ristorante.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel lvmodel)
         {
+            if (ModelState.IsValid) 
+            { 
             var user = await _userManager.FindByNameAsync(lvmodel.Username);
-            if (user != null)
-            {
-                var result = await _signInManager.PasswordSignInAsync(lvmodel.Username, lvmodel.Password, isPersistent: false, lockoutOnFailure: true);
-
-                if (result.Succeeded)
+                if (user != null)
                 {
-                    return RedirectToAction("Index", "Home");
+                    var result = await _signInManager.PasswordSignInAsync(lvmodel.Username, lvmodel.Password, isPersistent: false, lockoutOnFailure: true);
+
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+
+                    ModelState.AddModelError(string.Empty, "Dati non corretti");
                 }
-
-                ModelState.AddModelError("", "Dati non corretti");
-
             }
        
-            return View();
+            return View(lvmodel);
         }
         //-----------------------------------LOGOUT UTENTE-----------------------------------
 

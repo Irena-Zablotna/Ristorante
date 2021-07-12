@@ -9,13 +9,10 @@ namespace Ristorante.VievModels
     public class LoginViewModel
     {
         [Required (ErrorMessage ="campo obbligatorio")]
-        //[EmailAddress]
-        
-        //[Display(Name = "Username")]
         public string Username   { get; set; }
 
+
         [Required(ErrorMessage = "campo obbligatorio")]
-        //[Display(Name ="Password")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
       
