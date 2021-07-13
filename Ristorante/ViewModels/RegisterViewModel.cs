@@ -8,15 +8,15 @@ namespace Ristorante.VievModels
 {
     public class RegisterViewModel
     {
-        [Required]
+        [Required (ErrorMessage ="Campo obbligatorio")]
         [MaxLength(12)]
         public string Username { get; set; }
 
-        [Required]
+        [Required (ErrorMessage = "Campo obbligatorio")]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Campo obbligatorio")]
         [DataType(DataType.Password)]
         public string  Password { get; set; }
 

@@ -1,11 +1,11 @@
 ﻿
-@using Ristorante.VievModels
+
 @using Microsoft.AspNetCore.Identity
 
 
 @inject SignInManager<IdentityUser> signInManager
 @inject UserManager<IdentityUser> userManager
-@*@model LoginViewModel*@
+
 
 @{
     if ((signInManager.IsSignedIn(User)))
@@ -18,13 +18,10 @@
 
     else
     {
-        
-        
-            <a class="link-btn" asp-controller="Account" asp-action="Login" style="text-decoration:none;
-            font-size:10px;">Accedi</a>
+            <a class="link-btn " asp-controller="Account" asp-action="Login" style="text-decoration:none;
+            font-size:10px;">Login</a>
       
-            <a class="link-btn" asp-controller="Account" asp-action="Registrati" style="text-decoration:none;
+            <a class="link-btn " asp-controller="Account" asp-action="Registrati" style="text-decoration:none;
             font-size:10px;">Registrati</a>
-       
     }
 }

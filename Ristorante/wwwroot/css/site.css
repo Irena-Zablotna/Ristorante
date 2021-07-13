@@ -42,17 +42,14 @@ body {
         z-index: 1;
     }
 
-/*-----------LOGIN BOX inside a menu bar-----------*/
+/*-----------LOGIN AND REGISTER BUTTONS inside a menu bar-----------*/
 #logindiv {
     width: 55%;
     display: flex;
     margin-right: 3%;
     justify-content: flex-end;
     flex-wrap:wrap;
-    position:relative;
 }
-
-   
 
     @media (max-width: 960px) {
         #logindiv{
@@ -61,35 +58,9 @@ body {
     #logindiv button{
         width:15%;
     }
-    #logform input{
-        width:20%;
-    }
+  
 }
 
-@media only screen and (max-width: 1200px) {
-
-    #logindiv {
-        width: 100%;
-    }
-}
-
-
-/*#logform {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-    #logform input {
-        width: 20%;
-        margin-right: 5%;
-        font-size: 11px;
-        text-align: center;
-        margin-bottom: 0.5%;
-        padding: 6px;
-    }
-*/
 #logindiv button, .link-btn {
     background-color: #1a1919;
     border: 2px solid #ffa17a;
@@ -106,9 +77,10 @@ body {
         margin-left:15px;
     }
 
-    #logindiv button:hover, #logoutform button:hover, .link-btn:hover {
+    #logindiv button:hover, #logoutform button:hover, #logindiv a:hover {
         background-color: #ffa17a;
         text-decoration:none;
+        color:white;
     }
 
 #registrati {
@@ -145,86 +117,12 @@ body {
         padding: 8px;
     }
 
-#error-div {
-    font-size: 12px;
-    color: white;
-    position: absolute;
-    top: 150%;
-    left: 20%;
-}
-
-#pwd {
-    font-size: 16px;
-    text-decoration:none;
-    padding-top:20px;
-    color:white;
-}
-
-
-/*---------------------------MENU BAR WITH LOGO Previous version-------------------------------------*/
-#topbar {
-    /* min-height: 140px;
-    width: 100%;*/
-    background: rgba(19, 19, 19, 0.4);
-    border-bottom: 3px solid #ffa17a;
-}
-
-#logo {
-    height: 100%;
-    width: 10%;
-    display: inline-block;
-    transition: all ease 1.5s;
-}
-
-    #logo img {
-        height: 94%;
-        padding-left: 40px;
-        padding-top: 15px;
-    }
-
-    #logo:hover {
-        transform: scale(1.3);
-    }
-
-#menu {
-    margin: auto;
-    width: 90%;
-    height: 100%;
-    float: right;
-    text-align: center;
-    display: flex;
-}
-
-    #menu ul {
-        width: 100%;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        align-content: center;
-        padding-left: 110px;
-    }
-
-    #menu a {
-        text-decoration: none;
-        color: white;
-        font-size: 18px;
-        transition: all 0.5s;
-        padding-left: 25px;
-        padding-right: 25px;
-        margin-bottom: -1%;
-    }
-
-        #menu a:hover {
-            color: #ffa17a;
-        }
-
 
 
 /*------------NAVBAR BOOTSTRAP-------------*/
-
 .navbar-brand {
     max-width: 200px;
-    margin-right:2rem;
+    margin-right: 2rem;
 }
 
     .navbar-brand img {
@@ -252,6 +150,28 @@ body {
 .nav-link {
     margin-left: 1.5rem;
 }
+
+#topbar {
+    background: rgba(19, 19, 19, 0.4);
+    border-bottom: 3px solid #ffa17a;
+}
+
+#logo {
+    height: 100%;
+    width: 10%;
+    display: inline-block;
+    transition: all ease 1.5s;
+}
+
+    #logo img {
+        height: 94%;
+        padding-left: 40px;
+        padding-top: 15px;
+    }
+
+    #logo:hover {
+        transform: scale(1.5);
+    }
 
 /*MAIN WITH BORDER-------------*/
 main {
@@ -330,7 +250,7 @@ footer {
             color: #ffa17a;
         }
 
-/*SECOND PAGE---------------------------------------------------------------------------------------*/
+/*SECOND PAGE "PIATTI"---------------------------------------------------------------------------------------*/
 .wrapper1 {
     background-image: url(../images/andrew-seaman-sQopSb2K0CU-unsplash.jpg);
     width: 100%;
@@ -402,7 +322,7 @@ table {
             color: #ffa17a;
         }
 
-/* DIVS POSITIONING ON MENU PAGE--------------------*/
+/* DIVS POSITIONING ON "PIATTI" PAGE--------------------*/
 .big-box {
     margin-top: 60px;
     display: flex;
@@ -442,7 +362,7 @@ table {
 }
 
     .img-fluid:hover {
-        transform: scale(1.5);
+        transform: scale(1.4);
     }
 
 /*BUTTON RETURN ON TOP-------------------------*/
@@ -466,7 +386,7 @@ table {
 /*  LAST PAGE---------------------------------------------------------------------------------------------*/
 #map {
     width: 35%;
-    height: 350px;
+   /* height: 350px;*/
     position: absolute;
     top: 35%;
     left: 82%;
@@ -555,7 +475,7 @@ input, select, #canc {
 
 
 
-/*-----------submit buttons -----------*/
+/*-----------submit buttons of the reservation form-----------*/
 #aggiorna {
     color: #58950f;
     margin-top: 2px;
@@ -628,8 +548,12 @@ input, select, #canc {
     cursor: pointer;
 }
 
-/*---------------SIGN UP FORM--------------------*/
-#signupDiv button {
+/*---------------SIGN UP FORM and LOGIN FORM--------------------*/
+.signupDiv{
+    width:60%
+}
+
+.signupDiv button {
     background-color: #1a1919;
     border: 3px solid #ffa17a;
     color: white;
@@ -641,18 +565,19 @@ input, select, #canc {
     margin: auto;
 }
 
-#signupDiv input {
+.signupDiv input {
     line-height: 120%;
 }
 
-#signupDiv button:hover {
+.signupDiv button:hover {
     background-color: #ffa17a;
 }
 
-#signupDiv i{
+.signupDiv i{
     color:white;
     padding:10px;
     font-size:20px;
+   
 }
 
 
@@ -668,3 +593,13 @@ input, select, #canc {
         width: 70%;
     }
 }
+#pass {
+    font-size: 16px;
+    text-decoration: none;
+    padding-top: 20px;
+    color: white;
+}
+
+    #pass:hover {
+        color: #ffa17a;
+    }

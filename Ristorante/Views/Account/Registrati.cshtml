@@ -15,7 +15,7 @@
     <style>
         #smain {
             border-bottom: none;
-            padding-top:10%;
+            padding-top:5%;
         }
 
         #information p {
@@ -45,18 +45,22 @@
         @section information{ <p> Registrati! </p>}
     }
 
-    <div id="signupDiv">
+    <div class="signupDiv">
         <form method="post" asp-controller="Account" asp-action="Registrazione">
 
+            <i class="fa fa-user"></i>
             <input asp-for="Username" id="username1" placeholder="Scegli la tua username" autofocus />
             <span asp-validation-for="Username" style="color:white;"></span>
 
+            <i class="fa fa-envelope"></i>
             <input asp-for="Email" id="email" placeholder="Email">
             <span asp-validation-for="Email" style="color:white;"></span>
 
+            <i class="fa fa-lock"></i>
             <input asp-for="Password" id="password1" placeholder="Password">
             <span asp-validation-for="Password" style="color:white;"></span>
 
+            <i class="fa fa-lock"></i>
             <input asp-for="ConfirmPassword" id="password2" placeholder="Ripeti la password">
             <span asp-validation-for="ConfirmPassword" style="color:white;"></span>
 

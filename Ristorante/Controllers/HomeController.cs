@@ -74,7 +74,7 @@ namespace Ristorante.Controllers
 
             else
             {
-               return View("Registrati");
+               return RedirectToAction("Login", "Account");
             }
           
         }

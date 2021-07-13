@@ -86,10 +86,10 @@ namespace Ristorante.Controllers
                         return RedirectToAction("Index", "Home");
                     }
 
-                    ModelState.AddModelError(string.Empty, "Dati non corretti");
                 }
+
             }
-       
+            ModelState.AddModelError(string.Empty, "Dati non corretti");
             return View(lvmodel);
         }
         //-----------------------------------LOGOUT UTENTE-----------------------------------

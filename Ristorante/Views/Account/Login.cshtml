@@ -18,17 +18,27 @@
             padding-top:10%;
         }
 
-        #information p {
-            color: white;
-            font-size: 20px;
-            width: 50%;
-            margin: auto;
+        #smain a {
+            color:white;
+
         }
+
+       #smain a:hover {
+            color: #ffa17a;
+       }
+
+       #information p {
+             color: white;
+             font-size: 20px;
+             width: 50%;
+             margin: auto;
+       }
 
         #signupDiv {
             width: 50%;
             margin: auto;
         }
+        
     </style>
 
 }
@@ -37,24 +47,24 @@
         @section information{ <p> Accedi </p>}
     
 
-    <div id="signupDiv">
+    <div class="signupDiv">
         <form method="post" asp-controller="Account" asp-action="Login">
 
             <i class="fa fa-user"></i>
             <input asp-for="Username" id="username" placeholder="username" autofocus>
-            @*<span asp-validation-for="Username" style="color:white;" ></span>*@
+            <span asp-validation-for="Username" style="color:white;" ></span>
 
             <i class="fa fa-lock"></i>
             <input asp-for="Password" id="password" placeholder="password">
-            @*<span asp-validation-for="Password" style="color:white;"></span>*@
+            <span asp-validation-for="Password" style="color:white;"></span>
 
-            <div asp-validation-summary="All" style="color:white;font-size:10px;"></div>
+            <div asp-validation-summary="All" style="color:white;font-size:14px;"></div>
 
             <button type="submit" id="login">Login</button>
         </form>
 
-        <div style=" margin-top:40px; color:white">
-            <a href="#" id="pwd">Hai dimenticato la password?</a>
+        <div  style="margin-top:40px;">
+            <a href="#" id="pass">Hai dimenticato la password?</a>
         </div>
        
     </div>
