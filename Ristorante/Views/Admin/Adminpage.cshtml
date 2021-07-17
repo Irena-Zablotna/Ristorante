@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "Adminpage";
+    Layout = "~/Views/Shared/_Adminpage.cshtml";
+}
+@model Prenotazione
+
+@section Styles{
+    <style>
+        #smain {
+            border:none;
+        }
+    </style>
+
+}
+<h4>Adminpage</h4>
+
+<div>
+    <p> Seleziona prenotazioni che vuoi vedere:</p>
+    <form method="post">
+        <div class="form-group" id="adminPrenotazioni">
+            <label for="dataPrenotazione">Data prenotazione</label>
+            <input type="date" asp-for="data" id="dataPrenotazione" />
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+            <label class="form-check-label" for="inlineRadio1">pranzo</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio2">cena</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+            <label class="form-check-label" for="inlineRadio3">pranzo e cena </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary" asp-controller="Admin" asp-action="VediPrenotazioni">Vedi</button>
+    </form>
+
+</div>
+

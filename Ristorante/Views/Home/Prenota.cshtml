@@ -15,10 +15,13 @@
             border-bottom: none;
         }
 
-        #contact1 p{
-            font-weight: bold;
+        #smain h3{
+            font-weight:normal;
+        }
+        #contact1 p {
+            font-weight: normal;
             line-height: 150%;
-            font-size: 16px;
+            font-size: 14px;
             text-shadow: none;
         }
 
@@ -96,7 +99,9 @@
   
     </form>
 
-
+    <div>
+        <p>Puoi gestire la tua prenotazione:</p>
+    </div>
     <form  method="post" asp-controller="Home" asp-action="VediPrenotazione">
         <div class="form-row" id="vediprenotazione">
 
@@ -108,7 +113,7 @@
 
             <div class="col-md-6">
                 <input type="number" name="id" id="num-prenotazione"
-                       placeholder="Inserisci numero prenotazione" required>
+                       placeholder="Inserisci num. prenotazione" required>
             </div>
 
             <div class="col-md-6">
@@ -126,6 +131,6 @@
 @section map{
 
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2818.2892200742976!2d7.65260595061477!3d45.05964376826541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47886d21a14d5775%3A0x46623a97c4336847!2sVia%20Braccini%2C%2017%2C%2010141%20Torino%20TO!5e0!3m2!1sit!2sit!4v1612720539508!5m2!1sit!2sit"
-            width="250" height="250" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+            width="200" height="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
             tabindex="0"></iframe>
 }

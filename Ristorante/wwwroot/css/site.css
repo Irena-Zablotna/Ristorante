@@ -9,7 +9,7 @@ html {
 }
 
 body {
-    background-color: #515152;
+   
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -23,6 +23,7 @@ body {
     position: relative;
     z-index: 10;
     overflow: hidden;
+    background-color: #515152;
 }
 
     .wrapper > * {
@@ -48,7 +49,8 @@ body {
     display: flex;
     margin-right: 3%;
     justify-content: flex-end;
-    flex-wrap:wrap;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
     @media (max-width: 960px) {
@@ -98,7 +100,7 @@ body {
     color: #ffa17a;
     margin: auto;
     text-align: center;
-    font-size: 16px;
+    font-size: 14px;
     margin-right: 15%;
 }
 
@@ -112,7 +114,7 @@ body {
         color: white;
         border-radius: 50%;
         font-size: 10px;
-        width: 50%;
+        width: 40%;
         text-align: center;
         padding: 8px;
     }
@@ -136,7 +138,7 @@ body {
 
 #topbar a {
     color: white;
-    font-size: 16px;
+    font-size: 14px;
     transition: all 0.5s;
 }
 
@@ -154,6 +156,12 @@ body {
 #topbar {
     background: rgba(19, 19, 19, 0.4);
     border-bottom: 3px solid #ffa17a;
+    height:110px;
+}
+@media (max-width:990px){
+    #topbar{
+        min-height:110px;
+    }
 }
 
 #logo {
@@ -199,7 +207,7 @@ main {
     }
 
     #smain p {
-        font-size: 25px;
+        font-size: 18px;
         font-weight: bolder;
         color: white;
         line-height: 250%;
@@ -231,8 +239,8 @@ footer {
     padding-left: 45px;
     padding-bottom: 20px;
     color: white;
-    line-height: 160%;
-    font-size: 16px;
+    line-height: 120%;
+    font-size: 14px;
     margin-bottom: 3%;
 }
 
@@ -242,7 +250,7 @@ footer {
 
     #social i {
         color: white;
-        font-size: 20px;
+        font-size: 18px;
         padding-right: 10px;
     }
 
@@ -259,6 +267,7 @@ footer {
     background-size: cover;
     position: relative;
     z-index: 10;
+    background-color: #515152;
 }
 
     .wrapper1 > * {
@@ -336,7 +345,7 @@ table {
     position: absolute;
     top: 50%;
     left: 35%;
-    width: 30%;
+    width: 34%;
 }
 
 
@@ -406,13 +415,15 @@ table {
         margin-top:10px;
         margin-bottom:30px;
     }
-
-    #first-form{
-        margin-top:30px;
+    #contact1 p{
+        font-size:14px;
+    }
+    #first-form {
+        margin-top: 30px;
     }
 
 #vediprenotazione{
-    margin-top:30px;
+    margin-top:20px;
     width:100%;
 }
 #contactform {
@@ -435,10 +446,10 @@ input, select, #canc {
    width: 100%;
     border: 1px solid #ffa17a;
     outline: none;
-    margin-bottom: 20px;
-    padding: 10px;
+   margin-bottom: 20px;
+    padding: 8px;
     color: white;
-    font-size: 14px;
+    font-size: 11px;
     line-height: 100%;
     background-color: #13131366;
     box-shadow: 1px 1px 2px #070707d8;
@@ -459,12 +470,12 @@ input, select, #canc {
     }
 
     input[type=submit] {
-        font-size: 14px;
+        font-size: 11px;
         font-weight: bold;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         margin-top: 20px;
         line-height: 150%;
-        padding: 9px;
+        padding: 7px;
     }
 
         input[type=submit]:hover {
@@ -472,7 +483,10 @@ input, select, #canc {
             background-color: #1a1919;
         }
 
-
+#visualizza{
+    padding-left:9px;
+    padding-right:9px;
+}
 
 
 /*-----------submit buttons of the reservation form-----------*/
@@ -521,7 +535,7 @@ input, select, #canc {
 }
 
 #data {
-    padding: 7px;
+    padding: 6px;
 }
 /*------------------POP-UP ALERT ------------------*/
 

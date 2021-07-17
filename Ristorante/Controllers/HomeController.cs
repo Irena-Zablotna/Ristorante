@@ -104,7 +104,7 @@ namespace Ristorante.Controllers
 
         //---------------------------------VISUALIZZA PRENOTAZIONE---------------
 
-        //[Authorize]
+       
         [HttpPost]
         public IActionResult VediPrenotazione (int id, string username)
         {
