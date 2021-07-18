@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Ristorante.Models;
+using Ristorante.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,16 @@ namespace Ristorante.Controllers
 {
     public class AdminController : Controller
     {
+            private RistoranteRepository _ristoranteRepository;
+
+
+        public AdminController( RistoranteRepository ristoranteRepository)
+        {
+           
+            _ristoranteRepository = ristoranteRepository;
+         
+
+        }
         // GET: AdminController
         //[Authorize (Roles="Admin")]
         public ActionResult Adminpage()
@@ -17,9 +29,12 @@ namespace Ristorante.Controllers
             return View();
         }
 
-        public ActionResult ListaPrenotazioni()
+      
+        public IActionResult VediMenu()
         {
-            return View();
+            List<Piatto> listaPiatti = _ristoranteRepository.VediPiatti();
+            return View(listaPiatti);
+           
         }
 
         // GET: AdminController/Details/5

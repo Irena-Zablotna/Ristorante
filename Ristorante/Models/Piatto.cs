@@ -8,7 +8,7 @@ namespace Ristorante.Models
 {
     public partial class Piatto
     {
-        public string id { get; set; }
+        public int id { get; set; }
         public string Nome { get; set; }
         public decimal Prezzo { get; set; }
         public string Tipo_piatto { get; set; }
