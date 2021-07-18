@@ -147,15 +147,45 @@ namespace Ristorante.Repository
 
         public bool ModificaAdmin(Piatto piatto, int id)
         {
-            piatto = _ristoranteContext.Piatti.Where(p => p.id == id).FirstOrDefault();
+            var result = _ristoranteContext.Piatti.Where(p => p.id == id).FirstOrDefault();
             if (piatto != null)
             {
-                _ristoranteContext.Piatti.Update(piatto);
+                result.Nome = piatto.Nome;
+                result.Prezzo = piatto.Prezzo;
+                if (piatto.Tipo_piatto == null)
+                {
+                    piatto.Tipo_piatto = result.Tipo_piatto;
+                }
+                else
+                {
+                    result.Tipo_piatto = piatto.Tipo_piatto;
+                }
+                _ristoranteContext.Piatti.Update(result);
                 _ristoranteContext.SaveChanges();
                 return true;
             }
             return false;
         }
+
+        //------------INSERISCI NUOVO PIATTO Admin----------------------------
+
+        public int CreaPiatto(Piatto piatto)
+        {
+            var p = new Piatto();
+            p.Nome = piatto.Nome;
+            p.Prezzo = piatto.Prezzo;
+            p.Tipo_piatto = piatto.Tipo_piatto;
+
+            if (p != null)
+            {
+                _ristoranteContext.Piatti.Add(p);
+                _ristoranteContext.SaveChanges();
+                return p.id;
+            }
+            return -1; 
+        }
+
+        //-----------CANCELLA PIATTO Admin------------
     }
 }
 

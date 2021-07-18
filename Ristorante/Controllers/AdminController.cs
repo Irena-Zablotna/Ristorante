@@ -23,7 +23,7 @@ namespace Ristorante.Controllers
 
         }
         // GET: AdminController
-        //[Authorize (Roles="Admin")]
+       
         public ActionResult Adminpage()
         {
             return View();
@@ -44,6 +44,7 @@ namespace Ristorante.Controllers
             return View(piatto);
         }
 
+        
         // GET: AdminController/Create
         public ActionResult Create()
         {
@@ -53,44 +54,55 @@ namespace Ristorante.Controllers
         // POST: AdminController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Piatto piatto)
         {
-            try
-            {
-                return RedirectToAction(nameof(VediMenu));
-            }
-            catch
-            {
-                return View();
-            }
+            int id = _ristoranteRepository.CreaPiatto(piatto);
+            
+            
+                if(ModelState.IsValid && id!=-1)
+                {
+                    ViewData["creato"] = $"Il piatto {id} è stato aggiunto al menu";
+                return View(" Details", piatto);
+                }
+          
+                return View("Create");
+           
         }
 
         // GET: AdminController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            Piatto piatto = _ristoranteRepository.DettaglioPiatto(id);
+            return View(piatto);
         }
 
         // POST: AdminController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Piatto piatto)
         {
-            try
-            {
 
-                return RedirectToAction(nameof(VediMenu));
-            }
-            catch
+            if (id != piatto.id)
             {
-                return View();
+                return NotFound();
             }
+
+            bool updated = _ristoranteRepository.ModificaAdmin(piatto, id);
+
+                if (updated)
+                {
+                ViewData["conferma"] = $"Il piatto {id} è stato modificato";
+                    return View("Details", piatto);
+                }
+
+            return View ("Edit");
         }
 
         // GET: AdminController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Piatto piatto = _ristoranteRepository.DettaglioPiatto(id);
+            return View(piatto);
         }
 
         // POST: AdminController/Delete/5
