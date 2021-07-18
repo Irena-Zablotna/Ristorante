@@ -132,8 +132,30 @@ namespace Ristorante.Repository
             return false;
         }
 
-        //------------VEDI MENU------------------------------------
+        //------------VEDI Piatto Admin------------------------------------
 
+        public Piatto DettaglioPiatto(int id)
+        {
+            Piatto piatto = _ristoranteContext.Piatti.Where(p => p.id == id).FirstOrDefault();
+            if(piatto!=null)
+            {
+                return piatto;
+            }
+            return null;
+        }
+        //--------------AGGIORNA PIATTO Admin-------------------------
+
+        public bool ModificaAdmin(Piatto piatto, int id)
+        {
+            piatto = _ristoranteContext.Piatti.Where(p => p.id == id).FirstOrDefault();
+            if (piatto != null)
+            {
+                _ristoranteContext.Piatti.Update(piatto);
+                _ristoranteContext.SaveChanges();
+                return true;
+            }
+            return false;
+        }
     }
 }
 

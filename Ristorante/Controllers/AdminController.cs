@@ -40,7 +40,8 @@ namespace Ristorante.Controllers
         // GET: AdminController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Piatto piatto = _ristoranteRepository.DettaglioPiatto(id);
+            return View(piatto);
         }
 
         // GET: AdminController/Create
@@ -56,7 +57,7 @@ namespace Ristorante.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(VediMenu));
             }
             catch
             {
@@ -77,7 +78,8 @@ namespace Ristorante.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+
+                return RedirectToAction(nameof(VediMenu));
             }
             catch
             {
