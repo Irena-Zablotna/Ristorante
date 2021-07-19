@@ -16,17 +16,17 @@
             <input type="hidden" asp-for="id" />
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
+                <input asp-for="Nome" class="form-control" required />
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Prezzo" class="control-label"></label>
-                <input asp-for="Prezzo" class="form-control" />
+                <input asp-for="Prezzo" class="form-control" required/>
                 <span asp-validation-for="Prezzo" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Tipo_piatto" class="control-label"></label>
-                <select asp-for="Tipo_piatto" class="form-control">
+                <select asp-for="Tipo_piatto" class="form-control" required>
                     <option value="P1">P1</option>
                     <option value="P2">P2</option>
                     <option value="P3">P3</option>

@@ -16,6 +16,10 @@
 
 <div id="gestione-piatti">
     <p>Puoi gestire il menu:</p>
+
+    <p>@ViewData["cancellato"]</p>
+    <p>@ViewData["impossibile"]</p>
+   
     <button type="button" class="btn btn-primary">
         <a asp-controller="Admin" asp-action="VediMenu">Lista Piatti </a>
     </button>

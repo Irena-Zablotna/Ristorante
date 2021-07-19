@@ -169,7 +169,7 @@ namespace Ristorante.Repository
 
         //------------INSERISCI NUOVO PIATTO Admin----------------------------
 
-        public int CreaPiatto(Piatto piatto)
+        public Piatto CreaPiatto(Piatto piatto)
         {
             var p = new Piatto();
             p.Nome = piatto.Nome;
@@ -180,12 +180,24 @@ namespace Ristorante.Repository
             {
                 _ristoranteContext.Piatti.Add(p);
                 _ristoranteContext.SaveChanges();
-                return p.id;
+                return p;
             }
-            return -1; 
+            return null; 
         }
 
         //-----------CANCELLA PIATTO Admin------------
+
+        public bool CancellaAdmin (int id)
+        {
+            var result = _ristoranteContext.Piatti.Where(p => p.id == id).FirstOrDefault();
+            if (result != null)
+            {
+                _ristoranteContext.Piatti.Remove(result);
+                _ristoranteContext.SaveChanges();
+                return true;
+            }
+            return false;
+        }
     }
 }
 

@@ -56,13 +56,15 @@ namespace Ristorante.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Piatto piatto)
         {
-            int id = _ristoranteRepository.CreaPiatto(piatto);
+            Piatto p = _ristoranteRepository.CreaPiatto(piatto);
             
             
-                if(ModelState.IsValid && id!=-1)
+                if(ModelState.IsValid && p!=null)
                 {
+                int id = p.id;
+
                     ViewData["creato"] = $"Il piatto {id} è stato aggiunto al menu";
-                return View(" Details", piatto);
+                return View ("Details", p);
                 }
           
                 return View("Create");
@@ -99,6 +101,7 @@ namespace Ristorante.Controllers
         }
 
         // GET: AdminController/Delete/5
+        [HttpGet]
         public ActionResult Delete(int id)
         {
             Piatto piatto = _ristoranteRepository.DettaglioPiatto(id);
@@ -108,16 +111,16 @@ namespace Ristorante.Controllers
         // POST: AdminController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult DeleteDish(int id)
         {
-            try
+            bool deleted = _ristoranteRepository.CancellaAdmin(id);
+            if (deleted)
             {
-                return RedirectToAction(nameof(Index));
+                ViewData["cancellato"] = $"il piatto {id} è stato rimosso dal menu";
+                return View("Adminpage");
             }
-            catch
-            {
-                return View();
-            }
+            ViewData["impossibile"] = $"non è stato possibile cancellare il piatto n.{id}, riprova";
+            return View("Adminpage");
         }
     }
 }
