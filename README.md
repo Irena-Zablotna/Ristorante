@@ -13,4 +13,6 @@ L'ultima versione è il branch Ristorante-Identity-bootstrap.
 
 ![Ristorante1](https://user-images.githubusercontent.com/75903557/134161289-a99d5915-7ab8-4f5f-80ed-be3b72f4750c.jpg)
 ![Ristorante2](https://user-images.githubusercontent.com/75903557/134162154-eba8631b-62d4-4ecd-93fb-d47e47080e74.jpg)
+![Ristorante ](https://user-images.githubusercontent.com/75903557/134162574-41e9da4f-2297-49d9-8f4d-ea8538337d51.jpg)
+
 
