@@ -1,5 +1,5 @@
 # Ristorante
-My project is an MVC web application that represents the website of a restaurant, which in addition to presenting the menu, photos of some dishes, the position and contact details, also allows you to make and manage (modify, calculate) online reservations upon registration on the site and subsequent authentication.
+My project is an MVC web application that represents the website of a restaurant, which in addition to presenting the menu, photos of some dishes, the position and contact details, also allows you to make and manage (modify, calculate) online reservations upon registration on the site and authentication.
 
 There is also an additional function for the Admin role, which has the ability to access the dedicated page where he manages the menu through CRUD operations and verifies  the booking statistics, exporting the data to a csv file.
 
