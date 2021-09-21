@@ -1,15 +1,13 @@
 # Ristorante
-Il progetto è una web application MVC che rapresenta il sito web di un ristorante, che oltre a presentare il menu, le foto di alcuni piatti, la posizione e i dati di contatto, consente anche di effettuare e gestire ( modificare, calcellare) le prenotazioni online previa registrazione sul sito e successiva autenticazione.
+My project is an MVC web application that represents the website of a restaurant, which in addition to presenting the menu, photos of some dishes, the position and contact details, also allows you to make and manage (modify, calculate) online reservations upon registration on the site and subsequent authentication.
 
-E' prevista anche la funzionalità aggiuntiva per il ruolo Admin, il quale ha la possibilità di accedere alla pagina dedicata dove gestisce il menu tramite le operazioni CRUD e visualizzare le statistiche delle prenotazioni, esportando i dati sul un file csv.
+There is also an additional function for the Admin role, which has the ability to access the dedicated page where he manages the menu through CRUD operations and verifies  the booking statistics, exporting the data to a csv file.
 
-Quest'ultima possibilità dev'essere ancora implementata, dato che ho l'intenzione di eseguire un refactoring del codice (cambio del pattern verso Clean Architecture) e aggiungere nuove funzionalità.
-L'applicazione è stata creata in .Net Core 3.1.
-linguaggi e tecnologie utilizzate sono: HTML, CSS, Javascript, Bootstrap, JQuery, C#, Microsoft Identity, Entity Framework.
+This last possibility has yet to be implemented, as I intend to refactor the code (change the pattern to Clean Architecture) and add new features. The application was created in .Net Core 3.1. Languages and technologies that I used are: HTML, CSS, Javascript, Bootstrap, JQuery, C #, Microsoft Identity, Entity Framework.
 
-Come Database ho utilizzato SQL Server utilizzando l'approccio Database First e Entity Framework Power Tools.
+As a database I used SQL Server with the Database First approach and Entity Framework Power Tools.
 
-L'ultima versione è il branch Ristorante-Identity-bootstrap.
+The latest version is the Restaurant-Identity-bootstrap branch..
 
 ![Ristorante1](https://user-images.githubusercontent.com/75903557/134161289-a99d5915-7ab8-4f5f-80ed-be3b72f4750c.jpg)
 ![Ristorante2](https://user-images.githubusercontent.com/75903557/134162154-eba8631b-62d4-4ecd-93fb-d47e47080e74.jpg)
