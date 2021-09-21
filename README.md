@@ -12,3 +12,4 @@ Come Database ho utilizzato SQL Server utilizzando l'approccio Database First e 
 L'ultima versione è il branch Ristorante-Identity-bootstrap.
 
 ![Ristorante1](https://user-images.githubusercontent.com/75903557/134161289-a99d5915-7ab8-4f5f-80ed-be3b72f4750c.jpg)
+![Ristorante2](https://user-images.githubusercontent.com/75903557/134161941-9ee68f54-cd5c-43c3-8ae7-d7b2768de460.jpg)
