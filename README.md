@@ -7,7 +7,7 @@ This last possibility has yet to be implemented, as I intend to refactor the cod
 
 As a database I used SQL Server with the Database First approach and Entity Framework Power Tools.
 
-The latest version is the Restaurant-Identity-bootstrap branch..
+The latest version is the Restaurant-Identity-bootstrap branch.
 
 ![Ristorante1](https://user-images.githubusercontent.com/75903557/134161289-a99d5915-7ab8-4f5f-80ed-be3b72f4750c.jpg)
 ![Ristorante2](https://user-images.githubusercontent.com/75903557/134162154-eba8631b-62d4-4ecd-93fb-d47e47080e74.jpg)
