@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Ristorante.Data;
+using Ristorante.EmailSender;
 using Ristorante.Repository;
 
 namespace Ristorante
@@ -38,6 +39,15 @@ namespace Ristorante
             services.AddScoped<SignInManager<IdentityUser>>();
             services.AddScoped<UserManager<IdentityUser>>();
             services.AddScoped<RoleManager<IdentityRole>>();
+
+            services.AddFluentEmail(Configuration["FluentEmail:FromEmail"],
+                                    Configuration["FluentEmail:FromName"])
+                    .AddRazorRenderer()
+                    .AddSmtpSender(Configuration["FluentEmail:SmtpSender:Host"],
+                         int.Parse(Configuration["FluentEmail:SmtpSender:Port"]),
+                                   Configuration["FluentEmail:SmtpSender:Username"],
+                                   Configuration["FluentEmail:SmtpSender:Password"]);
+            services.AddScoped<IEmailSenderService, EmailSenderService>();
 
             services.AddControllersWithViews();
             services.AddScoped<RistoranteRepository>();

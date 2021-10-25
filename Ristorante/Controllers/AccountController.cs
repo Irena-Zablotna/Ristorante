@@ -11,6 +11,7 @@ using Ristorante.Data;
 using Ristorante.Models;
 using Ristorante.Repository;
 using Microsoft.AspNetCore.Authorization;
+using Ristorante.EmailSender;
 
 namespace Ristorante.Controllers
 {
@@ -20,12 +21,14 @@ namespace Ristorante.Controllers
         
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly IEmailSenderService _emailSenderService;
 
-        public AccountController(ILogger<AccountController> logger, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AccountController(ILogger<AccountController> logger, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IEmailSenderService emailSenderService)
         {
             _logger = logger;
             _userManager = userManager;
             _signInManager = signInManager;
+            _emailSenderService = emailSenderService;
 
         }
 
@@ -44,13 +47,15 @@ namespace Ristorante.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = rvmodel.Username, PasswordHash = rvmodel.Password };
+                var user = new IdentityUser { UserName = rvmodel.Username, PasswordHash = rvmodel.Password, Email= rvmodel.Email};
 
                 var result = await _userManager.CreateAsync(user, rvmodel.Password);
 
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, isPersistent: false);
+                    await _emailSenderService.Send(rvmodel.Email, "Conferma registrazione", rvmodel.Username);
+
                     return RedirectToAction("Registrati");
                 }
 
