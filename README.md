@@ -1,11 +1,12 @@
 # Ristorante
-My project is an MVC web application that represents the website of a restaurant, which in addition to presenting the menu, photos of some dishes, the position and contact details, also allows you to make and manage (modify, calculate) online reservations upon registration on the site and authentication.
-
-There is also an additional function for the Admin role, which has the ability to access the dedicated page where he manages the menu through CRUD operations and verifies  the booking statistics, exporting the data to a csv file.
-
-This last possibility has yet to be implemented, as I intend to refactor the code (change the pattern to Clean Architecture) and add new features. The application was created in .Net Core 3.1. Languages and technologies that I used are: HTML, CSS, Javascript, Bootstrap, JQuery, C #, Microsoft Identity, Entity Framework.
-
-As a database I used SQL Server with the Database First approach and Entity Framework Power Tools.
+It’s a project that represents the website of a restaurant with the following features:
+-presents menu, dishes via image slider, location (built-in map), contact details
+-also allows you to make and manage online bookings (create, modify and cancel)
+-allows you to register on the site and sends email confirmation.
+There is also the additional feature for the Admin role, which has the possibility to access the dedicated page whereit manages the menu through CRUD operations.
+The application was created in .Net Core 3.1. 
+Languages and technologies used are: HTML, CSS, Javascript, Bootstrap, Jquery, C#, Microsoft Identity, Entity Framework, Entity Framework Power Tools.
+As Database I used SQL Server by choosing the Database First approach.
 
 The latest version is the Identity-bootstrap branch.
 
