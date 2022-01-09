@@ -12,10 +12,10 @@ namespace Ristorante.Controllers
 {
     public class AdminController : Controller
     {
-            private RistoranteRepository _ristoranteRepository;
+            private IRistoranteRepository _ristoranteRepository;
 
 
-        public AdminController( RistoranteRepository ristoranteRepository)
+        public AdminController( IRistoranteRepository ristoranteRepository)
         {
            
             _ristoranteRepository = ristoranteRepository;
