@@ -17,14 +17,14 @@ namespace Ristorante.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private RistoranteRepository _ristoranteRepository;
+        //private readonly ILogger<HomeController> _logger;
+        private IRistoranteRepository _ristoranteRepository;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
 
-        public HomeController(ILogger<HomeController> logger, RistoranteRepository ristoranteRepository, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public HomeController(ILogger<HomeController> logger, IRistoranteRepository ristoranteRepository, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
-            _logger = logger;
+            //_logger = logger;
             _ristoranteRepository = ristoranteRepository;
             _userManager = userManager;
             _signInManager = signInManager;

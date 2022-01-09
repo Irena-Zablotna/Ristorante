@@ -39,6 +39,7 @@ namespace Ristorante
             services.AddScoped<SignInManager<IdentityUser>>();
             services.AddScoped<UserManager<IdentityUser>>();
             services.AddScoped<RoleManager<IdentityRole>>();
+            services.AddScoped<IRistoranteRepository, RistoranteRepository>();
 
             services.AddFluentEmail(Configuration["FluentEmail:FromEmail"],
                                     Configuration["FluentEmail:FromName"])

@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Ristorante.Repository
 {
-    public class RistoranteRepository
+    public class RistoranteRepository:IRistoranteRepository
     {
         private RistoranteContext _ristoranteContext;
         private readonly UserManager<IdentityUser> _userManager;
