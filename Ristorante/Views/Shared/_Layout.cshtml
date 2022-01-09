@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="it">
 
 <head>
@@ -8,31 +9,62 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    @await RenderSectionAsync("Styles", required: false)
 </head>
 
 <body>
     <div class="wrapper">
-        <div id="topbar">
-            <div id="logo">
-                <img src="~/images/close-up-fresh-mint-leaves-removebg-preview.png" alt="logo">
-            </div>
-            <div id="menu">
-                <ul>
-                    <a href="#" style="color:#ffa17a">"L'oasi del gusto"</a>
-                    <a href="Piatti.html" target="_blank"> I nostri piatti</a>
-                    <a href="#">La nostra storia</a>
-                    <a href="#">Lo staff</a>
-                    <a href="Dove.html" target="_blank">Dove siamo</a>
+        <nav class="navbar navbar-expand-lg" id="topbar">
+
+            <a class="navbar-brand" href="#">
+                <img class="navbar-brand img-fluid" src="~/images/close-up-fresh-mint-leaves-removebg-preview.png" alt="logo">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="" role="button"><i class="fa fa-bars" aria-hidden="true" style="color:white"></i></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item active ">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index" style="color:#ffa17a">"L'oasi del gusto"  </a>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Piatti"> I nostri piatti</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Prenota">Dove siamo<br> Prenota online</a>
+                    </li>
                 </ul>
+
+                <div id="logindiv">
+                    @{
+//await Html.RenderPartialAsync("~/Views/PartialViews/_Login.cshtml",
+//  new Ristorante.VievModels.LoginViewModel());
+                        <partial name="~/Views/PartialViews/_Login.cshtml" />
+                    }
+                </div>
+
             </div>
-        </div>
+
+
+        </nav>
         <main>
             <section id="smain">
-                <h1>L'oasi del gusto</h1>
-                <p>ristorante vegetariano</p>
-                <p><a href="Piatti.html" target="_blank">scopri i nuovi sapori</a></p>
+
+                <section id="information">
+                    @RenderSection("information", false)
+                </section>
+
+
                 @RenderBody()
+
             </section>
+
             <footer>
                 <p id="contact">Contattaci</p>
                 <p id="phone"><i class="fa fa-phone"></i> 0123 123456</p>
@@ -42,15 +74,18 @@
                     <a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram"></i></a>
                     <a href="https://twitter.com/login?lang=it" target="_blank"><i class="fa fa-twitter-square"></i></a>
                     <a href="https://api.whatsapp.com/send?phone=393293333333" target="_blank"><i class="fa fa-whatsapp"></i></a>
+                </div>
             </footer>
         </main>
-
+        <section id="map">
+            @RenderSection("map", required: false)
+        </section>
     </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
+    <script src="../js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 
 </html>

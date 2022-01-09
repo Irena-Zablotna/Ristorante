@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Ristorante.Models.Piatto>
+
+@{
+    ViewData["Title"] = "VediMenu";
+    Layout = "~/Views/Shared/_Adminpage.cshtml";
+}
+
+<p>Gestisci il menu</p>
+
+<p>
+    <a asp-action="Create">Crea un nuovo piatto</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prezzo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipo_piatto)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prezzo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo_piatto)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Modifica</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Dettagli</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Cancella</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

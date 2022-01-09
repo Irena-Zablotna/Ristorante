@@ -1,0 +1,33 @@
+﻿* {
+    margin: 0%;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    display: block;
+    margin-top: 20px;
+}
+#gestione-piatti{
+    margin-bottom:100px;
+    border-bottom:1px solid black;
+    
+    padding-bottom:50px;
+}
+
+#gestione-piatti a{
+    text-decoration:none;
+    color:white;    
+}

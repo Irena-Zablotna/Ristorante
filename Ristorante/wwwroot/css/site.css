@@ -9,7 +9,7 @@ html {
 }
 
 body {
-    background-color: #515152;
+   
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -23,6 +23,7 @@ body {
     position: relative;
     z-index: 10;
     overflow: hidden;
+    background-color: #515152;
 }
 
     .wrapper > * {
@@ -42,20 +43,132 @@ body {
         z-index: 1;
     }
 
-/*MENU BAR WITH LOGO-------------------------------------*/
+/*-----------LOGIN AND REGISTER BUTTONS inside a menu bar-----------*/
+#logindiv {
+    width: 55%;
+    display: flex;
+    margin-right: 3%;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+    @media (max-width: 960px) {
+        #logindiv{
+        width:100%;
+    }
+    #logindiv button{
+        width:15%;
+    }
+  
+}
+
+#logindiv button, .link-btn {
+    background-color: #1a1919;
+    border: 2px solid #ffa17a;
+    color: white;
+    border-radius: 50%;
+    font-size: 10px;
+    width: 12%;
+    text-align: center;
+    padding: 6px;
+}
+    .link-btn{
+        text-decoration:none;
+        font-size:10px;
+        margin-left:15px;
+    }
+
+    #logindiv button:hover, #logoutform button:hover, #logindiv a:hover {
+        background-color: #ffa17a;
+        text-decoration:none;
+        color:white;
+    }
+
+#registrati {
+    margin-left: 4%;
+}
+
+#logindiv i {
+    color: white;
+    float: left;
+    font-size: 20px;
+    margin-right: 2%;
+}
+
+#logindiv h3 {
+    color: #ffa17a;
+    margin: auto;
+    text-align: center;
+    font-size: 14px;
+    margin-right: 15%;
+}
+
+#logoutform {
+    width: 30%;
+}
+
+    #logoutform button {
+        background-color: #1a1919;
+        border: 2px solid #ffa17a;
+        color: white;
+        border-radius: 50%;
+        font-size: 10px;
+        width: 40%;
+        text-align: center;
+        padding: 8px;
+    }
+
+
+
+/*------------NAVBAR BOOTSTRAP-------------*/
+.navbar-brand {
+    max-width: 200px;
+    margin-right: 2rem;
+}
+
+    .navbar-brand img {
+        width: 80px;
+        transition: all ease 1.5s;
+    }
+
+        .navbar-brand img:hover {
+            transform: scale(1.1)
+        }
+
+#topbar a {
+    color: white;
+    font-size: 14px;
+    transition: all 0.5s;
+}
+
+    #topbar a:hover {
+        color: #ffa17a;
+    }
+
+    .active {
+        color: #ffa17a;
+    }
+.nav-link {
+    margin-left: 1.5rem;
+}
 
 #topbar {
-    height: 140px;
-    width: 100%;
     background: rgba(19, 19, 19, 0.4);
     border-bottom: 3px solid #ffa17a;
+    height:110px;
+}
+@media (max-width:990px){
+    #topbar{
+        min-height:110px;
+    }
 }
 
 #logo {
     height: 100%;
     width: 10%;
     display: inline-block;
-    transition: all ease 0.8s;
+    transition: all ease 1.5s;
 }
 
     #logo img {
@@ -65,39 +178,8 @@ body {
     }
 
     #logo:hover {
-        transform: scale(1.1);
+        transform: scale(1.5);
     }
-
-#menu {
-    margin: auto;
-    width: 90%;
-    height: 100%;
-    float: right;
-    text-align: center;
-    display: flex;
-}
-
-    #menu ul {
-        width: 100%;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        align-content: center;
-        padding-left: 110px;
-    }
-
-    #menu a {
-        text-decoration: none;
-        color: white;
-        font-size: 18px;
-        transition: all 0.5s;
-        padding-left: 25px;
-        padding-right: 25px;
-    }
-
-        #menu a:hover {
-            color: #ffa17a;
-        }
 
 /*MAIN WITH BORDER-------------*/
 main {
@@ -120,16 +202,16 @@ main {
         color: white;
         text-transform: uppercase;
         font-size: 50px;
-        text-shadow: #ffa17a 2px 2px 5px;
+        text-shadow: #6b6968 2px 2px 5px;
         letter-spacing: 2px;
     }
 
     #smain p {
-        font-size: 25px;
+        font-size: 18px;
         font-weight: bolder;
         color: white;
         line-height: 250%;
-        text-shadow: #ffa17a 1px 1px 3px;
+        text-shadow: #6b6968 1px 1px 3px;
     }
 
     #smain a {
@@ -137,6 +219,7 @@ main {
         color: #ffa17a;
         text-shadow: #1a1919 1px 1px 3px;
         transition: all 0.5s;
+       
     }
 
         #smain a:hover {
@@ -144,7 +227,9 @@ main {
             text-shadow: #1a1919 1px 1px 3px;
         }
 
+
 /*FOOTER--------------------------------*/
+
 footer {
     float: right;
     position: absolute;
@@ -154,8 +239,9 @@ footer {
     padding-left: 45px;
     padding-bottom: 20px;
     color: white;
-    line-height: 160%;
-    font-size: 20px;
+    line-height: 120%;
+    font-size: 14px;
+    margin-bottom: 3%;
 }
 
 #social {
@@ -164,7 +250,7 @@ footer {
 
     #social i {
         color: white;
-        font-size: 20px;
+        font-size: 18px;
         padding-right: 10px;
     }
 
@@ -172,7 +258,7 @@ footer {
             color: #ffa17a;
         }
 
-/*SECOND PAGE---------------------------------------------------------------------------------------*/
+/*SECOND PAGE "PIATTI"---------------------------------------------------------------------------------------*/
 .wrapper1 {
     background-image: url(../images/andrew-seaman-sQopSb2K0CU-unsplash.jpg);
     width: 100%;
@@ -181,6 +267,7 @@ footer {
     background-size: cover;
     position: relative;
     z-index: 10;
+    background-color: #515152;
 }
 
     .wrapper1 > * {
@@ -202,20 +289,29 @@ footer {
 
 .sec-tab {
     color: white;
-    font-weight: bolder;
-    font-size: 16px;
+    font-size: 14px;
     width: 30%;
     text-align: center;
     padding-bottom: 10px;
     border-bottom: 3px solid #ffa17a;
 }
 
-    .sec-tab h3,
-    #contact1 h3 {
-        font-size: 25px;
-        text-shadow: #ffa17a 2px 2px 3px;
-        text-transform: uppercase;
+@media (max-width:1200px) {
+    .sec-tab {
+        font-size: 11px;
     }
+
+    .navbar ul {
+        font-size: 12px;
+    }
+}
+
+.sec-tab h3,
+#contact1 h3 {
+    font-size: 25px;
+    text-shadow: #6b6968 2px 2px 3px;
+    text-transform: uppercase;
+}
 
 table {
     margin: auto;
@@ -224,6 +320,7 @@ table {
 
     table td {
         padding: 8px;
+        text-align: left;
     }
 
     table tr {
@@ -234,22 +331,52 @@ table {
             color: #ffa17a;
         }
 
-/* DIVS POSITIONING --------------------*/
+/* DIVS POSITIONING ON "PIATTI" PAGE--------------------*/
 .big-box {
     margin-top: 60px;
     display: flex;
     justify-content: space-between;
 }
 
+#box1{
+    position:relative;
+}
 #s2 {
     position: absolute;
-    top: 35%;
+    top: 50%;
     left: 35%;
+    width: 34%;
 }
+
+
+/*-----------SLIDER---------------*/
+#slider {
+    margin-top: 5%;
+    max-height: 400px;
+    width: 80%;
+    
+}
+
+#inner {
+    max-height: 250px;
+    overflow: hidden;
+}
+
+.carousel-indicators li {
+    opacity: 1;
+}
+
+.img-fluid {
+    transition: all ease 1.5s;
+}
+
+    .img-fluid:hover {
+        transform: scale(1.4);
+    }
 
 /*BUTTON RETURN ON TOP-------------------------*/
 .top-button {
-    display: block;
+    display: none;
     width: 30px;
     height: 30px;
     border-radius: 2px;
@@ -259,7 +386,6 @@ table {
     right: 10px;
     text-align: center;
     padding-top: 2px;
-    color:white;
 }
 
 .fa-chevron-up {
@@ -269,86 +395,225 @@ table {
 /*  LAST PAGE---------------------------------------------------------------------------------------------*/
 #map {
     width: 35%;
-    height: 350px;
-    font-size: 20px;
+   /* height: 350px;*/
     position: absolute;
-    top: 320px;
+    top: 35%;
     left: 82%;
 }
 
-/*CONTACTFORM---------------------------------------------*/
+/*RESERVATION FORM---------------------------------------------*/
 #contact1 {
     color: white;
-    margin: left -40px;
     margin-right: 0px;
     text-align: center;
     padding: 30px;
-    top: 10%;
+    top: 4%;
     position: absolute;
+    width: 60%;
 }
+    #contact1 h3{
+        margin-top:10px;
+        margin-bottom:30px;
+    }
+    #contact1 p{
+        font-size:14px;
+    }
+    #first-form {
+        margin-top: 30px;
+    }
 
+#vediprenotazione{
+    margin-top:20px;
+    width:100%;
+}
 #contactform {
-    width: 100%;
+    width: 60%;
     text-align: center;
     margin: auto;
-    margin-top: 50px;
+    margin: auto;
+    margin-top: 25px;
 }
 
+
     #contactform p {
-        padding-bottom: 45px;
+        padding-bottom: 25px;
         font-size: 22px;
     }
 
-.half {
-    float: left;
-}
-
-.left {
-    width: 48%;
-    margin-right: 2%;
-}
-
-.right {
-    width: 50%;
-}
-
-input,
-textarea {
-    display: block;
+input, select, #canc {
+  
     box-sizing: border-box;
-    width: 100%;
+   width: 100%;
     border: 1px solid #ffa17a;
     outline: none;
-    margin-bottom: 20px;
-    padding: 10px;
+   margin-bottom: 20px;
+    padding: 8px;
     color: white;
-    line-height: 300%;
+    font-size: 11px;
+    line-height: 100%;
     background-color: #13131366;
     box-shadow: 1px 1px 2px #070707d8;
 }
 
-    input:focus,
-    textarea:focus {
-        border: 3px solid #ffa17a;
+    input:focus, select:focus {
+     
         background-color: #1a1919;
     }
 
-textarea {
-    min-height: 225px;
-    resize: vertical;
+    input[type='number'] {
+        -moz-appearance: textfield;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
+    input[type=submit] {
+        font-size: 11px;
+        font-weight: bold;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        margin-top: 20px;
+        line-height: 150%;
+        padding: 7px;
+    }
+
+        input[type=submit]:hover {
+            color: white;
+            background-color: #1a1919;
+        }
+
+#visualizza{
+    padding-left:9px;
+    padding-right:9px;
 }
 
-input[type=submit] {
-    font-size: 14px;
+
+/*-----------submit buttons of the reservation form-----------*/
+#aggiorna {
+    color: #58950f;
+    margin-top: 2px;
+}
+
+#canc {
+    color: red;
+    *margin-top: 4px;
     font-weight: bold;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: block;
+    cursor: pointer;
 }
 
-    input[type=submit]:hover {
-        color: #ffa17a;
+    #canc:hover, #canc-definitivo:hover {
+        color: red;
         background-color: #1a1919;
     }
+
+
+#canc-definitivo {
+    width: 25%;
+    color: red;
+    margin-top: 0px;
+    font-weight: bold;
+}
+
+#prenota {
+    margin-top: 0px;
+    color: #58950f;
+}
+
+
+#num-prenotazione {
+    transform: translateY(20px);
+   
+}
 
 ::placeholder {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    opacity: 0.9;
+    color:white;
+    
 }
+
+#data {
+    padding: 6px;
+}
+/*------------------POP-UP ALERT ------------------*/
+
+#alert p {
+    margin-bottom: 0;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+#alert {
+    background-color: #515152;
+    position: relative;
+    padding: 10px;
+    display: none;
+}
+
+#x {
+    position: absolute;
+    top: 0;
+    right: 3px;
+    font-size: 18px;
+    color: white;
+    padding: 3px;
+    cursor: pointer;
+}
+
+/*---------------SIGN UP FORM and LOGIN FORM--------------------*/
+.signupDiv{
+    width:60%
+}
+
+.signupDiv button {
+    background-color: #1a1919;
+    border: 3px solid #ffa17a;
+    color: white;
+    border-radius: 50%;
+    font-size: 10px;
+    width: 30%;
+    text-align: center;
+    padding: 8px;
+    margin: auto;
+}
+
+.signupDiv input {
+    line-height: 120%;
+}
+
+.signupDiv button:hover {
+    background-color: #ffa17a;
+}
+
+.signupDiv i{
+    color:white;
+    padding:10px;
+    font-size:20px;
+   
+}
+
+
+@media (max-width:1200px) {
+    #signupDiv button{
+        width:50%;
+    }
+    
+}
+
+@media (max-width:600px) {
+    #signupDiv button {
+        width: 70%;
+    }
+}
+#pass {
+    font-size: 16px;
+    text-decoration: none;
+    padding-top: 20px;
+    color: white;
+}
+
+    #pass:hover {
+        color: #ffa17a;
+    }

@@ -1,0 +1,40 @@
+﻿@model Ristorante.Models.Piatto
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Adminpage.cshtml";
+}
+
+
+
+<div>
+    <h4>Piatto</h4>
+    @ViewData["conferma"]
+    @ViewData["creato"]
+
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Prezzo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Prezzo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tipo_piatto)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tipo_piatto)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id">Modifica</a> |
+    <a asp-controller="Admin" asp-action="VediMenu">Torna alla lista</a>
+</div>

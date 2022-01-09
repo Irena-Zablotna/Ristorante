@@ -1,0 +1,136 @@
+﻿@using Ristorante.VievModels
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> signInManager
+@inject UserManager<IdentityUser> userManager
+
+@model Prenotazione
+
+@{ ViewData["Title"] = "Prenota"; }
+
+
+@section Styles{
+    <style>
+        #smain {
+            border-bottom: none;
+        }
+
+        #smain h3{
+            font-weight:normal;
+        }
+        #contact1 p {
+            font-weight: normal;
+            line-height: 150%;
+            font-size: 14px;
+            text-shadow: none;
+        }
+
+    </style>
+}
+
+
+
+<div id="contact1">
+    <h3>ti aspettiamo in via Braccini 17, Torino</h3>
+    
+
+        @if ((!signInManager.IsSignedIn(User)))
+        {<p>
+                La tua prenotazione online <br />
+                Accedi o registrati per prenotare
+            </p>}
+
+        @if ((signInManager.IsSignedIn(User)))
+        {<p>
+                La tua prenotazione online <br />
+                @ViewData["num"]
+                @ViewData["modifica"]
+                @ViewData["numCanc"]
+                @ViewData["noPosti"]
+                @ViewData["impossibile"]
+                @ViewData["nonTrovata"]
+            </p>}
+
+    
+    <form  method="post" asp-controller="Home" asp-action="Prenotazione">
+        <div class="form-row" id="first-form">
+
+            <div class="col-md-6">
+                <input type="date" id="data" asp-for="data" required autofocus>
+            </div>
+
+            <div class="col-md-6">
+                @if ((signInManager.IsSignedIn(User)))
+                {
+                    <input type="text" id="name" name="username" value="@User.Identity.Name">
+                }
+                else
+                {
+                    <input type="text" id="name" name="username" placeholder="La tua username" required>
+                }
+            </div>
+
+            <div class="w-100"></div>
+          
+            <div class="col-md-6">
+                <input asp-for="numero_tel" type="tel" id="tel" placeholder="numero di telefono "
+                       pattern="[0-9]{10,15}" minlength="10" maxlength="15"
+                       required>
+            </div>
+
+            <div class="col-md-6">
+                <select asp-for="orario" required>
+                    <option value="" selected disabled hidden>pranzo o cena</option>
+                    <option value="pranzo">pranzo</option>
+                    <option value="cena">cena</option>
+                </select>
+            </div>
+
+            <div class="w-100"></div>
+
+            <div class="col-md-6">
+                <input type="number" asp-for="numero_persone" placeholder="numero di persone max 40" min="1" max="40" required>
+            </div>
+
+            <div class="col-md-6">
+                <input type="submit" id="prenota" value="Prenota">
+            </div>
+        </div>
+  
+    </form>
+
+    <div>
+        <p>Puoi gestire la tua prenotazione:</p>
+    </div>
+    <form  method="post" asp-controller="Home" asp-action="VediPrenotazione">
+        <div class="form-row" id="vediprenotazione">
+
+            <div class="col-md-6">
+                <input type="hidden" name="username" id="username" value="@User.Identity.Name">
+            </div>
+
+            <div class="w-100"></div>
+
+            <div class="col-md-6">
+                <input type="number" name="id" id="num-prenotazione"
+                       placeholder="Inserisci num. prenotazione" required>
+            </div>
+
+            <div class="col-md-6">
+                <input type="submit" id="visualizza" value=" Visualizza prenotazione">
+            </div>
+
+
+
+        </div>
+    </form>
+
+</div>
+
+
+@section map{
+
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2818.2892200742976!2d7.65260595061477!3d45.05964376826541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47886d21a14d5775%3A0x46623a97c4336847!2sVia%20Braccini%2C%2017%2C%2010141%20Torino%20TO!5e0!3m2!1sit!2sit!4v1612720539508!5m2!1sit!2sit"
+            width="200" height="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+            tabindex="0"></iframe>
+}

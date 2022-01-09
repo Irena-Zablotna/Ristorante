@@ -1,0 +1,36 @@
+﻿
+
+@using Microsoft.AspNetCore.Identity
+
+
+@inject SignInManager<IdentityUser> signInManager
+@inject UserManager<IdentityUser> userManager
+
+
+@{
+    if ((signInManager.IsSignedIn(User)))
+    {
+        <h3>Benvenuto @User.Identity.Name!</h3>
+        <form id="logoutform" method="post" asp-controller="Account" asp-action="Logout">
+            <button id="logout">Logout</button>
+        </form>
+        if (User.IsInRole("Admin"))
+
+        {
+
+            <a class="link-btn "asp-controller="Admin" asp-action="Adminpage" style="text-decoration:none;
+            font-size:10px;">Gestione</a>
+        }
+    }
+
+
+
+    else
+    {
+        <a class="link-btn " asp-controller="Account" asp-action="Login" style="text-decoration:none;
+            font-size:10px;">Login</a>
+
+        <a class="link-btn " asp-controller="Account" asp-action="Registrati" style="text-decoration:none;
+            font-size:10px;">Registrati</a>
+    }
+}

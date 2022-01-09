@@ -1,0 +1,124 @@
+﻿
+@{
+    ViewData["Title"] = "Gestisci";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> signInManager
+@inject UserManager<IdentityUser> userManager
+
+@model Prenotazione
+
+@section Styles{
+    <style>
+        #smain {
+            border-bottom: none;
+        }
+
+        #contact1 p {
+            font-weight: normal;
+            line-height: 200%;
+            font-size: 14px;
+            text-shadow: none;
+        }
+
+    </style>
+}
+
+
+
+<div id="contact1">
+    <h3>ti aspettiamo in via Braccini 17, Torino</h3>
+   
+
+        <p>
+            Gestisci la prenotazione n. @ViewBag.id:<br />
+            dopo avere inserito i nuovi dati clicca "Modifica"<br />
+            per cancellare clicca "Cancella"
+        </p>
+
+
+        <div id="alert">
+            <span id="x">X</span>
+            <p>Sei sicuro di cancellare la prenotazione n. @ViewBag.id ?</p>
+            <form method="post">
+                <input type="hidden" name="id" id="num-prenotazione" value="@Model.id_prenotazione">
+                <input type="submit" id="canc-definitivo" asp-controller="Home" asp-action="Cancella" value="Cancella">
+            </form>
+
+        </div>
+
+       
+            <form method="post" id="vedi-prenotazione">
+                <div class="form-row" id="">
+
+                    <div class="col">
+                        <input type="date" id="data" asp-for="data" />
+                    </div>
+
+                    <div class="col">
+                        <input type="text" id="name" name="username" value="@User.Identity.Name" readonly>
+                    </div>
+
+                    <div class="w-100"></div>
+
+                    <div class="col">
+                        <input asp-for="numero_tel" type="tel" id="tel"
+                               pattern="[0-9]{10,15}" minlength="10" maxlength="15" value="@Model.numero_tel" />
+                    </div>
+
+                    <div class="col">
+                        <select asp-for="orario">
+                            <option value=""></option>
+                            <option value="pranzo">pranzo</option>
+                            <option value="cena">cena</option>
+                            <option value="" selected disabled hidden>@Model.orario</option>
+                        </select>
+                    </div>
+
+                    <div class="w-100"></div>
+
+                    <div class="col">
+                        <input type="number" asp-for="numero_persone" id="num-persone" 
+                               style="margin-bottom:5px;">
+                    </div>
+
+                    <div class="col">
+                        <input type="submit" id="aggiorna" asp-controller="Home" asp-action="Modifica"
+                               value="Modifica prenotazione">
+                    </div>
+
+                    <div class="w-100"></div>
+
+                    <div class="col">
+                        <input type="hidden" name="id" id="num-prenotazione" value="@Model.id_prenotazione">
+                    </div>
+
+                    <div class="col">
+                        <span id="canc">Cancella prenotazione</span>
+                    </div>
+
+                    <div class="w-100"></div>
+
+                </div>
+
+            </form>
+      
+
+   
+</div>
+
+@section map{
+
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2818.2892200742976!2d7.65260595061477!3d45.05964376826541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47886d21a14d5775%3A0x46623a97c4336847!2sVia%20Braccini%2C%2017%2C%2010141%20Torino%20TO!5e0!3m2!1sit!2sit!4v1612720539508!5m2!1sit!2sit"
+            width="200" height="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+            tabindex="0"></iframe>
+}
+
+@section Scripts{
+    <script>
+        @*var dataFromView = '@Model.data';*@
+    </script>
+
+}
